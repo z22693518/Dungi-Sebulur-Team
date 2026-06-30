@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品集 - Dungi Sebulur Team</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-compact-disc"></i> Dungi Sebulur Team
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">關於我們</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            DJ陣容
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="djs/dj1.html">DJ Mike</a></li>
+                            <li><a class="dropdown-item" href="djs/dj2.html">DJ Sarah</a></li>
+                            <li><a class="dropdown-item" href="djs/dj3.html">DJ Alex</a></li>
+                            <li><a class="dropdown-item" href="djs/dj4.html">DJ Luna</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">服務項目</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="portfolio.html">作品集</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">聯絡我們</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="hero-section py-5">
+        <div class="container">
+            <div class="row align-items-center" style="padding-top: 80px; min-height: 40vh;">
+                <div class="col-12 text-center">
+                    <h1 class="display-4 fw-bold">作品集</h1>
+                    <p class="lead">精彩回顧，見證每個難忘時刻</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Filter -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="text-center">
+                <button class="btn btn-primary m-2" onclick="filterSelection('all')">全部</button>
+                <button class="btn btn-outline-primary m-2" onclick="filterSelection('corporate')">企業活動</button>
+                <button class="btn btn-outline-primary m-2" onclick="filterSelection('wedding')">婚禮派對</button>
+                <button class="btn btn-outline-primary m-2" onclick="filterSelection('club')">夜店活動</button>
+                <button class="btn btn-outline-primary m-2" onclick="filterSelection('private')">私人聚會</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Gallery -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Corporate Event 1 -->
+                <div class="col-lg-4 col-md-6 portfolio-item corporate">
+                    <div class="card">
+                        <img src="images/events/corp1.jpg" class="card-img-top" alt="企業尾牙" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">科技公司年終尾牙</h5>
+                            <p class="text-muted"><i class="fas fa-calendar"></i> 2024年1月</p>
+                            <p class="card-text">為 500 人大型尾牙活動擔任 DJ，成功炒熱全場氣氛。</p>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge bg-primary">企業活動</span>
+                                <span><i class="fas fa-users"></i> 500+ 人</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wedding Event 1 -->
+                <div class="col-lg-4 col-md-6 portfolio-item wedding">
+                    <div class="card">
+                        <img src="images/events/wed1.jpg" class="card-img-top" alt="戶外婚禮" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">浪漫戶外婚禮</h5>
+                            <p class="text-muted"><i class="fas fa-calendar"></i> 2023年10月</p>
+                            <p class="card-text">在陽明山莊園為新人打造完美的婚禮音樂體驗。</p>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge bg-danger">婚禮派對</span>
+                                <span><i class="fas fa-users"></i> 200 人</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Club Event 1 -->
+                <div class="col-lg-4 col-md-6 portfolio-item club">
+                    <div class="card">
+                        <img src="images/events/club1.jpg" class="card-img-top" alt="跨年派對" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">跨年倒數派對</h5>
+                            <p class="text-muted"><i class="fas fa-calendar"></i> 2023年12月</p>
+                            <p class="card-text">在信義區夜店舉辦跨年派對，全場 High 到天亮。</p>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge bg-warning text-dark">夜店活動</span>
+                                <span><i class="fas fa-users"></i> 1000+ 人</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Private Event 1 -->
+                <div class="col-lg-4 col-md-6 portfolio-item private">
+                    <div class="card">
+                        <img src="images/events/priv1.jpg" class="card-img-top" alt="生日派對" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">30歲生日派對</h5>
+                            <p class="text-muted"><i class="fas fa-calendar"></i> 2024年2月</p>
+                            <p class="card-text">為客戶打造難忘的30歲生日派對音樂饗宴。</p>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge bg-info">私人聚會</span>
+                                <span><i class="fas fa-users"></i> 80 人</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Corporate Event 2 -->
+                <div class="col-lg-4 col-md-6 portfolio-item corporate">
+                    <div class="card">
+                        <img src="images/events/corp2.jpg" class="card-img-top" alt="產品發表會" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">新品發表會</h5>
+                            <p class="text-muted"><i class="fas fa-calendar"></i> 2023年9月</p>
+                            <p class="card-text">為國際品牌新品發表會提供背景音樂服務。</p>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge bg-primary">企業活動</span>
+                                <span><i class="fas fa-users"></i> 300 人</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wedding Event 2 -->
+                <div class="col-lg-4 col-md-6 portfolio-item wedding">
+                    <div class="card">
+                        <img src="images/events/wed2.jpg" class="card-img-top" alt="飯店婚宴" style="height: 250px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">五星級飯店婚宴</h5>
+                            <p class="text-muted"><i class="fas fa-calendar"></i> 2024年3月</p>
+                            <p class="card-text">在台北晶華酒店為新人打造優雅的婚宴音樂。</p>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge bg-danger">婚禮派對</span>
+                                <span><i class="fas fa-users"></i> 400 人</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">精彩影片</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="DJ Performance" allowfullscreen></iframe>
+                    </div>
+                    <h5 class="mt-3">2024 跨年派對精華</h5>
+                    <p>DJ Luna 在信義區夜店的精彩演出片段</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Wedding Party" allowfullscreen></iframe>
+                    </div>
+                    <h5 class="mt-3">浪漫婚禮現場</h5>
+                    <p>DJ Alex 在戶外婚禮的感人時刻</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">客戶見證</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </div>
+                            <p class="card-text">"DJ Mike 真的太專業了！整場尾牙的氣氛都被他帶動起來，同事們都玩得很開心！"</p>
+                            <h6 class="text-muted">- 陳經理，科技公司</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </div>
+                            <p class="card-text">"我們的婚禮因為有 DJ Sarah 變得更加完美，音樂選曲完全符合我們的需求！"</p>
+                            <h6 class="text-muted">- 林先生 & 王小姐</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </div>
+                            <p class="card-text">"DJ Luna 的混音技巧一流，每次她在我們店裡演出，客人都爆滿！"</p>
+                            <h6 class="text-muted">- 張老闆，ATT 夜店</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Dungi Sebulur Team</h5>
+                    <p>專業 DJ 團隊，為您的活動帶來最佳音樂體驗。</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>快速連結</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html" class="text-white-50">關於我們</a></li>
+                        <li><a href="services.html" class="text-white-50">服務項目</a></li>
+                        <li><a href="portfolio.html" class="text-white-50">作品集</a></li>
+                        <li><a href="contact.html" class="text-white-50">聯絡我們</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>聯絡資訊</h5>
+                    <p class="mb-1"><i class="fas fa-phone"></i> +886-XXX-XXX-XXX</p>
+                    <p class="mb-1"><i class="fas fa-envelope"></i> contact@dungisebulur.com</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-white">
+            <div class="text-center">
+                <p class="mb-0">© 2024 Dungi Sebulur Team. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function filterSelection(category) {
+            var items = document.getElementsByClassName('portfolio-item');
+            if (category == 'all') {
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = 'block';
+                }
+            } else {
+                for (var i = 0; i < items.length; i++) {
+                    if (items[i].classList.contains(category)) {
+                        items[i].style.display = 'block';
+                    } else {
+                        items[i].style.display = 'none';
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

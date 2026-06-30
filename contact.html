@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯絡我們 - Dungi Sebulur Team</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-compact-disc"></i> Dungi Sebulur Team
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">關於我們</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            DJ陣容
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="djs/dj1.html">DJ Mike</a></li>
+                            <li><a class="dropdown-item" href="djs/dj2.html">DJ Sarah</a></li>
+                            <li><a class="dropdown-item" href="djs/dj3.html">DJ Alex</a></li>
+                            <li><a class="dropdown-item" href="djs/dj4.html">DJ Luna</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">服務項目</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="portfolio.html">作品集</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">聯絡我們</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="hero-section py-5">
+        <div class="container">
+            <div class="row align-items-center" style="padding-top: 80px; min-height: 40vh;">
+                <div class="col-12 text-center">
+                    <h1 class="display-4 fw-bold">聯絡我們</h1>
+                    <p class="lead">立即預約，讓音樂點亮您的活動</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <i class="fas fa-phone fa-3x mb-3 text-primary"></i>
+                            <h5>電話</h5>
+                            <p>+886-XXX-XXX-XXX</p>
+                            <p class="text-muted">週一至週五 10:00 - 18:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <i class="fas fa-envelope fa-3x mb-3 text-primary"></i>
+                            <h5>Email</h5>
+                            <p>contact@dungisebulur.com</p>
+                            <p class="text-muted">24小時內回覆</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <i class="fas fa-map-marker-alt fa-3x mb-3 text-primary"></i>
+                            <h5>地址</h5>
+                            <p>台北市信義區音樂路123號</p>
+                            <p class="text-muted">預約制，請先聯繫</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="text-center mb-5">預約表單</h2>
+                    <form id="contactForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">姓名 *</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">電話 *</label>
+                                <input type="tel" class="form-control" id="phone" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="eventType" class="form-label">活動類型 *</label>
+                                <select class="form-select" id="eventType" required>
+                                    <option value="">請選擇</option>
+                                    <option value="corporate">企業活動</option>
+                                    <option value="wedding">婚禮派對</option>
+                                    <option value="club">夜店活動</option>
+                                    <option value="private">私人聚會</option>
+                                    <option value="other">其他</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="eventDate" class="form-label">活動日期 *</label>
+                                <input type="date" class="form-control" id="eventDate" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="eventTime" class="form-label">活動時間</label>
+                                <input type="time" class="form-control" id="eventTime">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="location" class="form-label">活動地點</label>
+                                <input type="text" class="form-control" id="location" placeholder="城市/區域">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="guests" class="form-label">預計人數</label>
+                                <select class="form-select" id="guests">
+                                    <option value="">請選擇</option>
+                                    <option value="1-50">1-50 人</option>
+                                    <option value="50-100">50-100 人</option>
+                                    <option value="100-200">100-200 人</option>
+                                    <option value="200-500">200-500 人</option>
+                                    <option value="500+">500+ 人</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="budget" class="form-label">預算範圍</label>
+                            <select class="form-select" id="budget">
+                                <option value="">請選擇</option>
+                                <option value="15000-25000">NT$ 15,000 - 25,000</option>
+                                <option value="25000-40000">NT$ 25,000 - 40,000</option>
+                                <option value="40000-60000">NT$ 40,000 - 60,000</option>
+                                <option value="60000+">NT$ 60,000 以上</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="djPreference" class="form-label">DJ 偏好</label>
+                            <select class="form-select" id="djPreference">
+                                <option value="">無特定偏好</option>
+                                <option value="mike">DJ Mike (House, EDM)</option>
+                                <option value="sarah">DJ Sarah (Hip-Hop, R&B)</option>
+                                <option value="alex">DJ Alex (Pop, Commercial)</option>
+                                <option value="luna">DJ Luna (Techno, Trance)</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">活動需求說明</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="請描述您的活動需求、音樂風格偏好等..."></textarea>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="newsletter">
+                            <label class="form-check-label" for="newsletter">
+                                我願意接收 Dungi Sebulur Team 的最新消息和優惠資訊
+                            </label>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">送出預約</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">常見問題</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            需要提前多久預約？
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            建議至少提前2-4週預約，熱門檔期（如跨年、聖誕節）建議提前2個月預約。
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            是否提供音響設備？
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            是的，我們提供專業音響設備租賃服務，可根據場地大小和需求配置適合的設備。
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            可以指定播放的歌曲嗎？
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            當然可以！我們會在活動前與您討論歌單，您可以提供喜歡和不喜歡的歌曲清單。
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            服務地區有限制嗎？
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            我們主要服務大台北地區，其他地區需加收車馬費。全台皆可服務，詳情請洽詢。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section>
+        <div class="container-fluid p-0">
+            <div style="height: 400px; background: #f0f0f0;">
+                <div class="d-flex align-items-center justify-content-center h-100">
+                    <div class="text-center">
+                        <i class="fas fa-map-marked-alt fa-3x mb-3 text-muted"></i>
+                        <p class="text-muted">地圖將在此顯示</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Dungi Sebulur Team</h5>
+                    <p>專業 DJ 團隊，為您的活動帶來最佳音樂體驗。</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>快速連結</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html" class="text-white-50">關於我們</a></li>
+                        <li><a href="services.html" class="text-white-50">服務項目</a></li>
+                        <li><a href="portfolio.html" class="text-white-50">作品集</a></li>
+                        <li><a href="contact.html" class="text-white-50">聯絡我們</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>聯絡資訊</h5>
+                    <p class="mb-1"><i class="fas fa-phone"></i> +886-XXX-XXX-XXX</p>
+                    <p class="mb-1"><i class="fas fa-envelope"></i> contact@dungisebulur.com</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-white">
+            <div class="text-center">
+                <p class="mb-0">© 2024 Dungi Sebulur Team. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('感謝您的預約！我們會盡快與您聯繫。');
+        });
+    </script>
+</body>
+</html>
