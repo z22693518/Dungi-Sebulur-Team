@@ -1,10 +1,11 @@
 /* General Styles */
 :root {
-    --primary-color: #ff6b6b;
-    --secondary-color: #4ecdc4;
-    --dark-color: #2c3e50;
-    --light-color: #ecf0f1;
-    --text-color: #34495e;
+    --primary-color: #00d4ff;
+    --secondary-color: #ff00ff;
+    --dark-color: #0a0e27;
+    --light-color: #1a1f3a;
+    --text-color: #e0e0e0;
+    --accent-color: #00ffcc;
 }
 
 * {
@@ -17,12 +18,15 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--text-color);
     line-height: 1.6;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+    min-height: 100vh;
 }
 
 /* Navigation */
 .navbar {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%) !important;
+    box-shadow: 0 2px 20px rgba(0, 212, 255, 0.3);
+    border-bottom: 2px solid var(--primary-color);
 }
 
 .navbar-brand {
@@ -41,12 +45,33 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0a0e27 0%, #2a1f4a 50%, #0a0e27 100%);
     color: white;
     padding-top: 80px;
     min-height: 100vh;
     display: flex;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(255, 0, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(0, 255, 204, 0.2) 0%, transparent 50%);
+    animation: pulse 10s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
 }
 
 .hero-section h1 {
@@ -74,14 +99,18 @@ body {
 
 /* Cards */
 .card {
-    border: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    background: rgba(26, 31, 58, 0.8);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     height: 100%;
+    color: var(--text-color);
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+    border-color: var(--primary-color);
 }
 
 .dj-card {
@@ -128,7 +157,8 @@ body {
 
 /* CTA Section */
 .bg-dark {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%) !important;
+    border-top: 1px solid rgba(0, 212, 255, 0.2);
 }
 
 /* Footer */
@@ -143,14 +173,29 @@ footer a:hover {
 
 /* Buttons */
 .btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border: 1px solid var(--primary-color);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 5px 25px rgba(0, 212, 255, 0.6);
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+}
+
+.btn-outline-light {
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.btn-outline-light:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--dark-color);
 }
 
 /* Responsive Design */
@@ -212,14 +257,55 @@ footer a:hover {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--light-color);
+    background: var(--dark-color);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+}
+
+/* Additional styling for sections */
+.bg-light {
+    background: linear-gradient(135deg, #1a1f3a 0%, #2a2f4a 100%) !important;
+    color: var(--text-color);
+}
+
+/* Text colors */
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.text-muted {
+    color: #9a9a9a !important;
+}
+
+/* Badge colors */
+.badge {
+    font-weight: normal;
+    letter-spacing: 0.5px;
+}
+
+.bg-primary {
+    background: var(--primary-color) !important;
+    color: var(--dark-color) !important;
+}
+
+.bg-secondary {
+    background: var(--secondary-color) !important;
+}
+
+.bg-warning {
+    background: var(--accent-color) !important;
+    color: var(--dark-color) !important;
+}
+
+/* Glowing effects */
+.navbar-brand i {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
 }
