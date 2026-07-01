@@ -13,81 +13,91 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .b-example-divider {
+      /* 卡片圖片固定高度 */
+      .card-img-top {
+        height: 250px;
+        object-fit: cover;
         width: 100%;
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
       }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
+      
+      /* 確保所有卡片等高 */
+      .card {
+        height: 100%;
+        transition: transform 0.2s;
       }
-
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
+      
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
       }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
+      
+      /* 卡片內容固定高度 */
+      .card-text {
+        height: 80px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
       }
-
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
+      
+      /* Hero 區域樣式 */
+      .hero-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 100px 0;
       }
-
-      .btn-bd-primary {
-        --bd-violet-bg: #712cf9;
-        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
-        --bs-btn-font-weight: 600;
-        --bs-btn-color: var(--bs-white);
-        --bs-btn-bg: var(--bd-violet-bg);
-        --bs-btn-border-color: var(--bd-violet-bg);
-        --bs-btn-hover-color: var(--bs-white);
-        --bs-btn-hover-bg: #6528e0;
-        --bs-btn-hover-border-color: #6528e0;
-        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-        --bs-btn-active-color: var(--bs-btn-hover-color);
-        --bs-btn-active-bg: #5a23c8;
-        --bs-btn-active-border-color: #5a23c8;
+      
+      /* 導航列樣式 */
+      .navbar-dark {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
       }
-
-      .bd-mode-toggle {
-        z-index: 1500;
+      
+      /* 統計數據樣式 */
+      .stats-section {
+        background: #f8f9fa;
       }
-
-      .bd-mode-toggle .dropdown-menu .active .bi {
-        display: block !important;
+      
+      /* 服務卡片樣式 */
+      .service-card {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      }
+      
+      /* 按鈕樣式 */
+      .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+      }
+      
+      .btn-primary:hover {
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      }
+      
+      /* 徽章樣式 */
+      .badge {
+        padding: 5px 10px;
+        font-weight: normal;
+      }
+      
+      /* Footer 樣式 */
+      footer {
+        background: #212529;
+        color: #fff;
+      }
+      
+      footer a {
+        color: #adb5bd;
+        text-decoration: none;
+      }
+      
+      footer a:hover {
+        color: #fff;
+      }
+      
+      /* 響應式調整 */
+      @media (max-width: 768px) {
+        .card-text {
+          height: auto;
+        }
       }
     </style>
 </head>
@@ -146,12 +156,13 @@
   <div class="album py-5 bg-body-tertiary" id="djs">
     <div class="container">
       
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <h2 class="text-center mb-4">我們的DJ團隊</h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 mb-5">
         
         <!-- DJ REDSHOU -->
         <div class="col">
           <div class="card shadow-sm">
-            <img src="images/djs/redshou.jpg" class="bd-placeholder-img card-img-top" width="100%" height="225" alt="DJ REDSHOU">
+            <img src="images/djs/redshou.jpg" class="card-img-top" alt="DJ REDSHOU">
             <div class="card-body">
               <h5 class="card-title">DJ REDSHOU</h5>
               <p class="card-text">走過無數風格嘗試，從EDM 和 Hip Hop 文化中著墨。合作過Jay Park、Lil Mosey、PSY.P、攬佬等知名歌手藝人。</p>
@@ -172,7 +183,7 @@
         <!-- DJ Visin -->
         <div class="col">
           <div class="card shadow-sm">
-            <img src="images/djs/visin.jpg" class="bd-placeholder-img card-img-top" width="100%" height="225" alt="DJ Visin">
+            <img src="images/djs/visin.jpg" class="card-img-top" alt="DJ Visin">
             <div class="card-body">
               <h5 class="card-title">DJ Visin</h5>
               <p class="card-text">來自花蓮壽豐阿美族的DJ，原民音樂與西洋音樂的完美融合。擅長Disco、Amapiano、Afro、Funk元素的混音。</p>
@@ -193,7 +204,7 @@
         <!-- DJ Alex -->
         <div class="col">
           <div class="card shadow-sm">
-            <img src="images/djs/dj3.jpg" class="bd-placeholder-img card-img-top" width="100%" height="225" alt="DJ Alex">
+            <img src="images/djs/dj3.jpg" class="card-img-top" alt="DJ Alex">
             <div class="card-body">
               <h5 class="card-title">DJ Alex</h5>
               <p class="card-text">3年經驗，互動性強，擅長商業活動與婚禮派對。專精Pop和Commercial音樂，能夠精準掌握現場氣氛。</p>
@@ -214,7 +225,7 @@
         <!-- DJ Luna -->
         <div class="col">
           <div class="card shadow-sm">
-            <img src="images/djs/dj4.jpg" class="bd-placeholder-img card-img-top" width="100%" height="225" alt="DJ Luna">
+            <img src="images/djs/dj4.jpg" class="card-img-top" alt="DJ Luna">
             <div class="card-body">
               <h5 class="card-title">DJ Luna</h5>
               <p class="card-text">10年經驗，國際演出經驗豐富的電子音樂大師。專精Techno和Trance，曾在多個國際音樂節演出。</p>
@@ -232,6 +243,10 @@
           </div>
         </div>
 
+      </div>
+
+      <h2 class="text-center mb-4 mt-5">我們的服務</h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
         <!-- 服務項目 Cards -->
         <div class="col">
           <div class="card shadow-sm">
@@ -313,23 +328,34 @@
   </div>
 
   <!-- 統計數據 -->
-  <section class="py-5 text-center container">
-    <div class="row">
-      <div class="col-lg-3 col-md-6">
-        <h2 class="display-4 fw-bold text-primary">1000+</h2>
-        <p class="lead">成功活動</p>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <h2 class="display-4 fw-bold text-primary">4</h2>
-        <p class="lead">專業DJ</p>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <h2 class="display-4 fw-bold text-primary">98%</h2>
-        <p class="lead">客戶滿意度</p>
-      </div>
-      <div class="col-lg-3 col-md-6">
-        <h2 class="display-4 fw-bold text-primary">8+</h2>
-        <p class="lead">年經驗</p>
+  <section class="py-5 text-center container stats-section">
+    <div class="container">
+      <h2 class="mb-4">我們的成就</h2>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-3">
+          <div class="p-3">
+            <h2 class="display-4 fw-bold text-primary">1000+</h2>
+            <p class="lead">成功活動</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-3">
+          <div class="p-3">
+            <h2 class="display-4 fw-bold text-primary">4</h2>
+            <p class="lead">專業DJ</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-3">
+          <div class="p-3">
+            <h2 class="display-4 fw-bold text-primary">98%</h2>
+            <p class="lead">客戶滿意度</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-3">
+          <div class="p-3">
+            <h2 class="display-4 fw-bold text-primary">8+</h2>
+            <p class="lead">年經驗</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
