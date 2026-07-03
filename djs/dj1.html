@@ -4,151 +4,785 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DJ REDSHOU | 專業 EDM & Hip-Hop DJ | Dungi Sebulur Team</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+            color: #e8e8ea;
+            background: #0a0a0d;
+            min-height: 100vh;
+            position: relative;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        :root {
+            --accent: #ff2b4d;
+            --display-font: 'Oswald', 'Noto Sans TC', sans-serif;
+        }
+        
+        ::selection {
+            background: var(--accent);
+            color: #0a0a0d;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0a0a0d;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a30;
+            border-radius: 8px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a3a44;
+        }
+        
+        /* Top Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6vw;
+            background: rgba(10, 10, 13, 0.82);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--display-font);
+            font-weight: 700;
+            font-size: 20px;
+            color: #fff;
+        }
+        
+        .logo-text {
+            font-family: var(--display-font);
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        nav a {
+            padding: 10px 16px;
+            font-family: var(--display-font);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #b3b3ba;
+            transition: color 0.2s;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        .btn-book {
+            margin-left: 10px;
+            padding: 11px 24px;
+            border-radius: 4px;
+            background: var(--accent);
+            color: #fff;
+            font-family: var(--display-font);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: box-shadow 0.2s;
+        }
+        
+        .btn-book:hover {
+            box-shadow: 0 8px 24px rgba(255, 43, 77, 0.4);
+            color: #fff;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            padding: 132px 6vw 90px;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            right: -8%;
+            width: 720px;
+            height: 720px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 43, 77, 0.2), transparent 66%);
+            pointer-events: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .back-link {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--display-font);
+            font-size: 13px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #8a8a94;
+            margin-bottom: 40px;
+            transition: color 0.2s;
+        }
+        
+        .back-link:hover {
+            color: var(--accent);
+        }
+        
+        .profile-grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 56px;
+            align-items: center;
+        }
+        
+        .profile-image {
+            position: relative;
+            aspect-ratio: 4/5;
+            border-radius: 12px;
+            overflow: hidden;
+            background: linear-gradient(150deg, #1a1a20, #0d0d11);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .profile-initial {
+            position: absolute;
+            font-family: var(--display-font);
+            font-size: 170px;
+            font-weight: 700;
+            color: rgba(255, 43, 77, 0.13);
+        }
+        
+        .profile-photo {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-intro {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-family: var(--display-font);
+            font-size: 14px;
+            letter-spacing: 0.36em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 22px;
+        }
+        
+        .intro-line {
+            width: 48px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        h1 {
+            font-family: var(--display-font);
+            font-size: clamp(52px, 7vw, 88px);
+            font-weight: 700;
+            line-height: 0.96;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        
+        .tagline {
+            font-size: 20px;
+            color: #c6c6cc;
+            margin-bottom: 24px;
+        }
+        
+        .genres {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+        
+        .genre-tag {
+            padding: 6px 15px;
+            border-radius: 3px;
+            background: rgba(255, 43, 77, 0.16);
+            border: 1px solid var(--accent);
+            color: #ffd2db;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        
+        .rating {
+            font-size: 15px;
+            color: #c6c6cc;
+            margin-bottom: 20px;
+        }
+        
+        .rating .stars {
+            color: #ffc043;
+            letter-spacing: 2px;
+        }
+        
+        .location-info {
+            font-size: 15px;
+            color: #b3b3ba;
+            margin-bottom: 32px;
+        }
+        
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 38px;
+            border-radius: 4px;
+            background: var(--accent);
+            color: #fff;
+            font-family: var(--display-font);
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: box-shadow 0.2s;
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 14px 34px rgba(255, 43, 77, 0.45);
+            color: #fff;
+        }
+        
+        /* Sections */
+        section {
+            padding: 100px 6vw;
+        }
+        
+        .bg-dark {
+            background: #0d0d11;
+        }
+        
+        .section-label {
+            font-family: var(--display-font);
+            font-size: 14px;
+            letter-spacing: 0.34em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        
+        h2 {
+            font-family: var(--display-font);
+            font-size: clamp(34px, 4.5vw, 52px);
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 36px;
+        }
+        
+        .bio-text {
+            font-size: 17px;
+            color: #b3b3ba;
+            margin-bottom: 20px;
+            max-width: 900px;
+        }
+        
+        /* Skills Grid */
+        .skills-grid {
+            margin-top: 52px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .skill-card {
+            padding: 32px;
+            border-radius: 10px;
+            background: #12121a;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        
+        .skill-card h3 {
+            font-family: var(--display-font);
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #c6c6cc;
+            margin-bottom: 20px;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+        }
+        
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14.5px;
+            color: #b3b3ba;
+        }
+        
+        .skill-check {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 56px;
+            max-width: 960px;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 15px;
+        }
+        
+        .info-label {
+            color: #8a8a94;
+            font-family: var(--display-font);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        
+        .info-value {
+            color: #e8e8ea;
+            font-weight: 500;
+            text-align: right;
+        }
+        
+        /* Experience */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            margin-top: 48px;
+        }
+        
+        .exp-column h3 {
+            font-family: var(--display-font);
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #c6c6cc;
+            margin-bottom: 24px;
+        }
+        
+        .exp-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        
+        .exp-item {
+            display: flex;
+            gap: 14px;
+            font-size: 15px;
+            color: #b3b3ba;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        
+        .exp-bullet {
+            color: var(--accent);
+            flex: none;
+        }
+        
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            aspect-ratio: 16/9;
+            border-radius: 10px;
+            overflow: hidden;
+            background: linear-gradient(150deg, #1a1a20, #0d0d11);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 48px;
+        }
+        
+        .testimonial-card {
+            padding: 36px;
+            border-radius: 10px;
+            background: #12121a;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        
+        .testimonial-stars {
+            color: #ffc043;
+            letter-spacing: 2px;
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+        
+        .testimonial-text {
+            font-size: 16px;
+            color: #c6c6cc;
+            margin-bottom: 22px;
+        }
+        
+        .testimonial-author {
+            font-family: var(--display-font);
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+        
+        .testimonial-meta {
+            font-size: 13px;
+            color: #8a8a94;
+            margin-top: 4px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 6vw 120px;
+        }
+        
+        .cta-box {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 14px;
+            background: linear-gradient(150deg, #16161d, #0d0d11);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 64px 7% 68px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-bg {
+            position: absolute;
+            top: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 560px;
+            height: 560px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 43, 77, 0.15), transparent 68%);
+            pointer-events: none;
+        }
+        
+        .cta-content {
+            position: relative;
+        }
+        
+        .cta-title {
+            font-family: var(--display-font);
+            font-size: clamp(30px, 4vw, 46px);
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+        
+        .cta-text {
+            font-size: 17px;
+            color: #b3b3ba;
+            margin-bottom: 36px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 44px 6vw;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            text-align: center;
+        }
+        
+        .footer-brand {
+            font-family: var(--display-font);
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .footer-copyright {
+            font-size: 12.5px;
+            color: #5f5f6a;
+        }
+        
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #b3b3ba;
+            transition: all 0.2s;
+        }
+        
+        .social-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 48px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <!-- Top Navigation -->
+    <header>
+        <a href="../index-personal.html" class="logo-link">
+            <span class="logo-box">DS</span>
+            <span class="logo-text">Dungi Sebulur</span>
+        </a>
+        <nav>
+            <a href="../index-personal.html#home">首頁</a>
+            <a href="../index-personal.html#about">關於</a>
+            <a href="../index-personal.html#djs">DJ陣容</a>
+            <a href="../index-personal.html#events">演出</a>
+            <a href="../index-personal.html#gallery">相簿</a>
+            <a href="../index-personal.html#contact">聯絡</a>
+            <a href="../contact.html" class="btn-book">預約</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg"></div>
         <div class="container">
-            <a class="navbar-brand" href="../index.html">
-                <i class="fas fa-compact-disc"></i> Dungi Sebulur Team
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.html">首頁</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../about.html">關於我們</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
-                            DJ陣容
+            <a href="../index-personal.html#djs" class="back-link">← 返回全部 DJ</a>
+            <div class="profile-grid">
+                <div class="profile-image">
+                    <span class="profile-initial">R</span>
+                    <img src="../images/djs/redshou.jpg" alt="DJ REDSHOU" class="profile-photo">
+                </div>
+                <div>
+                    <p class="profile-intro">
+                        <span class="intro-line"></span>DJ Profile
+                    </p>
+                    <h1>DJ REDSHOU</h1>
+                    <p class="tagline">EDM & Hip-Hop 混音大師 | 台北 OMNI ALTA 駐場 DJ</p>
+                    <div class="genres">
+                        <span class="genre-tag">EDM</span>
+                        <span class="genre-tag">Hip-Hop</span>
+                        <span class="genre-tag">Trap</span>
+                        <span class="genre-tag">Electronic</span>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★★★</span> 5.0 (500+ 評價)
+                    </div>
+                    <div class="location-info">
+                        <i class="fas fa-map-marker-alt"></i> 台北市 | 
+                        <i class="fas fa-home"></i> 來自花蓮阿美族
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/redshou_89/" class="social-link" title="Instagram">
+                            <i class="fab fa-instagram"></i>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item active" href="dj1.html">DJ REDSHOU</a></li>
-                            <li><a class="dropdown-item" href="dj2.html">DJ Visin</a></li>
-                            <li><a class="dropdown-item" href="dj3.html">DJ Alex</a></li>
-                            <li><a class="dropdown-item" href="dj4.html">DJ Luna</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../services.html">服務項目</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../portfolio.html">作品集</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../contact.html">聯絡我們</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- DJ Profile Header -->
-    <section class="hero-section py-5">
-        <div class="container">
-            <div class="row align-items-center" style="padding-top: 80px;">
-                <div class="col-md-4">
-                    <img src="../images/djs/redshou.jpg" alt="DJ REDSHOU" class="img-fluid rounded-circle shadow" style="max-width: 300px;">
-                </div>
-                <div class="col-md-8">
-                    <h1 class="display-4 fw-bold">DJ REDSHOU</h1>
-                    <p class="lead">EDM & Hip-Hop 混音大師 | 台北 OMNI ALTA 駐場 DJ</p>
-                    <div class="mb-3">
-                        <span class="badge bg-primary me-2">EDM</span>
-                        <span class="badge bg-primary me-2">Hip-Hop</span>
-                        <span class="badge bg-primary me-2">Trap</span>
-                        <span class="badge bg-primary">Electronic</span>
+                        <a href="#" class="social-link" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" title="SoundCloud">
+                            <i class="fab fa-soundcloud"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Spotify">
+                            <i class="fab fa-spotify"></i>
+                        </a>
                     </div>
-                    <div class="rating mb-3">
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <span class="ms-2">5.0 (500+ 評價)</span>
-                    </div>
-                    <div class="mb-3">
-                        <i class="fas fa-map-marker-alt"></i> 台北市 | <i class="fas fa-home"></i> 來自花蓮
-                    </div>
-                    <a href="../contact.html" class="btn btn-primary btn-lg">預約 DJ REDSHOU</a>
+                    <a href="../contact.html" class="btn-primary" style="margin-top: 20px;">預約 DJ REDSHOU</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About DJ -->
-    <section class="py-5">
+    <!-- About Section -->
+    <section class="bg-dark">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h2 class="mb-4">關於 DJ REDSHOU</h2>
-                    <p><strong>來自花蓮阿美族的專業 DJ</strong>，DJ REDSHOU（張守）將原住民文化的熱情與國際音樂潮流完美融合。走過無數風格嘗試，從EDM 和 Hip Hop 文化中著墨，透過節奏、能量和創造性，在大多演出及作品中佔據了重要的位置。</p>
-                    <p>目前為<strong>台北 OMNI ALTA 夜店駐場 DJ</strong>，走遍百人、千人演出場所，合作過 Jay Park、Lil Mosey、PSY.P、攬佬等知名歌手藝人。REDSHOU 的音樂風格融合了電子舞曲的能量和嘻哈文化的靈魂，創造出獨特且充滿爆發力的現場演出。</p>
-                    <p>擁有豐富的國際演出經驗，從小型地下派對到大型音樂節，REDSHOU 都能完美掌控現場氣氛。他的混音技巧精湛，能夠在不同音樂類型之間無縫切換，為聽眾帶來意想不到的驚喜。作為新一代的台灣 DJ 代表，REDSHOU 正在將台灣的電子音樂推向國際舞台。</p>
-                    
-                    <h3 class="mt-5 mb-3">專業技能</h3>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <ul>
-                                <li>節奏掌控與混音技巧</li>
-                                <li>現場氣氛帶動</li>
-                                <li>音樂選曲與編排</li>
-                                <li>Scratch 抓碟技術</li>
-                                <li>Beat Matching 節拍對齊</li>
-                            </ul>
+            <p class="section-label">About</p>
+            <h2>關於 DJ REDSHOU</h2>
+            <p class="bio-text">
+                <strong>來自花蓮阿美族的專業 DJ</strong>，DJ REDSHOU（張守）將原住民文化的熱情與國際音樂潮流完美融合。走過無數風格嘗試，從EDM 和 Hip Hop 文化中著墨，透過節奏、能量和創造性，在大多演出及作品中佔據了重要的位置。
+            </p>
+            <p class="bio-text">
+                目前為<strong>台北 OMNI ALTA 夜店駐場 DJ</strong>，走遍百人、千人演出場所，合作過 Jay Park、Lil Mosey、PSY.P、攬佬等知名歌手藝人。REDSHOU 的音樂風格融合了電子舞曲的能量和嘻哈文化的靈魂，創造出獨特且充滿爆發力的現場演出。
+            </p>
+            <p class="bio-text">
+                擁有豐富的國際演出經驗，從小型地下派對到大型音樂節，REDSHOU 都能完美掌控現場氣氛。他的混音技巧精湛，能夠在不同音樂類型之間無縫切換，為聽眾帶來意想不到的驚喜。作為新一代的台灣 DJ 代表，REDSHOU 正在將台灣的電子音樂推向國際舞台。
+            </p>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>現場技能</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-check">✓</span> 節奏掌控與混音技巧
                         </div>
-                        <div class="col-md-6">
-                            <ul>
-                                <li>Pioneer DJ CDJ-3000 / DJM-900NXS2</li>
-                                <li>Serato DJ Pro 軟體</li>
-                                <li>Ableton Live 音樂製作</li>
-                                <li>FL Studio 編曲</li>
-                                <li>音樂製作與 Remix</li>
-                            </ul>
+                        <div class="skill-item">
+                            <span class="skill-check">✓</span> 現場氣氛帶動
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-check">✓</span> 音樂選曲與編排
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-check">✓</span> Scratch 抓碟技術
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-check">✓</span> Beat Matching 節拍對齊
                         </div>
                     </div>
-                    
-                    <h3 class="mt-5 mb-3">特色與優勢</h3>
-                    <ul>
-                        <li><strong>多元文化背景：</strong>融合原住民音樂元素與國際潮流，創造獨特的音樂風格</li>
-                        <li><strong>國際合作經驗：</strong>與美國、韓國等國際藝人合作，掌握最新音樂趨勢</li>
-                        <li><strong>全方位演出能力：</strong>從夜店、音樂節到私人派對，都能提供專業服務</li>
-                        <li><strong>現場互動大師：</strong>擅長帶動現場氣氛，讓每個人都能融入音樂中</li>
-                    </ul>
                 </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">快速資訊</h5>
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><strong>本名：</strong>張守 (Shou Zhang)</li>
-                                <li class="mb-2"><strong>族群：</strong>阿美族（花蓮）</li>
-                                <li class="mb-2"><strong>經驗：</strong>8年+</li>
-                                <li class="mb-2"><strong>演出場次：</strong>1000+</li>
-                                <li class="mb-2"><strong>音樂風格：</strong>EDM, Hip-Hop, Trap</li>
-                                <li class="mb-2"><strong>駐場：</strong>OMNI ALTA 台北</li>
-                                <li class="mb-2"><strong>語言：</strong>中文、英文、阿美族語</li>
-                                <li class="mb-2"><strong>合作藝人：</strong>Jay Park, Lil Mosey, PSY.P</li>
-                            </ul>
+                <div class="skill-card">
+                    <h3>技術與製作</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-check">✓</span> Pioneer CDJ-3000 / DJM-900NXS2
                         </div>
-                    </div>
-                    <div class="card mt-3">
-                        <div class="card-body">
-                            <h5 class="card-title">社群媒體</h5>
-                            <div class="d-flex justify-content-around">
-                                <a href="#" class="text-primary" title="Facebook"><i class="fab fa-facebook fa-2x"></i></a>
-                                <a href="https://www.instagram.com/redshou_89/" class="text-danger" title="Instagram: @redshou_89"><i class="fab fa-instagram fa-2x"></i></a>
-                                <a href="#" class="text-dark" title="SoundCloud"><i class="fab fa-soundcloud fa-2x"></i></a>
-                                <a href="#" class="text-success" title="Spotify"><i class="fab fa-spotify fa-2x"></i></a>
-                            </div>
+                        <div class="skill-item">
+                            <span class="skill-check">✓</span> Serato DJ Pro 軟體
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-check">✓</span> Ableton Live 音樂製作
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-check">✓</span> FL Studio 編曲
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-check">✓</span> 音樂製作與 Remix
                         </div>
                     </div>
                 </div>
@@ -156,103 +790,93 @@
         </div>
     </section>
 
-    <!-- Experience -->
-    <section class="py-5 bg-light">
+    <!-- Quick Info Section -->
+    <section>
         <div class="container">
-            <h2 class="text-center mb-5">演出經歷</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <h4>重要合作</h4>
-                    <ul>
-                        <li>Jay Park - 世界巡迴演唱會特邀 DJ (2023)</li>
-                        <li>Lil Mosey - 亞洲巡迴台北站 (2023)</li>
-                        <li>PSY.P - 專輯發布派對</li>
-                        <li>攬佬 - 音樂節合作演出</li>
-                        <li>OMNI ALTA - 台北夜店駐場 DJ (2023-現在)</li>
-                    </ul>
+            <p class="section-label">Profile</p>
+            <h2>快速資訊</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">本名</span>
+                    <span class="info-value">張守 (Shou Zhang)</span>
                 </div>
-                <div class="col-md-6">
-                    <h4>演出場地</h4>
-                    <ul>
-                        <li>OMNI ALTA 台北 - 駐場 DJ</li>
-                        <li>千人音樂節主舞台</li>
-                        <li>百人地下派對</li>
-                        <li>國際夜店巡演</li>
-                        <li>私人高端派對</li>
-                        <li>原住民文化音樂節</li>
-                    </ul>
+                <div class="info-item">
+                    <span class="info-label">族群</span>
+                    <span class="info-value">阿美族（花蓮）</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">經驗</span>
+                    <span class="info-value">8年+</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">演出場次</span>
+                    <span class="info-value">1000+</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">駐場</span>
+                    <span class="info-value">OMNI ALTA 台北</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">語言</span>
+                    <span class="info-value">中文、英文、阿美族語</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery -->
-    <section class="py-5">
+    <!-- Experience Section -->
+    <section class="bg-dark">
         <div class="container">
-            <h2 class="text-center mb-5">精彩照片</h2>
-            <div class="row g-3">
-                <div class="col-md-4">
-                    <img src="../images/djs/redshou.jpg" alt="DJ REDSHOU Performance" class="img-fluid rounded">
-                </div>
-                <div class="col-md-4">
-                    <img src="../images/events/redshou1.jpg" alt="DJ REDSHOU at OMNI ALTA" class="img-fluid rounded">
-                </div>
-                <div class="col-md-4">
-                    <img src="../images/events/redshou2.jpg" alt="DJ REDSHOU Live" class="img-fluid rounded">
-                </div>
-            </div>
-            <div class="row g-3 mt-3">
-                <div class="col-md-4">
-                    <img src="../images/events/redshou3.jpg" alt="DJ REDSHOU with Jay Park" class="img-fluid rounded">
-                </div>
-                <div class="col-md-4">
-                    <img src="../images/events/redshou4.jpg" alt="DJ REDSHOU Festival" class="img-fluid rounded">
-                </div>
-                <div class="col-md-4">
-                    <img src="../images/events/redshou5.jpg" alt="DJ REDSHOU Party" class="img-fluid rounded">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">客戶評價</h2>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between mb-2">
-                                <h6>王小姐</h6>
-                                <div class="rating">
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                </div>
-                            </div>
-                            <p>"DJ REDSHOU 在我們公司尾牙的表現太棒了！整晚的音樂安排非常流暢，同事們都玩得很開心。"</p>
-                            <small class="text-muted">2024年1月 - 企業尾牙</small>
+            <p class="section-label">Experience</p>
+            <h2>演出經歷</h2>
+            <div class="experience-grid">
+                <div class="exp-column">
+                    <h3>重要合作</h3>
+                    <div class="exp-list">
+                        <div class="exp-item">
+                            <span class="exp-bullet">▶</span>
+                            Jay Park - 世界巡迴演唱會特邀 DJ (2023)
+                        </div>
+                        <div class="exp-item">
+                            <span class="exp-bullet">▶</span>
+                            Lil Mosey - 亞洲巡迴台北站 (2023)
+                        </div>
+                        <div class="exp-item">
+                            <span class="exp-bullet">▶</span>
+                            PSY.P - 專輯發布派對
+                        </div>
+                        <div class="exp-item">
+                            <span class="exp-bullet">▶</span>
+                            攬佬 - 音樂節合作演出
+                        </div>
+                        <div class="exp-item">
+                            <span class="exp-bullet">▶</span>
+                            OMNI ALTA - 台北夜店駐場 DJ (2023-現在)
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between mb-2">
-                                <h6>李先生</h6>
-                                <div class="rating">
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                </div>
-                            </div>
-                            <p>"REDSHOU 的選曲品味很好，能夠準確抓住現場氣氛。我們的生日派對因為他變得更精彩！"</p>
-                            <small class="text-muted">2023年11月 - 生日派對</small>
+                <div class="exp-column">
+                    <h3>演出場地</h3>
+                    <div class="exp-list">
+                        <div class="exp-item">
+                            <span class="exp-bullet">▶</span>
+                            OMNI ALTA 台北 - 駐場 DJ
+                        </div>
+                        <div class="exp-item">
+                            <span class="exp-bullet">▶</span>
+                            千人音樂節主舞台
+                        </div>
+                        <div class="exp-item">
+                            <span class="exp-bullet">▶</span>
+                            百人地下派對
+                        </div>
+                        <div class="exp-item">
+                            <span class="exp-bullet">▶</span>
+                            國際夜店巡演
+                        </div>
+                        <div class="exp-item">
+                            <span class="exp-bullet">▶</span>
+                            原住民文化音樂節
                         </div>
                     </div>
                 </div>
@@ -260,50 +884,76 @@
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="py-5 bg-dark text-white">
-        <div class="container text-center">
-            <h2 class="mb-4">想要預約 DJ REDSHOU？</h2>
-            <p class="lead mb-4">立即聯繫我們，為您的活動增添精彩音樂！</p>
-            <a href="../contact.html" class="btn btn-primary btn-lg">立即預約</a>
+    <!-- Gallery Section -->
+    <section>
+        <div class="container">
+            <p class="section-label">Gallery</p>
+            <h2>精彩照片</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="../images/djs/redshou.jpg" alt="DJ REDSHOU Performance">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/events/event1.jpg" alt="DJ REDSHOU at OMNI ALTA">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/events/event2.jpg" alt="DJ REDSHOU Live">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/events/event3.jpg" alt="DJ REDSHOU with Jay Park">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/events/event4.jpg" alt="DJ REDSHOU Festival">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/events/event5.jpg" alt="DJ REDSHOU Party">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="bg-dark">
+        <div class="container">
+            <p class="section-label">Reviews</p>
+            <h2>客戶評價</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "DJ REDSHOU 在我們公司尾牙的表現太棒了！整晚的音樂安排非常流暢，同事們都玩得很開心。"
+                    </p>
+                    <div class="testimonial-author">王小姐</div>
+                    <div class="testimonial-meta">2024年1月 - 企業尾牙</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        "REDSHOU 的選曲品味很好，能夠準確抓住現場氣氛。我們的生日派對因為他變得更精彩！"
+                    </p>
+                    <div class="testimonial-author">李先生</div>
+                    <div class="testimonial-meta">2023年11月 - 生日派對</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <div class="cta-bg"></div>
+            <div class="cta-content">
+                <h2 class="cta-title">想要預約 DJ REDSHOU？</h2>
+                <p class="cta-text">立即聯繫我們，為您的活動增添精彩音樂 — 24 小時內回覆。</p>
+                <a href="../contact.html" class="btn-primary">立即預約</a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>Dungi Sebulur Team</h5>
-                    <p>專業 DJ 團隊，為您的活動帶來最佳音樂體驗。</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>快速連結</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="../about.html" class="text-white-50">關於我們</a></li>
-                        <li><a href="../services.html" class="text-white-50">服務項目</a></li>
-                        <li><a href="../portfolio.html" class="text-white-50">作品集</a></li>
-                        <li><a href="../contact.html" class="text-white-50">聯絡我們</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>聯絡資訊</h5>
-                    <p class="mb-1"><i class="fas fa-phone"></i> +886-XXX-XXX-XXX</p>
-                    <p class="mb-1"><i class="fas fa-envelope"></i> contact@dungisebulur.com</p>
-                    <div class="mt-3">
-                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
-                    </div>
-                </div>
-            </div>
-            <hr class="bg-white">
-            <div class="text-center">
-                <p class="mb-0">© 2024 Dungi Sebulur Team. All rights reserved.</p>
-            </div>
-        </div>
+    <footer>
+        <div class="footer-brand">Dungi Sebulur Team</div>
+        <p class="footer-copyright">© 2024 Dungi Sebulur Team. All rights reserved.</p>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
