@@ -3,276 +3,744 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DJ Mike - Dungi Sebulur Team</title>
+    <title>DJ Alex - Dungi Sebulur Team</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #0a0a0d;
+            --secondary-bg: #1a1a1f;
+            --accent: #ff2b4d;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --border-color: #2a2a2f;
+            --gradient-primary: linear-gradient(135deg, #ff2b4d 0%, #ff6b8a 100%);
+            --gradient-dark: linear-gradient(135deg, #1a1a1f 0%, #2a2a2f 100%);
+            --display-font: 'Oswald', 'Noto Sans TC', sans-serif;
+            --body-font: 'Poppins', 'Noto Sans TC', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            font-family: var(--body-font);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 13, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .top-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--display-font);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--accent);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 0 60px;
+            background: var(--gradient-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 43, 77, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 4rem;
+            align-items: start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image-section {
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 3px solid var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--secondary-bg);
+            border-radius: 50%;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+
+        .profile-info h1 {
+            font-family: var(--display-font);
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .info-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            display: inline-block;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 43, 77, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 43, 77, 0.4);
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 80px 0;
+            background: var(--primary-bg);
+        }
+
+        .section-title {
+            font-family: var(--display-font);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .skill-card {
+            background: var(--secondary-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(255, 43, 77, 0.1);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            font-family: var(--display-font);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Experience Section */
+        .experience-section {
+            padding: 80px 0;
+            background: var(--gradient-dark);
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .experience-card {
+            background: rgba(26, 26, 31, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .experience-card h3 {
+            font-family: var(--display-font);
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .experience-list {
+            list-style: none;
+        }
+
+        .experience-list li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .experience-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 80px 0;
+            background: var(--primary-bg);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 250px;
+            background: var(--secondary-bg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 80px 0;
+            background: var(--gradient-dark);
+        }
+
+        .testimonial-card {
+            background: rgba(26, 26, 31, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .testimonial-rating {
+            color: #ffc107;
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .profile-info h1 {
+                font-size: 2.5rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <!-- Top Navigation -->
+    <nav class="top-nav">
         <div class="container">
-            <a class="navbar-brand" href="../index.html">
-                <i class="fas fa-compact-disc"></i> Dungi Sebulur Team
+            <a href="../index-personal.html" class="logo">
+                <i class="fas fa-compact-disc"></i>
+                <span>Dungi Sebulur Team</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <ul class="nav-menu">
+                <li><a href="../index-personal.html">首頁</a></li>
+                <li><a href="../index-personal.html#about">關於我們</a></li>
+                <li><a href="#" class="active">DJ陣容</a></li>
+                <li><a href="../index-personal.html#services">服務項目</a></li>
+                <li><a href="../index-personal.html#portfolio">作品集</a></li>
+                <li><a href="../index-personal.html#contact">聯絡我們</a></li>
+            </ul>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../index.html">首頁</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../about.html">關於我們</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
-                            DJ陣容
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="dj1.html">DJ REDSHOU</a></li>
-                            <li><a class="dropdown-item" href="dj2.html">DJ Visin</a></li>
-                            <li><a class="dropdown-item active" href="dj3.html">DJ Alex</a></li>
-                            <li><a class="dropdown-item" href="dj4.html">DJ Luna</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../services.html">服務項目</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../portfolio.html">作品集</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../contact.html">聯絡我們</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 
-    <!-- DJ Profile Header -->
-    <section class="hero-section py-5">
-        <div class="container">
-            <div class="row align-items-center" style="padding-top: 80px;">
-                <div class="col-md-4">
-                    <img src="../images/djs/dj1.jpg" alt="DJ Mike" class="img-fluid rounded-circle shadow" style="max-width: 300px;">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="profile-grid">
+            <div class="profile-image-section">
+                <img src="../images/djs/dj3.jpg" alt="DJ Alex" class="profile-image">
+                <div class="social-links">
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-soundcloud"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-spotify"></i></a>
                 </div>
-                <div class="col-md-8">
-                    <h1 class="display-4 fw-bold">DJ Mike</h1>
-                    <p class="lead">House & EDM 專家</p>
-                    <div class="mb-3">
-                        <span class="badge bg-primary me-2">House</span>
-                        <span class="badge bg-primary me-2">EDM</span>
-                        <span class="badge bg-primary me-2">Progressive House</span>
-                        <span class="badge bg-primary">Future Bass</span>
+            </div>
+            <div class="profile-info">
+                <h1>DJ Alex</h1>
+                <p class="tagline">House & EDM 電音大師</p>
+                
+                <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">
+                    DJ Alex 是台灣電子音樂界的新星，擁有5年的專業DJ經驗。他擅長將House和EDM完美融合，創造出獨特的音樂風格，能夠精準掌握現場氣氛，讓每個人都能在音樂中找到共鳴。從地下派對到大型音樂節，Alex 的足跡遍布全台各大活動現場。
+                </p>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <i class="fas fa-music"></i>
+                        <span>House / EDM / Progressive</span>
                     </div>
-                    <div class="rating mb-3">
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <span class="ms-2">5.0 (128 評價)</span>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>台北 / 新北</span>
                     </div>
-                    <a href="../contact.html" class="btn btn-primary btn-lg">預約 DJ Mike</a>
+                    <div class="info-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>5年專業經驗</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-star"></i>
+                        <span>200+ 場演出</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-globe"></i>
+                        <span>中文 / English</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>NT$ 20,000 起</span>
+                    </div>
+                </div>
+
+                <a href="../index-personal.html#contact" class="btn-primary">立即預約</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section">
+        <div class="container">
+            <h2 class="section-title">專業技能</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>音樂風格</h3>
+                    <p>House, EDM, Progressive House, Future Bass, Tech House</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>混音技巧</h3>
+                    <p>節奏掌控、無縫混音、現場氣氛帶動、即興創作</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>專業設備</h3>
+                    <p>Pioneer DJ CDJ-3000, DJM-900NXS2, Serato DJ Pro</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>音樂製作</h3>
+                    <p>原創混音、Remix製作、Ableton Live、FL Studio</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About DJ -->
-    <section class="py-5">
+    <!-- Experience Section -->
+    <section class="experience-section">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h2 class="mb-4">關於 DJ Mike</h2>
-                    <p>DJ Mike 是台灣電子音樂界的新星，擁有5年的專業DJ經驗。他擅長將House和EDM完美融合，創造出獨特的音樂風格，能夠精準掌握現場氣氛，讓每個人都能在音樂中找到共鳴。</p>
-                    <p>從地下派對到大型音樂節，Mike 的足跡遍布全台各大活動現場。他曾在 Road to Ultra Taiwan、S2O Taiwan 等國際音樂節演出，並定期在台北知名夜店 OMNI、WAVE 擔任客座DJ。</p>
-                    <p>Mike 相信音樂是連結人心的橋樑，他的使命是透過精心挑選的音樂和精湛的混音技巧，為每個活動創造難忘的回憶。無論是企業活動還是私人派對，他都能根據現場氛圍調整音樂風格，確保每個人都能盡情享受。</p>
-                    
-                    <h3 class="mt-5 mb-3">專業技能</h3>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <ul>
-                                <li>節奏掌控與混音技巧</li>
-                                <li>現場氣氛帶動</li>
-                                <li>音樂選曲與編排</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <ul>
-                                <li>Pioneer DJ 設備操作</li>
-                                <li>Serato DJ Pro 軟體</li>
-                                <li>音樂製作與 Remix</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">快速資訊</h5>
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><strong>經驗：</strong>5年</li>
-                                <li class="mb-2"><strong>演出場次：</strong>200+</li>
-                                <li class="mb-2"><strong>音樂風格：</strong>House, EDM</li>
-                                <li class="mb-2"><strong>語言：</strong>中文、英文</li>
-                                <li class="mb-2"><strong>服務地區：</strong>全台灣</li>
-                                <li class="mb-2"><strong>基本費用：</strong>NT$ 20,000 起</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card mt-3">
-                        <div class="card-body">
-                            <h5 class="card-title">社群媒體</h5>
-                            <div class="d-flex justify-content-around">
-                                <a href="#" class="text-primary"><i class="fab fa-facebook fa-2x"></i></a>
-                                <a href="#" class="text-danger"><i class="fab fa-instagram fa-2x"></i></a>
-                                <a href="#" class="text-dark"><i class="fab fa-soundcloud fa-2x"></i></a>
-                                <a href="#" class="text-success"><i class="fab fa-spotify fa-2x"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">演出經歷</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <h4>大型音樂節</h4>
-                    <ul>
+            <h2 class="section-title">演出經歷</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <h3><i class="fas fa-star"></i> 大型音樂節</h3>
+                    <ul class="experience-list">
                         <li>Road to Ultra Taiwan 2023 - 暖場DJ</li>
                         <li>S2O Taiwan 2023 - 副舞台</li>
                         <li>Spring Wave Music Festival 2022</li>
                         <li>台北電音派對 2021-2024</li>
+                        <li>Looptopia Music Festival 2023</li>
                     </ul>
                 </div>
-                <div class="col-md-6">
-                    <h4>夜店駐場</h4>
-                    <ul>
+                <div class="experience-card">
+                    <h3><i class="fas fa-building"></i> 夜店駐場</h3>
+                    <ul class="experience-list">
                         <li>OMNI Nightclub - 每月客座</li>
                         <li>WAVE Club - 週五駐場DJ</li>
                         <li>SPARK - 特別活動DJ</li>
                         <li>Triangle - 開幕派對DJ</li>
+                        <li>Chess Taipei - 週末駐場</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <h3><i class="fas fa-users"></i> 企業活動</h3>
+                    <ul class="experience-list">
+                        <li>Google Taiwan 年終派對</li>
+                        <li>Mercedes-Benz 新車發表會</li>
+                        <li>Nike Running Club 活動</li>
+                        <li>RedBull 極限運動賽事</li>
+                        <li>各大企業尾牙春酒活動</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Gallery -->
-    <section class="py-5">
+    <!-- Gallery Section -->
+    <section class="gallery-section">
         <div class="container">
-            <h2 class="text-center mb-5">精彩照片</h2>
-            <div class="row g-3">
-                <div class="col-md-4">
-                    <img src="../images/events/mike1.jpg" alt="DJ Mike Performance" class="img-fluid rounded">
-                </div>
-                <div class="col-md-4">
-                    <img src="../images/events/mike2.jpg" alt="DJ Mike Event" class="img-fluid rounded">
-                </div>
-                <div class="col-md-4">
-                    <img src="../images/events/mike3.jpg" alt="DJ Mike Club" class="img-fluid rounded">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">客戶評價</h2>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between mb-2">
-                                <h6>王小姐</h6>
-                                <div class="rating">
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                </div>
-                            </div>
-                            <p>"DJ Mike 在我們公司尾牙的表現太棒了！整晚的音樂安排非常流暢，同事們都玩得很開心。"</p>
-                            <small class="text-muted">2024年1月 - 企業尾牙</small>
-                        </div>
+            <h2 class="section-title">精彩照片</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="../images/events/event1.jpg" alt="DJ Alex Performance 1">
+                    <div class="gallery-overlay">
+                        <h4>Ultra Taiwan 2023</h4>
+                        <p>主舞台暖場演出</p>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between mb-2">
-                                <h6>李先生</h6>
-                                <div class="rating">
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                </div>
-                            </div>
-                            <p>"Mike 的選曲品味很好，能夠準確抓住現場氣氛。我們的生日派對因為他變得更精彩！"</p>
-                            <small class="text-muted">2023年11月 - 生日派對</small>
-                        </div>
+                <div class="gallery-item">
+                    <img src="../images/events/event2.jpg" alt="DJ Alex Performance 2">
+                    <div class="gallery-overlay">
+                        <h4>OMNI Nightclub</h4>
+                        <p>週六狂歡夜</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/events/event3.jpg" alt="DJ Alex Performance 3">
+                    <div class="gallery-overlay">
+                        <h4>企業尾牙</h4>
+                        <p>Google Taiwan 年終派對</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/events/event4.jpg" alt="DJ Alex Performance 4">
+                    <div class="gallery-overlay">
+                        <h4>私人派對</h4>
+                        <p>豪宅生日派對</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/events/event5.jpg" alt="DJ Alex Performance 5">
+                    <div class="gallery-overlay">
+                        <h4>音樂製作</h4>
+                        <p>錄音室工作照</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/events/event6.jpg" alt="DJ Alex Performance 6">
+                    <div class="gallery-overlay">
+                        <h4>戶外音樂節</h4>
+                        <p>Spring Wave 2022</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="py-5 bg-dark text-white">
-        <div class="container text-center">
-            <h2 class="mb-4">想要預約 DJ Mike？</h2>
-            <p class="lead mb-4">立即聯繫我們，為您的活動增添精彩音樂！</p>
-            <a href="../contact.html" class="btn btn-primary btn-lg">立即預約</a>
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">客戶評價</h2>
+            <div style="max-width: 800px; margin: 0 auto; padding: 0 2rem;">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <span class="testimonial-author">王小姐 - 企業尾牙</span>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "DJ Alex 在我們公司尾牙的表現太棒了！整晚的音樂安排非常流暢，同事們都玩得很開心。他能夠準確判斷現場氣氛，適時調整音樂風格。"
+                    </p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <span class="testimonial-author">李先生 - 生日派對</span>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Alex 的選曲品味很好，能夠準確抓住現場氣氛。我們的生日派對因為他變得更精彩！專業設備和燈光效果也讓派對更有氣氛。"
+                    </p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <span class="testimonial-author">陳經理 - 品牌活動</span>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "我們的新品發表會需要專業的音樂氛圍，DJ Alex 完美達成任務。他的音樂選擇與品牌形象完美契合，賓客反應都非常好。"
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
+    <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>Dungi Sebulur Team</h5>
-                    <p>專業 DJ 團隊，為您的活動帶來最佳音樂體驗。</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>快速連結</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="../about.html" class="text-white-50">關於我們</a></li>
-                        <li><a href="../services.html" class="text-white-50">服務項目</a></li>
-                        <li><a href="../portfolio.html" class="text-white-50">作品集</a></li>
-                        <li><a href="../contact.html" class="text-white-50">聯絡我們</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>聯絡資訊</h5>
-                    <p class="mb-1"><i class="fas fa-phone"></i> +886-XXX-XXX-XXX</p>
-                    <p class="mb-1"><i class="fas fa-envelope"></i> contact@dungisebulur.com</p>
-                    <div class="mt-3">
-                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
-                    </div>
-                </div>
-            </div>
-            <hr class="bg-white">
-            <div class="text-center">
-                <p class="mb-0">© 2024 Dungi Sebulur Team. All rights reserved.</p>
-            </div>
+            <p>&copy; 2024 Dungi Sebulur Team. All rights reserved.</p>
+            <p style="color: var(--text-secondary); margin-top: 1rem;">
+                <a href="../index-personal.html" style="color: var(--accent); text-decoration: none;">返回首頁</a>
+            </p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuToggle?.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            navMenu.style.position = 'absolute';
+            navMenu.style.top = '100%';
+            navMenu.style.left = '0';
+            navMenu.style.right = '0';
+            navMenu.style.background = 'rgba(10, 10, 13, 0.98)';
+            navMenu.style.flexDirection = 'column';
+            navMenu.style.padding = '2rem';
+            navMenu.style.borderTop = '1px solid var(--border-color)';
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
