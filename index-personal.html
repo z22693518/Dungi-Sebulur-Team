@@ -575,8 +575,19 @@
             position: relative;
             border-radius: 8px;
             overflow: hidden;
-            background: #1a1a20;
+            background: linear-gradient(135deg, #1a1a20, #0d0d11);
             aspect-ratio: 16/9;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .gallery-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
         }
         
         .gallery-item img {
@@ -588,6 +599,26 @@
         
         .gallery-item:hover img {
             transform: scale(1.05);
+        }
+        
+        .gallery-placeholder {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .gallery-placeholder i {
+            font-size: 2rem;
+            color: rgba(255, 255, 255, 0.2);
+            margin-bottom: 10px;
+        }
+        
+        .gallery-placeholder span {
+            display: block;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.2);
+            font-family: var(--display-font);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
         
         /* Contact Section */
@@ -1025,22 +1056,40 @@
             <h2>活動花絮</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="images/events/event1.jpg" alt="活動照片">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <span>活動照片 1</span>
+                    </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/events/event2.jpg" alt="活動照片">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <span>活動照片 2</span>
+                    </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/events/event3.jpg" alt="活動照片">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <span>活動照片 3</span>
+                    </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/events/event4.jpg" alt="活動照片">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <span>活動照片 4</span>
+                    </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/events/event5.jpg" alt="活動照片">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <span>活動照片 5</span>
+                    </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="images/events/event6.jpg" alt="活動照片">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <span>活動照片 6</span>
+                    </div>
                 </div>
             </div>
         </div>
