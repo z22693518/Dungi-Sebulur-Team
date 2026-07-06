@@ -465,18 +465,29 @@
         /* Gallery */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
             margin-top: 40px;
         }
         
         .gallery-item {
-            aspect-ratio: 16/9;
-            border-radius: 10px;
+            aspect-ratio: 4/3;
+            border-radius: 12px;
             overflow: hidden;
             background: linear-gradient(150deg, #1a1a20, #0d0d11);
             border: 1px solid rgba(255, 255, 255, 0.07);
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 43, 77, 0.2);
+            border-color: var(--accent);
         }
         
         .gallery-item img {
@@ -487,7 +498,27 @@
         }
         
         .gallery-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
+        }
+        
+        .gallery-placeholder {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .gallery-placeholder i {
+            font-size: 2.5rem;
+            color: rgba(255, 43, 77, 0.2);
+            margin-bottom: 10px;
+        }
+        
+        .gallery-placeholder span {
+            display: block;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.3);
+            font-family: var(--display-font);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
         }
         
         /* Testimonials */
@@ -894,19 +925,34 @@
                     <img src="../images/djs/redshou.jpg" alt="DJ REDSHOU Performance">
                 </div>
                 <div class="gallery-item">
-                    <img src="../images/events/event1.jpg" alt="DJ REDSHOU at OMNI ALTA">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-compact-disc"></i>
+                        <span>OMNI ALTA 演出</span>
+                    </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="../images/events/event2.jpg" alt="DJ REDSHOU Live">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-music"></i>
+                        <span>Live Set</span>
+                    </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="../images/events/event3.jpg" alt="DJ REDSHOU with Jay Park">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-headphones"></i>
+                        <span>與 Jay Park 合作</span>
+                    </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="../images/events/event4.jpg" alt="DJ REDSHOU Festival">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-volume-up"></i>
+                        <span>音樂節現場</span>
+                    </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="../images/events/event5.jpg" alt="DJ REDSHOU Party">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                        <span>派對現場</span>
+                    </div>
                 </div>
             </div>
         </div>
