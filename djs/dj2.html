@@ -989,5 +989,78 @@
         <div class="footer-brand">Dungi Sebulur Team</div>
         <p class="footer-copyright">© 2024 Dungi Sebulur Team. All rights reserved.</p>
     </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; padding: 20px; overflow-y: auto;">
+        <div style="max-width: 600px; margin: 50px auto; background: #1a1a20; border-radius: 12px; padding: 40px; position: relative;">
+            <button onclick="closeContactModal()" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: #fff; font-size: 24px; cursor: pointer;">×</button>
+            <h2 style="color: var(--accent); margin-bottom: 30px; font-family: var(--display-font);">預約 DJ Visin</h2>
+            <form onsubmit="handleBookingSubmit(event)">
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; color: rgba(255,255,255,0.8);">您的姓名</label>
+                    <input type="text" required style="width: 100%; padding: 12px; background: #0d0d11; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: white;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; color: rgba(255,255,255,0.8);">聯絡電話</label>
+                    <input type="tel" required style="width: 100%; padding: 12px; background: #0d0d11; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: white;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; color: rgba(255,255,255,0.8);">電子郵件</label>
+                    <input type="email" required style="width: 100%; padding: 12px; background: #0d0d11; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: white;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; color: rgba(255,255,255,0.8);">活動日期</label>
+                    <input type="date" required style="width: 100%; padding: 12px; background: #0d0d11; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: white;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; color: rgba(255,255,255,0.8);">活動類型</label>
+                    <select required style="width: 100%; padding: 12px; background: #0d0d11; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: white;">
+                        <option value="">請選擇</option>
+                        <option value="wedding">婚禮</option>
+                        <option value="corporate">企業活動</option>
+                        <option value="birthday">生日派對</option>
+                        <option value="festival">音樂節</option>
+                        <option value="club">夜店活動</option>
+                        <option value="other">其他</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 30px;">
+                    <label style="display: block; margin-bottom: 8px; color: rgba(255,255,255,0.8);">訊息內容</label>
+                    <textarea rows="4" style="width: 100%; padding: 12px; background: #0d0d11; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: white; resize: vertical;"></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; padding: 14px;">送出預約</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openContactModal() {
+            document.getElementById('contactModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeContactModal() {
+            document.getElementById('contactModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function handleBookingSubmit(event) {
+            event.preventDefault();
+            alert('感謝您的預約！我們會在24小時內與您聯繫。');
+            closeContactModal();
+        }
+        
+        // Update all booking links
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookingLinks = document.querySelectorAll('a[href="../contact.html"]');
+            bookingLinks.forEach(link => {
+                link.href = '#';
+                link.onclick = function(e) {
+                    e.preventDefault();
+                    openContactModal();
+                };
+            });
+        });
+    </script>
 </body>
 </html>
