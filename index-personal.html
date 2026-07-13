@@ -31,9 +31,154 @@
     <link rel="stylesheet" href="css/main.css?v=1.0.0">
     <style>
         /* Page-specific styles only */
+        
+        /* Loading Animation */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0d;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+        
+        .page-loader.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loader-inner {
+            text-align: center;
+        }
+        
+        .loader-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            border-radius: 12px;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--display-font);
+            font-weight: 700;
+            font-size: 28px;
+            color: #fff;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .loader-text {
+            font-family: var(--display-font);
+            font-size: 14px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #5f5f6a;
+            animation: fade 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes fade {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(255, 43, 77, 0.3);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 43, 77, 0.4);
+        }
+        
+        /* Form Validation Styles */
+        .form-group.error input,
+        .form-group.error textarea,
+        .form-group.error select {
+            border-color: #ff4444;
+        }
+        
+        .form-group.success input,
+        .form-group.success textarea,
+        .form-group.success select {
+            border-color: #44ff44;
+        }
+        
+        .error-message {
+            display: none;
+            color: #ff4444;
+            font-size: 12px;
+            margin-top: 5px;
+            font-family: var(--display-font);
+            letter-spacing: 0.05em;
+        }
+        
+        .form-group.error .error-message {
+            display: block;
+        }
+        
+        .submit-success {
+            display: none;
+            padding: 20px;
+            background: rgba(68, 255, 68, 0.1);
+            border: 1px solid #44ff44;
+            border-radius: 4px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .submit-success.show {
+            display: block;
+        }
     </style>
 </head>
 <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-inner">
+            <div class="loader-logo">DS</div>
+            <div class="loader-text">Loading...</div>
+        </div>
+    </div>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
     <!-- Top Navigation -->
     <header>
         <a href="#home" class="logo-link">
@@ -277,18 +422,20 @@
             <h2>聯絡我們</h2>
             <div class="contact-grid">
                 <div>
-                    <form>
+                    <form id="bookingForm" novalidate>
                         <div class="form-group">
-                            <label>您的姓名</label>
-                            <input type="text" placeholder="請輸入您的姓名">
+                            <label>您的姓名 <span style="color: var(--accent)">*</span></label>
+                            <input type="text" id="name" name="name" placeholder="請輸入您的姓名" required>
+                            <span class="error-message">請輸入您的姓名</span>
                         </div>
                         <div class="form-group">
-                            <label>電子郵件</label>
-                            <input type="email" placeholder="your@email.com">
+                            <label>電子郵件 <span style="color: var(--accent)">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            <span class="error-message">請輸入有效的電子郵件</span>
                         </div>
                         <div class="form-group">
-                            <label>活動類型</label>
-                            <select>
+                            <label>活動類型 <span style="color: var(--accent)">*</span></label>
+                            <select id="eventType" name="eventType" required>
                                 <option>請選擇活動類型</option>
                                 <option>企業活動</option>
                                 <option>婚禮派對</option>
@@ -299,14 +446,19 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>活動日期</label>
-                            <input type="date">
+                            <label>活動日期 <span style="color: var(--accent)">*</span></label>
+                            <input type="date" id="eventDate" name="eventDate" required>
+                            <span class="error-message">請選擇活動日期</span>
                         </div>
                         <div class="form-group">
                             <label>詳細說明</label>
-                            <textarea placeholder="請描述您的需求..."></textarea>
+                            <textarea id="message" name="message" placeholder="請描述您的需求..."></textarea>
                         </div>
                         <button type="submit" class="btn-primary" style="width: 100%;">送出詢問</button>
+                        <div class="submit-success" id="submitSuccess">
+                            <p style="color: #44ff44; font-size: 18px; margin-bottom: 10px;">✓ 表單已成功送出！</p>
+                            <p style="color: #b3b3ba;">我們會在 24 小時內與您聯繫。</p>
+                        </div>
                     </form>
                 </div>
                 <div class="contact-info">
@@ -356,6 +508,140 @@
     </footer>
     
     <script>
+        // Page Loader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loader = document.getElementById('pageLoader');
+                loader.classList.add('fade-out');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 300);
+            }, 500);
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form Validation
+        const bookingForm = document.getElementById('bookingForm');
+        
+        if (bookingForm) {
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Reset previous validation states
+                const formGroups = bookingForm.querySelectorAll('.form-group');
+                formGroups.forEach(group => {
+                    group.classList.remove('error', 'success');
+                });
+                
+                let isValid = true;
+                
+                // Validate name
+                const nameInput = document.getElementById('name');
+                if (!nameInput.value.trim()) {
+                    nameInput.parentElement.classList.add('error');
+                    isValid = false;
+                } else {
+                    nameInput.parentElement.classList.add('success');
+                }
+                
+                // Validate email
+                const emailInput = document.getElementById('email');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value)) {
+                    emailInput.parentElement.classList.add('error');
+                    isValid = false;
+                } else {
+                    emailInput.parentElement.classList.add('success');
+                }
+                
+                // Validate event type
+                const eventTypeSelect = document.getElementById('eventType');
+                if (eventTypeSelect.value === '請選擇活動類型' || !eventTypeSelect.value) {
+                    eventTypeSelect.parentElement.classList.add('error');
+                    isValid = false;
+                } else {
+                    eventTypeSelect.parentElement.classList.add('success');
+                }
+                
+                // Validate date
+                const dateInput = document.getElementById('eventDate');
+                if (!dateInput.value) {
+                    dateInput.parentElement.classList.add('error');
+                    isValid = false;
+                } else {
+                    const selectedDate = new Date(dateInput.value);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    
+                    if (selectedDate < today) {
+                        dateInput.parentElement.classList.add('error');
+                        dateInput.parentElement.querySelector('.error-message').textContent = '請選擇未來的日期';
+                        isValid = false;
+                    } else {
+                        dateInput.parentElement.classList.add('success');
+                    }
+                }
+                
+                // If form is valid, show success message
+                if (isValid) {
+                    const successDiv = document.getElementById('submitSuccess');
+                    successDiv.classList.add('show');
+                    
+                    // Reset form after 3 seconds
+                    setTimeout(() => {
+                        bookingForm.reset();
+                        formGroups.forEach(group => {
+                            group.classList.remove('success');
+                        });
+                        successDiv.classList.remove('show');
+                    }, 3000);
+                }
+            });
+            
+            // Real-time validation
+            const inputs = bookingForm.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    const formGroup = this.parentElement;
+                    formGroup.classList.remove('error', 'success');
+                    
+                    if (this.hasAttribute('required')) {
+                        if (!this.value.trim()) {
+                            formGroup.classList.add('error');
+                        } else {
+                            if (this.type === 'email') {
+                                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                if (!emailRegex.test(this.value)) {
+                                    formGroup.classList.add('error');
+                                } else {
+                                    formGroup.classList.add('success');
+                                }
+                            } else {
+                                formGroup.classList.add('success');
+                            }
+                        }
+                    }
+                });
+            });
+        }
+        
         // Mobile menu toggle
         function toggleMobileMenu() {
             alert('Mobile menu - 請在小螢幕裝置上測試');
