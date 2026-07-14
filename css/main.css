@@ -860,15 +860,22 @@ footer {
     margin-top: 20px;
     padding: 16px 24px;
     background: var(--accent);
-    color: #fff;
+    color: #fff !important;
     text-align: center;
     border-radius: 8px;
     font-weight: 600;
     transition: all 0.3s ease;
+    display: block;
+    text-decoration: none;
+    font-family: var(--display-font);
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 .mobile-nav .btn-book-mobile:hover {
     background: var(--accent-hover);
+    color: #fff !important;
     box-shadow: 0 8px 24px rgba(255, 43, 77, 0.4);
     transform: translateY(-2px);
     padding-left: 24px;
