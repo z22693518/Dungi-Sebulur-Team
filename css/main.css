@@ -753,6 +753,201 @@ footer {
     cursor: pointer;
 }
 
+/* Mobile Menu Styles */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(10, 10, 13, 0.98);
+    backdrop-filter: blur(10px);
+    z-index: 999;
+    padding: 100px 30px 30px;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+.mobile-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #e8e8ea;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.mobile-close:hover {
+    transform: rotate(90deg);
+    color: var(--accent);
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.mobile-nav a {
+    display: block;
+    padding: 15px 20px;
+    font-family: var(--display-font);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #b3b3ba;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-nav a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 0;
+    background: var(--accent);
+    transition: height 0.3s ease;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.active {
+    color: var(--accent);
+    background: rgba(255, 43, 77, 0.1);
+    padding-left: 30px;
+}
+
+.mobile-nav a:hover::before,
+.mobile-nav a.active::before {
+    height: 70%;
+}
+
+.mobile-nav .btn-book-mobile {
+    margin-top: 20px;
+    padding: 16px 24px;
+    background: var(--accent);
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav .btn-book-mobile:hover {
+    background: var(--accent-hover);
+    box-shadow: 0 8px 24px rgba(255, 43, 77, 0.4);
+    transform: translateY(-2px);
+    padding-left: 24px;
+}
+
+.mobile-nav .btn-book-mobile::before {
+    display: none;
+}
+
+.mobile-social {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-social-title {
+    font-family: var(--display-font);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #5f5f6a;
+    margin-bottom: 15px;
+}
+
+.mobile-social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.mobile-social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b3b3ba;
+    transition: all 0.3s ease;
+}
+
+.mobile-social-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-3px);
+}
+
+/* Hamburger Animation */
+.hamburger {
+    width: 24px;
+    height: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #e8e8ea;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.mobile-toggle.active .hamburger span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.mobile-toggle.active .hamburger span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.mobile-toggle.active .hamburger span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .dj-grid {
@@ -774,7 +969,11 @@ footer {
     }
     
     .mobile-toggle {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
     }
     
     h1 {
