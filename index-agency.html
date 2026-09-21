@@ -175,8 +175,8 @@
             position: relative; aspect-ratio: 3 / 4; overflow: hidden;
             border: 1px solid var(--line); display: block;
         }
-        .crew-card img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: all .5s; }
-        .crew-card:hover img { filter: grayscale(0); transform: scale(1.05); }
+        .crew-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+        .crew-card:hover img { transform: scale(1.05); }
         .crew-initial {
             position: absolute; inset: 0; display: grid; place-items: center;
             font-family: var(--display-font); font-size: 60px; color: rgba(255,255,255,.12);
