@@ -1,300 +1,1028 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dungi Sebulur Team - 專業DJ團隊，為您的活動帶來最佳音樂體驗">
-    <meta name="keywords" content="DJ, 音樂, 派對, 婚禮, 企業活動, Dungi Sebulur">
-    <title>Dungi Sebulur Team - 專業DJ團隊</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dungi Sebulur Team - 專業 DJ 團隊 | 台北頂尖DJ服務</title>
     
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Dungi Sebulur Team - 台北專業DJ團隊，提供婚禮、企業活動、夜店派對DJ服務。擁有EDM、Hip-Hop、原住民音樂等多元風格。OMNI ALTA駐場DJ團隊。">
+    <meta name="keywords" content="DJ,台北DJ,專業DJ,婚禮DJ,企業活動DJ,夜店DJ,EDM,Hip-Hop,原住民音樂,OMNI ALTA,派對DJ,音樂節DJ">
+    <meta name="author" content="Dungi Sebulur Team">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://z22693518.github.io/Dungi-Sebulur-Team/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://z22693518.github.io/Dungi-Sebulur-Team/">
+    <meta property="og:title" content="Dungi Sebulur Team - 專業 DJ 團隊">
+    <meta property="og:description" content="台北專業DJ團隊，提供婚禮、企業活動、夜店派對DJ服務。擁有EDM、Hip-Hop、原住民音樂等多元風格。">
+    <meta property="og:image" content="https://z22693518.github.io/Dungi-Sebulur-Team/images/djs/redshou.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://z22693518.github.io/Dungi-Sebulur-Team/">
+    <meta property="twitter:title" content="Dungi Sebulur Team - 專業 DJ 團隊">
+    <meta property="twitter:description" content="台北專業DJ團隊，提供婚禮、企業活動、夜店派對DJ服務。">
+    <meta property="twitter:image" content="https://z22693518.github.io/Dungi-Sebulur-Team/images/djs/redshou.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css?v=1.0.0">
+    <style>
+        /* Page-specific styles only */
+        
+        /* Loading Animation */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0d;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+        
+        .page-loader.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loader-inner {
+            text-align: center;
+        }
+        
+        .loader-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            border-radius: 12px;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--display-font);
+            font-weight: 700;
+            font-size: 28px;
+            color: #fff;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .loader-text {
+            font-family: var(--display-font);
+            font-size: 14px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #5f5f6a;
+            animation: fade 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes fade {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(255, 43, 77, 0.3);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 43, 77, 0.4);
+        }
+        
+        /* Form Validation Styles */
+        .form-group.error input,
+        .form-group.error textarea,
+        .form-group.error select {
+            border-color: #ff4444;
+        }
+        
+        .form-group.success input,
+        .form-group.success textarea,
+        .form-group.success select {
+            border-color: #44ff44;
+        }
+        
+        .error-message {
+            display: none;
+            color: #ff4444;
+            font-size: 12px;
+            margin-top: 5px;
+            font-family: var(--display-font);
+            letter-spacing: 0.05em;
+        }
+        
+        .form-group.error .error-message {
+            display: block;
+        }
+        
+        .submit-success {
+            display: none;
+            padding: 20px;
+            background: rgba(68, 255, 68, 0.1);
+            border: 1px solid #44ff44;
+            border-radius: 4px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .submit-success.show {
+            display: block;
+        }
+
+        /* ── 服務項目：左右交錯圖文 ── */
+        .service-row {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 60px; align-items: center; margin-bottom: 90px;
+        }
+        .service-row:last-child { margin-bottom: 0; }
+        .service-row:nth-child(even) .service-media { order: 2; }
+        .service-media {
+            position: relative; aspect-ratio: 4 / 3; overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .service-media img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform .7s ease;
+        }
+        .service-row:hover .service-media img { transform: scale(1.06); }
+        .service-no {
+            position: absolute; left: 0; top: 0; z-index: 2;
+            background: var(--accent); color: #fff;
+            font-family: var(--display-font); font-size: 15px;
+            padding: 8px 18px; letter-spacing: 2px;
+        }
+        .service-text h3 {
+            font-family: var(--display-font); font-size: 30px;
+            margin-bottom: 16px; letter-spacing: 1px;
+        }
+        .service-text p { color: rgba(255,255,255,0.62); margin-bottom: 22px; }
+        .service-points { list-style: none; display: grid; gap: 10px; padding: 0; }
+        .service-points li {
+            display: flex; gap: 12px; align-items: baseline;
+            color: rgba(255,255,255,0.62); font-size: 15px;
+        }
+        .service-points li::before { content: '—'; color: var(--accent); }
+
+        /* ── 四宮格特色 ── */
+        .feature-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1);
+        }
+        .feature-card { background: #0a0a0d; padding: 42px 28px; transition: background .3s; }
+        .feature-card:hover { background: #121217; }
+        .feature-num {
+            font-family: var(--display-font); font-size: 13px;
+            color: var(--accent); letter-spacing: 3px; margin-bottom: 18px;
+        }
+        .feature-card h4 { font-family: var(--display-font); font-size: 21px; margin-bottom: 10px; }
+        .feature-card p { color: rgba(255,255,255,0.62); font-size: 14.5px; }
+
+        @media (max-width: 960px) {
+            .service-row { grid-template-columns: 1fr; gap: 26px; margin-bottom: 60px; }
+            .service-row:nth-child(even) .service-media { order: 0; }
+            .feature-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* ── DJ 卡片：滑過浮出資訊與社群 ── */
+        .dj-card .dj-social {
+            display: flex; gap: 12px; margin-top: 12px;
+            opacity: 0; transform: translateY(10px);
+            transition: opacity .35s ease, transform .35s ease;
+        }
+        .dj-card:hover .dj-social { opacity: 1; transform: none; }
+        .dj-social a {
+            width: 34px; height: 34px; border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.35);
+            display: grid; place-items: center; font-size: 14px;
+            transition: background .25s, border-color .25s, color .25s;
+        }
+        .dj-social a:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+        .dj-card .dj-more {
+            margin-top: 12px; font-size: 13px; letter-spacing: 1px;
+            color: var(--accent); opacity: 0; transition: opacity .35s ease .05s;
+        }
+        .dj-card:hover .dj-more { opacity: 1; }
+
+        /* ── DJ 彈窗 ── */
+        .dj-modal {
+            position: fixed; inset: 0; z-index: 2000; display: none;
+            align-items: center; justify-content: center; padding: 24px;
+            background: rgba(6, 6, 9, 0.88); backdrop-filter: blur(6px);
+        }
+        .dj-modal.open { display: flex; }
+        .dj-modal-box {
+            width: min(900px, 100%); max-height: 86vh; overflow-y: auto;
+            background: #121217; border: 1px solid rgba(255,255,255,0.12);
+            display: grid; grid-template-columns: 300px 1fr;
+            animation: modalIn .28s ease;
+        }
+        @keyframes modalIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+        .dj-modal-photo { position: relative; background: #0a0a0d; }
+        .dj-modal-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .dj-modal-initial {
+            position: absolute; inset: 0; display: grid; place-items: center;
+            font-family: var(--display-font); font-size: 72px; color: rgba(255,255,255,0.12);
+        }
+        .dj-modal-body { padding: 36px 34px; }
+        .dj-modal-body h3 {
+            font-family: var(--display-font); font-size: 34px;
+            letter-spacing: 1px; margin-bottom: 6px;
+        }
+        .dj-modal-role { color: var(--accent); font-size: 14px; letter-spacing: 2px; margin-bottom: 18px; }
+        .dj-modal-body p { color: rgba(255,255,255,0.68); margin-bottom: 20px; }
+        .dj-modal-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+        .dj-modal-close {
+            position: absolute; top: 18px; right: 22px; z-index: 5;
+            background: none; border: none; color: #fff; font-size: 30px;
+            cursor: pointer; line-height: 1;
+        }
+        @media (max-width: 760px) {
+            .dj-modal-box { grid-template-columns: 1fr; }
+            .dj-modal-photo { height: 240px; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <i class="fas fa-compact-disc"></i> Dungi Sebulur Team
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">首頁</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">關於我們</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="djDropdown" role="button" data-bs-toggle="dropdown">
-                            DJ陣容
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="djs/dj1.html">DJ REDSHOU</a></li>
-                            <li><a class="dropdown-item" href="djs/dj2.html">DJ Visin</a></li>
-                            <li><a class="dropdown-item" href="djs/dj3.html">DJ Alex</a></li>
-                            <li><a class="dropdown-item" href="djs/dj4.html">DJ Luna</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="services.html">服務項目</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="portfolio.html">作品集</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">聯絡我們</a>
-                    </li>
-                </ul>
+    <!-- Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-inner">
+            <div class="loader-logo">DS</div>
+            <div class="loader-text">Loading...</div>
+        </div>
+    </div>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-close" onclick="closeMobileMenu()">✕</div>
+        <nav class="mobile-nav">
+            <a href="#home" onclick="closeMobileMenu()">首頁</a>
+            <a href="#about" onclick="closeMobileMenu()">關於</a>
+            <a href="#djs" onclick="closeMobileMenu()">DJ陣容</a>
+            <a href="#events" onclick="closeMobileMenu()">演出</a>
+            <a href="#gallery" onclick="closeMobileMenu()">相簿</a>
+            <a href="#contact" onclick="closeMobileMenu()">聯絡</a>
+            <a href="#contact" class="btn-book-mobile" onclick="closeMobileMenu()">立即預約</a>
+        </nav>
+    </div>
+    
+    <!-- Top Navigation -->
+    <header>
+        <a href="#home" class="logo-link">
+            <span class="logo-box">DS</span>
+            <span class="logo-text">Dungi Sebulur</span>
+        </a>
+        <nav>
+            <a href="#home">首頁</a>
+            <a href="#about">關於</a>
+            <a href="#services">服務</a>
+            <a href="#djs">DJ陣容</a>
+            <a href="#events">演出</a>
+            <a href="#gallery">相簿</a>
+            <a href="#contact">聯絡</a>
+            <a href="#contact" class="btn-book">預約</a>
+        </nav>
+        <div class="mobile-toggle" id="mobileToggle" onclick="toggleMobileMenu()">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
-    </nav>
-
+    </header>
+    
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-lg-6">
-                    <h1 class="display-3 fw-bold mb-4">讓音樂點亮您的活動</h1>
-                    <p class="lead mb-4">Dungi Sebulur Team 專業DJ團隊，為各種場合提供最適合的音樂服務</p>
-                    <div class="d-flex gap-3">
-                        <a href="#djs" class="btn btn-primary btn-lg">瀏覽DJ陣容</a>
-                        <a href="contact.html" class="btn btn-outline-light btn-lg">立即預約</a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <img src="images/hero-dj.jpg" alt="DJ Performance" class="img-fluid rounded shadow">
-                </div>
+    <section id="home">
+        <div class="hero-bg1"></div>
+        <div class="hero-bg2"></div>
+        <div class="hero-content">
+            <p class="hero-intro">
+                <span class="intro-line"></span>Professional DJ Crew
+            </p>
+            <h1><span style="color: var(--accent)">Sebulur</span></h1>
+            <p class="hero-desc">專業 DJ 團隊，為您的活動帶來最佳音樂體驗。從 EDM 到嘻哈，從原民音樂到國際流行 — 我們為每個場合打造完美聲音。</p>
+            <div class="hero-buttons">
+                <a href="#events" class="btn-primary">近期演出</a>
+                <a href="#djs" class="btn-outline">認識 DJ ↓</a>
             </div>
         </div>
+        <div class="scroll-indicator">
+            <span class="scroll-text">Scroll</span>
+            <span class="scroll-line"></span>
+        </div>
     </section>
-
+    
+    <!-- Stats Strip -->
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <p class="section-label">About Us</p>
+            <h2>關於我們</h2>
+            <p class="about-text">
+                Dungi Sebulur Team 是一個充滿活力的專業 DJ 團隊，我們結合了不同的音樂風格和文化背景，為每個活動帶來獨特的音樂體驗。從電子舞曲到嘻哈，從原民音樂到國際流行，我們的 DJ 都是各自領域的專家。
+            </p>
+        </div>
+    </section>
+    
     <!-- Services Section -->
-    <section class="py-5 bg-light">
+    <section id="services">
         <div class="container">
-            <h2 class="text-center mb-5">我們的服務</h2>
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="card h-100 text-center">
-                        <div class="card-body">
-                            <i class="fas fa-building fa-3x mb-3 text-primary"></i>
-                            <h5 class="card-title">企業活動</h5>
-                            <p class="card-text">尾牙、春酒、產品發表會等商業活動音樂服務</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card h-100 text-center">
-                        <div class="card-body">
-                            <i class="fas fa-heart fa-3x mb-3 text-danger"></i>
-                            <h5 class="card-title">婚禮派對</h5>
-                            <p class="card-text">為您的婚禮打造浪漫難忘的音樂氛圍</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card h-100 text-center">
-                        <div class="card-body">
-                            <i class="fas fa-glass-cheers fa-3x mb-3 text-warning"></i>
-                            <h5 class="card-title">夜店活動</h5>
-                            <p class="card-text">專業夜店DJ，炒熱現場氣氛</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card h-100 text-center">
-                        <div class="card-body">
-                            <i class="fas fa-birthday-cake fa-3x mb-3 text-info"></i>
-                            <h5 class="card-title">私人聚會</h5>
-                            <p class="card-text">生日派對、畢業派對等私人活動音樂服務</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <p class="section-label">Services</p>
+            <h2>服務項目</h2>
+            <p class="about-text" style="margin-bottom:56px;">從單場 DJ 到整場活動的音樂規劃，依你的場地、預算與客群量身安排。</p>
 
-    <!-- DJs Section -->
-    <section id="djs" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">我們的DJ團隊</h2>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3">
-                    <div class="card dj-card">
-                        <img src="images/djs/redshou.jpg" class="card-img-top" alt="DJ REDSHOU">
-                        <div class="card-body">
-                            <h5 class="card-title">DJ REDSHOU</h5>
-                            <p class="text-muted">EDM, Hip-Hop</p>
-                            <p class="card-text">合作過Jay Park、Lil Mosey等國際藝人，千場演出經驗。</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="djs/dj1.html" class="btn btn-sm btn-primary">查看詳情</a>
-                                <div class="rating">
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="service-row">
+                <div class="service-media">
+                    <span class="service-no">01</span>
+                    <img src="images/gallery/alta-performance.jpg" alt="活動與派對 DJ" loading="lazy">
                 </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="card dj-card">
-                        <img src="images/djs/visin.jpg" class="card-img-top" alt="DJ Visin">
-                        <div class="card-body">
-                            <h5 class="card-title">DJ Visin</h5>
-                            <p class="text-muted">Disco, Amapiano, Afro</p>
-                            <p class="card-text">阿美族DJ，原民音樂與西洋音樂的完美融合。</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="djs/dj2.html" class="btn btn-sm btn-primary">查看詳情</a>
-                                <div class="rating">
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="card dj-card">
-                        <img src="images/djs/dj3.jpg" class="card-img-top" alt="DJ Alex">
-                        <div class="card-body">
-                            <h5 class="card-title">DJ Alex</h5>
-                            <p class="text-muted">Pop, Commercial</p>
-                            <p class="card-text">3年經驗，互動性強，擅長商業活動與婚禮派對。</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="djs/dj3.html" class="btn btn-sm btn-primary">查看詳情</a>
-                                <div class="rating">
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="far fa-star text-warning"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="card dj-card">
-                        <img src="images/djs/dj4.jpg" class="card-img-top" alt="DJ Luna">
-                        <div class="card-body">
-                            <h5 class="card-title">DJ Luna</h5>
-                            <p class="text-muted">Techno, Trance</p>
-                            <p class="card-text">10年經驗，國際演出經驗豐富，電子音樂大師。</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="djs/dj4.html" class="btn btn-sm btn-primary">查看詳情</a>
-                                <div class="rating">
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                    <i class="fas fa-star text-warning"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">客戶評價</h2>
-            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="text-center">
-                            <p class="lead mb-4">"Dungi Sebulur Team 的 DJ 非常專業，完美掌握了我們公司尾牙的氣氛！"</p>
-                            <h5>王先生</h5>
-                            <p class="text-muted">科技公司 HR 主管</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="text-center">
-                            <p class="lead mb-4">"婚禮當天的音樂安排超乎預期，賓客都讚不絕口！"</p>
-                            <h5>李小姐</h5>
-                            <p class="text-muted">新娘</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="text-center">
-                            <p class="lead mb-4">"DJ Visin 的融合風格真的很特別，原民音樂與西洋音樂的結合超讚！"</p>
-                            <h5>張先生</h5>
-                            <p class="text-muted">夜店老闆</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-5 bg-dark text-white">
-        <div class="container text-center">
-            <h2 class="mb-4">準備好讓您的活動更精彩了嗎？</h2>
-            <p class="lead mb-4">立即預約我們的專業 DJ 服務</p>
-            <a href="contact.html" class="btn btn-primary btn-lg">立即預約</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>Dungi Sebulur Team</h5>
-                    <p>專業 DJ 團隊，為您的活動帶來最佳音樂體驗。</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>快速連結</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="about.html" class="text-white-50">關於我們</a></li>
-                        <li><a href="services.html" class="text-white-50">服務項目</a></li>
-                        <li><a href="portfolio.html" class="text-white-50">作品集</a></li>
-                        <li><a href="contact.html" class="text-white-50">聯絡我們</a></li>
+                <div class="service-text">
+                    <h3>活動與派對 DJ</h3>
+                    <p>夜店、品牌活動、尾牙春酒、開幕派對。依現場客群即時調整選曲節奏，把氣氛帶到你要的位置。</p>
+                    <ul class="service-points">
+                        <li>EDM／Hip-Hop／Disco／House 多風格對應</li>
+                        <li>可搭配 MC 喊麥與燈光節奏配合</li>
+                        <li>2 至 6 小時彈性場次</li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <h5>聯絡資訊</h5>
-                    <p class="mb-1"><i class="fas fa-phone"></i> +886-XXX-XXX-XXX</p>
-                    <p class="mb-1"><i class="fas fa-envelope"></i> sebulurco@gmail.com</p>
-                    <div class="mt-3">
-                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+            </div>
+
+            <div class="service-row">
+                <div class="service-media">
+                    <span class="service-no">02</span>
+                    <img src="images/gallery/dinos-performance-1.jpg" alt="婚禮與宴會音樂" loading="lazy">
+                </div>
+                <div class="service-text">
+                    <h3>婚禮與宴會音樂</h3>
+                    <p>從進場、敬酒到送客，依流程安排完整音樂腳本，讓每個橋段都有對的情緒。</p>
+                    <ul class="service-points">
+                        <li>婚禮流程音樂企劃與彩排</li>
+                        <li>宴會廳音響配置建議</li>
+                        <li>中英日語歌單皆可安排</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-media">
+                    <span class="service-no">03</span>
+                    <img src="images/gallery/dinojin-gallery-1.jpg" alt="街舞賽事與文化活動" loading="lazy">
+                </div>
+                <div class="service-text">
+                    <h3>街舞賽事與文化活動</h3>
+                    <p>Battle 賽制熟悉，能即時配合舞者節奏切歌，也承接市集、藝術節與劇場演出。</p>
+                    <ul class="service-points">
+                        <li>Footwork／Breaking／Freestyle Battle 伴奏</li>
+                        <li>原住民音樂與在地文化元素融合</li>
+                        <li>賽事流程與計分時段配樂</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-row">
+                <div class="service-media">
+                    <span class="service-no">04</span>
+                    <img src="images/gallery/dinojin-gallery-2.jpg" alt="品牌音樂企劃與設備規劃" loading="lazy">
+                </div>
+                <div class="service-text">
+                    <h3>品牌音樂企劃與設備規劃</h3>
+                    <p>不只是放歌。從品牌調性出發設計聲音風格，並依場地條件規劃音響與器材配置。</p>
+                    <ul class="service-points">
+                        <li>品牌活動聲音識別規劃</li>
+                        <li>場地音響、器材與電源評估</li>
+                        <li>一對一 DJ 教學與團體課程</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="why">
+        <div class="container">
+            <p class="section-label">Why Us</p>
+            <h2>為什麼選擇我們</h2>
+            <p class="about-text" style="margin-bottom:56px;">五位風格互補的 DJ，從夜店到藝術節都有實際經驗。</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <p class="feature-num">01</p>
+                    <h4>多元風格</h4>
+                    <p>EDM、Hip-Hop、Disco、Amapiano、House 與原民音樂，依場合派對應的人。</p>
+                </div>
+                <div class="feature-card">
+                    <p class="feature-num">02</p>
+                    <h4>實戰經驗</h4>
+                    <p>夜店駐場、音樂節、街舞賽事、婚宴與企業活動都有長期合作紀錄。</p>
+                </div>
+                <div class="feature-card">
+                    <p class="feature-num">03</p>
+                    <h4>完整企劃</h4>
+                    <p>不只到場放歌，提供流程音樂設計、器材建議與現場控場。</p>
+                </div>
+                <div class="feature-card">
+                    <p class="feature-num">04</p>
+                    <h4>在地連結</h4>
+                    <p>紮根花蓮、宜蘭與台北，熟悉在地場館與文化活動生態。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- DJs Section -->
+    <section id="djs">
+        <div class="container">
+            <p class="section-label">The Crew</p>
+            <h2>我們的 DJ</h2>
+            <div class="dj-grid">
+                <!-- REDSHOU -->
+                <a href="djs/dj1.html" class="dj-card" onclick="return openDJ('dj1')">
+                    <span class="dj-initial">R</span>
+                    <img src="images/djs/redshou.jpg" alt="REDSHOU" class="dj-image" loading="lazy">
+                    <div class="dj-overlay"></div>
+                    <div class="dj-info">
+                        <div class="dj-genres">
+                            <span class="genre-tag">EDM</span>
+                            <span class="genre-tag">Hip-Hop</span>
+                        </div>
+                        <h3 class="dj-name">REDSHOU</h3>
+                        <span class="dj-link">查看詳情 →</span>
+                        <div class="dj-social">
+                            <a href="#" onclick="event.stopPropagation();return false;" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" onclick="event.stopPropagation();return false;" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" onclick="event.stopPropagation();return false;" title="SoundCloud"><i class="fab fa-soundcloud"></i></a>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Visin -->
+                <a href="djs/dj2.html" class="dj-card" onclick="return openDJ('dj2')">
+                    <span class="dj-initial">V</span>
+                    <img src="images/djs/visin.jpg" alt="Visin" class="dj-image" loading="lazy">
+                    <div class="dj-overlay"></div>
+                    <div class="dj-info">
+                        <div class="dj-genres">
+                            <span class="genre-tag">Disco</span>
+                            <span class="genre-tag">Amapiano</span>
+                        </div>
+                        <h3 class="dj-name">Visin</h3>
+                        <span class="dj-link">查看詳情 →</span>
+                        <div class="dj-social">
+                            <a href="#" onclick="event.stopPropagation();return false;" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" onclick="event.stopPropagation();return false;" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" onclick="event.stopPropagation();return false;" title="SoundCloud"><i class="fab fa-soundcloud"></i></a>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Dinos -->
+                <a href="djs/dj3.html" class="dj-card" onclick="return openDJ('dj3')">
+                    <span class="dj-initial">A</span>
+                    <img src="images/djs/dinos.jpg" alt="Dinos" class="dj-image" loading="lazy">
+                    <div class="dj-overlay"></div>
+                    <div class="dj-info">
+                        <div class="dj-genres">
+                            <span class="genre-tag">Hip-Hop</span>
+                            <span class="genre-tag">R&B</span>
+                        </div>
+                        <h3 class="dj-name">Dinos</h3>
+                        <span class="dj-link">查看詳情 →</span>
+                        <div class="dj-social">
+                            <a href="#" onclick="event.stopPropagation();return false;" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" onclick="event.stopPropagation();return false;" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" onclick="event.stopPropagation();return false;" title="SoundCloud"><i class="fab fa-soundcloud"></i></a>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- DINOjin -->
+                <a href="djs/dj4.html" class="dj-card" onclick="return openDJ('dj4')">
+                    <span class="dj-initial">D</span>
+                    <img src="images/djs/dinojin-profile.jpg" alt="DINOjin" class="dj-image" loading="lazy">
+                    <div class="dj-overlay"></div>
+                    <div class="dj-info">
+                        <div class="dj-genres">
+                            <span class="genre-tag">Melodic House</span>
+                            <span class="genre-tag">Peak House</span>
+                        </div>
+                        <h3 class="dj-name">DINOjin</h3>
+                        <span class="dj-link">查看詳情 →</span>
+                        <div class="dj-social">
+                            <a href="#" onclick="event.stopPropagation();return false;" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" onclick="event.stopPropagation();return false;" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" onclick="event.stopPropagation();return false;" title="SoundCloud"><i class="fab fa-soundcloud"></i></a>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- AT -->
+                <a href="djs/dj5.html" class="dj-card" onclick="return openDJ('dj5')">
+                    <span class="dj-initial">A</span>
+                    <img src="images/djs/at.jpg" alt="AT" class="dj-image" loading="lazy">
+                    <div class="dj-overlay"></div>
+                    <div class="dj-info">
+                        <div class="dj-genres">
+                            <span class="genre-tag">Funk Disco</span>
+                            <span class="genre-tag">Old School</span>
+                        </div>
+                        <h3 class="dj-name">AT</h3>
+                        <span class="dj-link">查看詳情 →</span>
+                        <div class="dj-social">
+                            <a href="#" onclick="event.stopPropagation();return false;" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" onclick="event.stopPropagation();return false;" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" onclick="event.stopPropagation();return false;" title="SoundCloud"><i class="fab fa-soundcloud"></i></a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Events Section -->
+    <section id="events">
+        <div class="container">
+            <p class="section-label">Tour Dates</p>
+            <h2>近期演出</h2>
+            <div class="events-list">
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">15</div>
+                        <div class="event-month">JUL 2024</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>夏日電音派對</h3>
+                        <p>ATT SHOWBOX · REDSHOU</p>
+                    </div>
+                    <a href="#contact" class="event-btn">預約檔期</a>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">22</div>
+                        <div class="event-month">JUL 2024</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>企業尾牙活動</h3>
+                        <p>台北晶華酒店 · Visin</p>
+                    </div>
+                    <a href="#contact" class="event-btn">預約檔期</a>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">05</div>
+                        <div class="event-month">AUG 2024</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>海灘音樂節</h3>
+                        <p>台中 Afro Party · Dinos</p>
+                    </div>
+                    <a href="#contact" class="event-btn">預約檔期</a>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">18</div>
+                        <div class="event-month">AUG 2024</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>婚禮派對</h3>
+                        <p>陽明山莊園 · DINOjin</p>
+                    </div>
+                    <a href="#contact" class="event-btn">預約檔期</a>
+                </div>
+                
+                <div class="event-item">
+                    <div class="event-date">
+                        <div class="event-day">31</div>
+                        <div class="event-month">DEC 2024</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>跨年倒數派對</h3>
+                        <p>信義區夜店 · 全體 DJ</p>
+                    </div>
+                    <a href="#contact" class="event-btn">預約檔期</a>
+                </div>
+                <div class="events-divider"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <p class="section-label">Gallery</p>
+            <h2>活動花絮</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <span>活動照片 1</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <span>活動照片 2</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <span>活動照片 3</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <span>活動照片 4</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <span>活動照片 5</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder">
+                        <i class="fas fa-image"></i>
+                        <span>活動照片 6</span>
                     </div>
                 </div>
             </div>
-            <hr class="bg-white">
-            <div class="text-center">
-                <p class="mb-0">© 2026 Dungi Sebulur Team. All rights reserved.</p>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <p class="section-label">Contact</p>
+            <h2>聯絡我們</h2>
+            <div class="contact-grid">
+                <div>
+                    <form id="bookingForm" novalidate>
+                        <div class="form-group">
+                            <label>您的姓名 <span style="color: var(--accent)">*</span></label>
+                            <input type="text" id="name" name="name" placeholder="請輸入您的姓名" required>
+                            <span class="error-message">請輸入您的姓名</span>
+                        </div>
+                        <div class="form-group">
+                            <label>電子郵件 <span style="color: var(--accent)">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            <span class="error-message">請輸入有效的電子郵件</span>
+                        </div>
+                        <div class="form-group">
+                            <label>活動類型 <span style="color: var(--accent)">*</span></label>
+                            <select id="eventType" name="eventType" required>
+                                <option>請選擇活動類型</option>
+                                <option>企業活動</option>
+                                <option>婚禮派對</option>
+                                <option>夜店演出</option>
+                                <option>音樂節</option>
+                                <option>私人聚會</option>
+                                <option>其他</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>活動日期 <span style="color: var(--accent)">*</span></label>
+                            <input type="date" id="eventDate" name="eventDate" required>
+                            <span class="error-message">請選擇活動日期</span>
+                        </div>
+                        <div class="form-group">
+                            <label>詳細說明</label>
+                            <textarea id="message" name="message" placeholder="請描述您的需求..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%;">送出詢問</button>
+                        <div class="submit-success" id="submitSuccess">
+                            <p style="color: #44ff44; font-size: 18px; margin-bottom: 10px;">✓ 表單已成功送出！</p>
+                            <p style="color: #b3b3ba;">我們會在 24 小時內與您聯繫。</p>
+                        </div>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>聯絡資訊</h3>
+                    <div class="contact-item">
+                        <div class="contact-label">電子郵件</div>
+                        <div class="contact-text">sebulurco@gmail.com</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">社群媒體</div>
+                        <div class="social-links" style="margin-top: 12px;">
+                            <a href="#" class="social-link">f</a>
+                            <a href="#" class="social-link">ig</a>
+                            <a href="#" class="social-link">yt</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <span class="logo-box">DS</span>
+                    <span class="logo-text">Dungi Sebulur</span>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2026 Dungi Sebulur Team. All rights reserved.
             </div>
         </div>
     </footer>
+    
+    <script>
+        // Page Loader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loader = document.getElementById('pageLoader');
+                loader.classList.add('fade-out');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 300);
+            }, 500);
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form Validation
+        const bookingForm = document.getElementById('bookingForm');
+        
+        if (bookingForm) {
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Reset previous validation states
+                const formGroups = bookingForm.querySelectorAll('.form-group');
+                formGroups.forEach(group => {
+                    group.classList.remove('error', 'success');
+                });
+                
+                let isValid = true;
+                
+                // Validate name
+                const nameInput = document.getElementById('name');
+                if (!nameInput.value.trim()) {
+                    nameInput.parentElement.classList.add('error');
+                    isValid = false;
+                } else {
+                    nameInput.parentElement.classList.add('success');
+                }
+                
+                // Validate email
+                const emailInput = document.getElementById('email');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value)) {
+                    emailInput.parentElement.classList.add('error');
+                    isValid = false;
+                } else {
+                    emailInput.parentElement.classList.add('success');
+                }
+                
+                // Validate event type
+                const eventTypeSelect = document.getElementById('eventType');
+                if (eventTypeSelect.value === '請選擇活動類型' || !eventTypeSelect.value) {
+                    eventTypeSelect.parentElement.classList.add('error');
+                    isValid = false;
+                } else {
+                    eventTypeSelect.parentElement.classList.add('success');
+                }
+                
+                // Validate date
+                const dateInput = document.getElementById('eventDate');
+                if (!dateInput.value) {
+                    dateInput.parentElement.classList.add('error');
+                    isValid = false;
+                } else {
+                    const selectedDate = new Date(dateInput.value);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    
+                    if (selectedDate < today) {
+                        dateInput.parentElement.classList.add('error');
+                        dateInput.parentElement.querySelector('.error-message').textContent = '請選擇未來的日期';
+                        isValid = false;
+                    } else {
+                        dateInput.parentElement.classList.add('success');
+                    }
+                }
+                
+                // If form is valid, show success message
+                if (isValid) {
+                    const successDiv = document.getElementById('submitSuccess');
+                    successDiv.classList.add('show');
+                    
+                    // Reset form after 3 seconds
+                    setTimeout(() => {
+                        bookingForm.reset();
+                        formGroups.forEach(group => {
+                            group.classList.remove('success');
+                        });
+                        successDiv.classList.remove('show');
+                    }, 3000);
+                }
+            });
+            
+            // Real-time validation
+            const inputs = bookingForm.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    const formGroup = this.parentElement;
+                    formGroup.classList.remove('error', 'success');
+                    
+                    if (this.hasAttribute('required')) {
+                        if (!this.value.trim()) {
+                            formGroup.classList.add('error');
+                        } else {
+                            if (this.type === 'email') {
+                                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                if (!emailRegex.test(this.value)) {
+                                    formGroup.classList.add('error');
+                                } else {
+                                    formGroup.classList.add('success');
+                                }
+                            } else {
+                                formGroup.classList.add('success');
+                            }
+                        }
+                    }
+                });
+            });
+        }
+        
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            const mobileToggle = document.getElementById('mobileToggle');
+            
+            mobileMenu.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (mobileMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+        
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            const mobileToggle = document.getElementById('mobileToggle');
+            
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Active nav on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a:not(.btn-book)');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.style.color = '#b3b3ba';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = 'var(--accent)';
+                }
+            });
+        });
+    </script>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
-    <script src="js/main.js"></script>
+    <!-- DJ Modal -->
+    <div class="dj-modal" id="djModal" onclick="if(event.target===this)closeDJ()">
+        <div class="dj-modal-box">
+            <button class="dj-modal-close" onclick="closeDJ()" aria-label="關閉">&times;</button>
+            <div class="dj-modal-photo">
+                <span class="dj-modal-initial" id="djModalInitial"></span>
+                <img id="djModalImg" src="" alt="">
+            </div>
+            <div class="dj-modal-body">
+                <h3 id="djModalName"></h3>
+                <p class="dj-modal-role" id="djModalRole"></p>
+                <p id="djModalBio"></p>
+                <a class="btn-primary" id="djModalLink" href="#">查看完整介紹</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const DJ_DATA = {
+            "dj1": { name: "REDSHOU", initial: "R", img: "images/djs/redshou.jpg", role: "EDM · Hip-Hop", bio: "來自花蓮阿美族，將原住民文化的熱情與國際音樂潮流融合，活躍於 ALTA、OMNI 等夜店。" },
+            "dj2": { name: "Visin", initial: "V", img: "images/djs/visin.jpg", role: "Disco · Amapiano", bio: "來自花蓮的阿美族 DJ，專精 Disco 與南非 Amapiano，擅長把原民音樂元素放進現代電子節奏。" },
+            "dj3": { name: "Dinos", initial: "A", img: "images/djs/dinos.jpg", role: "Hip-Hop · R&B", bio: "擅長 Hip-Hop 與 R&B 選曲，長期參與派對與品牌活動演出。" },
+            "dj4": { name: "DINOjin", initial: "D", img: "images/djs/dinojin-profile.jpg", role: "Melodic House", bio: "台灣少數專精 4 軌放歌技術的 DJ 與製作人，2025 年進駐台中 PinkB 擔任駐店 DJ。" },
+            "dj5": { name: "AT", initial: "A", img: "images/djs/at.jpg", role: "Funk Disco · Old School", bio: "音樂派對品牌「pa在路上」主理人，從事 DJ 六年，專精 70-80's Funk Disco 與 Old School Hiphop。" },
+        };
+
+        function openDJ(slug) {
+            const d = DJ_DATA[slug];
+            if (!d) return true;                   // 沒資料就照舊跳頁
+            document.getElementById('djModalName').textContent = d.name;
+            document.getElementById('djModalRole').textContent = d.role;
+            document.getElementById('djModalBio').textContent = d.bio;
+            document.getElementById('djModalInitial').textContent = d.initial;
+            const img = document.getElementById('djModalImg');
+            img.src = d.img; img.alt = d.name;
+            img.onerror = () => { img.style.display = 'none'; };
+            img.style.display = '';
+            document.getElementById('djModalLink').href = 'djs/' + slug + '.html';
+            document.getElementById('djModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            return false;                          // 阻止跳頁
+        }
+
+        function closeDJ() {
+            document.getElementById('djModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeDJ();
+        });
+    </script>
 </body>
 </html>
