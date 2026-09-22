@@ -217,63 +217,6 @@
             .feature-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
-        /* ── DJ 卡片：滑過浮出資訊與社群 ── */
-        .dj-card .dj-social {
-            display: flex; gap: 12px; margin-top: 12px;
-            opacity: 0; transform: translateY(10px);
-            transition: opacity .35s ease, transform .35s ease;
-        }
-        .dj-card:hover .dj-social { opacity: 1; transform: none; }
-        .dj-social a {
-            width: 34px; height: 34px; border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.35);
-            display: grid; place-items: center; font-size: 14px;
-            transition: background .25s, border-color .25s, color .25s;
-        }
-        .dj-social a:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
-        .dj-card .dj-more {
-            margin-top: 12px; font-size: 13px; letter-spacing: 1px;
-            color: var(--accent); opacity: 0; transition: opacity .35s ease .05s;
-        }
-        .dj-card:hover .dj-more { opacity: 1; }
-
-        /* ── DJ 彈窗 ── */
-        .dj-modal {
-            position: fixed; inset: 0; z-index: 2000; display: none;
-            align-items: center; justify-content: center; padding: 24px;
-            background: rgba(6, 6, 9, 0.88); backdrop-filter: blur(6px);
-        }
-        .dj-modal.open { display: flex; }
-        .dj-modal-box {
-            width: min(900px, 100%); max-height: 86vh; overflow-y: auto;
-            background: #121217; border: 1px solid rgba(255,255,255,0.12);
-            display: grid; grid-template-columns: 300px 1fr;
-            animation: modalIn .28s ease;
-        }
-        @keyframes modalIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-        .dj-modal-photo { position: relative; background: #0a0a0d; }
-        .dj-modal-photo img { width: 100%; height: 100%; object-fit: cover; }
-        .dj-modal-initial {
-            position: absolute; inset: 0; display: grid; place-items: center;
-            font-family: var(--display-font); font-size: 72px; color: rgba(255,255,255,0.12);
-        }
-        .dj-modal-body { padding: 36px 34px; }
-        .dj-modal-body h3 {
-            font-family: var(--display-font); font-size: 34px;
-            letter-spacing: 1px; margin-bottom: 6px;
-        }
-        .dj-modal-role { color: var(--accent); font-size: 14px; letter-spacing: 2px; margin-bottom: 18px; }
-        .dj-modal-body p { color: rgba(255,255,255,0.68); margin-bottom: 20px; }
-        .dj-modal-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
-        .dj-modal-close {
-            position: absolute; top: 18px; right: 22px; z-index: 5;
-            background: none; border: none; color: #fff; font-size: 30px;
-            cursor: pointer; line-height: 1;
-        }
-        @media (max-width: 760px) {
-            .dj-modal-box { grid-template-columns: 1fr; }
-            .dj-modal-photo { height: 240px; }
-        }
     </style>
 </head>
 <body>
@@ -299,7 +242,7 @@
         <nav class="mobile-nav">
             <a href="#home" onclick="closeMobileMenu()">首頁</a>
             <a href="#about" onclick="closeMobileMenu()">關於</a>
-            <a href="#djs" onclick="closeMobileMenu()">DJ陣容</a>
+            <a href="artists.html">DJ陣容</a>
             <a href="#events" onclick="closeMobileMenu()">演出</a>
             <a href="#gallery" onclick="closeMobileMenu()">相簿</a>
             <a href="#contact" onclick="closeMobileMenu()">聯絡</a>
@@ -317,7 +260,7 @@
             <a href="#home">首頁</a>
             <a href="#about">關於</a>
             <a href="#services">服務</a>
-            <a href="#djs">DJ陣容</a>
+            <a href="artists.html">DJ陣容</a>
             <a href="#events">演出</a>
             <a href="#gallery">相簿</a>
             <a href="#contact">聯絡</a>
@@ -344,7 +287,7 @@
             <p class="hero-desc">專業 DJ 團隊，為您的活動帶來最佳音樂體驗。從 EDM 到嘻哈，從原民音樂到國際流行 — 我們為每個場合打造完美聲音。</p>
             <div class="hero-buttons">
                 <a href="#events" class="btn-primary">近期演出</a>
-                <a href="#djs" class="btn-outline">認識 DJ ↓</a>
+                <a href="artists.html" class="btn-outline">認識 DJ →</a>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -465,115 +408,6 @@
                     <h4>在地連結</h4>
                     <p>紮根花蓮、宜蘭與台北，熟悉在地場館與文化活動生態。</p>
                 </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- DJs Section -->
-    <section id="djs">
-        <div class="container">
-            <p class="section-label">The Crew</p>
-            <h2>我們的 DJ</h2>
-            <div class="dj-grid">
-                <!-- REDSHOU -->
-                <a href="djs/dj1.html" class="dj-card" onclick="return openDJ('dj1')">
-                    <span class="dj-initial">R</span>
-                    <img src="images/djs/redshou.jpg" alt="REDSHOU" class="dj-image" loading="lazy">
-                    <div class="dj-overlay"></div>
-                    <div class="dj-info">
-                        <div class="dj-genres">
-                            <span class="genre-tag">EDM</span>
-                            <span class="genre-tag">Hip-Hop</span>
-                        </div>
-                        <h3 class="dj-name">REDSHOU</h3>
-                        <span class="dj-link">查看詳情 →</span>
-                        <div class="dj-social">
-                            <a href="#" onclick="event.stopPropagation();return false;" title="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" onclick="event.stopPropagation();return false;" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" onclick="event.stopPropagation();return false;" title="SoundCloud"><i class="fab fa-soundcloud"></i></a>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Visin -->
-                <a href="djs/dj2.html" class="dj-card" onclick="return openDJ('dj2')">
-                    <span class="dj-initial">V</span>
-                    <img src="images/djs/visin.jpg" alt="Visin" class="dj-image" loading="lazy">
-                    <div class="dj-overlay"></div>
-                    <div class="dj-info">
-                        <div class="dj-genres">
-                            <span class="genre-tag">Disco</span>
-                            <span class="genre-tag">Amapiano</span>
-                        </div>
-                        <h3 class="dj-name">Visin</h3>
-                        <span class="dj-link">查看詳情 →</span>
-                        <div class="dj-social">
-                            <a href="#" onclick="event.stopPropagation();return false;" title="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" onclick="event.stopPropagation();return false;" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" onclick="event.stopPropagation();return false;" title="SoundCloud"><i class="fab fa-soundcloud"></i></a>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Dinos -->
-                <a href="djs/dj3.html" class="dj-card" onclick="return openDJ('dj3')">
-                    <span class="dj-initial">A</span>
-                    <img src="images/djs/dinos.jpg" alt="Dinos" class="dj-image" loading="lazy">
-                    <div class="dj-overlay"></div>
-                    <div class="dj-info">
-                        <div class="dj-genres">
-                            <span class="genre-tag">Hip-Hop</span>
-                            <span class="genre-tag">R&B</span>
-                        </div>
-                        <h3 class="dj-name">Dinos</h3>
-                        <span class="dj-link">查看詳情 →</span>
-                        <div class="dj-social">
-                            <a href="#" onclick="event.stopPropagation();return false;" title="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" onclick="event.stopPropagation();return false;" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" onclick="event.stopPropagation();return false;" title="SoundCloud"><i class="fab fa-soundcloud"></i></a>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- DINOjin -->
-                <a href="djs/dj4.html" class="dj-card" onclick="return openDJ('dj4')">
-                    <span class="dj-initial">D</span>
-                    <img src="images/djs/dinojin-profile.jpg" alt="DINOjin" class="dj-image" loading="lazy">
-                    <div class="dj-overlay"></div>
-                    <div class="dj-info">
-                        <div class="dj-genres">
-                            <span class="genre-tag">Melodic House</span>
-                            <span class="genre-tag">Peak House</span>
-                        </div>
-                        <h3 class="dj-name">DINOjin</h3>
-                        <span class="dj-link">查看詳情 →</span>
-                        <div class="dj-social">
-                            <a href="#" onclick="event.stopPropagation();return false;" title="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" onclick="event.stopPropagation();return false;" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" onclick="event.stopPropagation();return false;" title="SoundCloud"><i class="fab fa-soundcloud"></i></a>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- AT -->
-                <a href="djs/dj5.html" class="dj-card" onclick="return openDJ('dj5')">
-                    <span class="dj-initial">A</span>
-                    <img src="images/djs/at.jpg" alt="AT" class="dj-image" loading="lazy">
-                    <div class="dj-overlay"></div>
-                    <div class="dj-info">
-                        <div class="dj-genres">
-                            <span class="genre-tag">Funk Disco</span>
-                            <span class="genre-tag">Old School</span>
-                        </div>
-                        <h3 class="dj-name">AT</h3>
-                        <span class="dj-link">查看詳情 →</span>
-                        <div class="dj-social">
-                            <a href="#" onclick="event.stopPropagation();return false;" title="Instagram"><i class="fab fa-instagram"></i></a>
-                            <a href="#" onclick="event.stopPropagation();return false;" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" onclick="event.stopPropagation();return false;" title="SoundCloud"><i class="fab fa-soundcloud"></i></a>
-                        </div>
-                    </div>
-                </a>
             </div>
         </div>
     </section>
@@ -972,57 +806,5 @@
         });
     </script>
 
-    <!-- DJ Modal -->
-    <div class="dj-modal" id="djModal" onclick="if(event.target===this)closeDJ()">
-        <div class="dj-modal-box">
-            <button class="dj-modal-close" onclick="closeDJ()" aria-label="關閉">&times;</button>
-            <div class="dj-modal-photo">
-                <span class="dj-modal-initial" id="djModalInitial"></span>
-                <img id="djModalImg" src="" alt="">
-            </div>
-            <div class="dj-modal-body">
-                <h3 id="djModalName"></h3>
-                <p class="dj-modal-role" id="djModalRole"></p>
-                <p id="djModalBio"></p>
-                <a class="btn-primary" id="djModalLink" href="#">查看完整介紹</a>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const DJ_DATA = {
-            "dj1": { name: "REDSHOU", initial: "R", img: "images/djs/redshou.jpg", role: "EDM · Hip-Hop", bio: "來自花蓮阿美族，將原住民文化的熱情與國際音樂潮流融合，活躍於 ALTA、OMNI 等夜店。" },
-            "dj2": { name: "Visin", initial: "V", img: "images/djs/visin.jpg", role: "Disco · Amapiano", bio: "來自花蓮的阿美族 DJ，專精 Disco 與南非 Amapiano，擅長把原民音樂元素放進現代電子節奏。" },
-            "dj3": { name: "Dinos", initial: "A", img: "images/djs/dinos.jpg", role: "Hip-Hop · R&B", bio: "擅長 Hip-Hop 與 R&B 選曲，長期參與派對與品牌活動演出。" },
-            "dj4": { name: "DINOjin", initial: "D", img: "images/djs/dinojin-profile.jpg", role: "Melodic House", bio: "台灣少數專精 4 軌放歌技術的 DJ 與製作人，2025 年進駐台中 PinkB 擔任駐店 DJ。" },
-            "dj5": { name: "AT", initial: "A", img: "images/djs/at.jpg", role: "Funk Disco · Old School", bio: "音樂派對品牌「pa在路上」主理人，從事 DJ 六年，專精 70-80's Funk Disco 與 Old School Hiphop。" },
-        };
-
-        function openDJ(slug) {
-            const d = DJ_DATA[slug];
-            if (!d) return true;                   // 沒資料就照舊跳頁
-            document.getElementById('djModalName').textContent = d.name;
-            document.getElementById('djModalRole').textContent = d.role;
-            document.getElementById('djModalBio').textContent = d.bio;
-            document.getElementById('djModalInitial').textContent = d.initial;
-            const img = document.getElementById('djModalImg');
-            img.src = d.img; img.alt = d.name;
-            img.onerror = () => { img.style.display = 'none'; };
-            img.style.display = '';
-            document.getElementById('djModalLink').href = 'djs/' + slug + '.html';
-            document.getElementById('djModal').classList.add('open');
-            document.body.style.overflow = 'hidden';
-            return false;                          // 阻止跳頁
-        }
-
-        function closeDJ() {
-            document.getElementById('djModal').classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeDJ();
-        });
-    </script>
 </body>
 </html>
