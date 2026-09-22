@@ -126,60 +126,6 @@
             box-shadow: 0 6px 20px rgba(255, 43, 77, 0.4);
         }
         
-        /* Form Validation Styles */
-        .form-group.error input,
-        .form-group.error textarea,
-        .form-group.error select {
-            border-color: #ff4444;
-        }
-        
-        .form-group.success input,
-        .form-group.success textarea,
-        .form-group.success select {
-            border-color: #44ff44;
-        }
-        
-        .error-message {
-            display: none;
-            color: #ff4444;
-            font-size: 12px;
-            margin-top: 5px;
-            font-family: var(--display-font);
-            letter-spacing: 0.05em;
-        }
-        
-        .form-group.error .error-message {
-            display: block;
-        }
-        
-        .submit-success {
-            display: none;
-            padding: 20px;
-            background: rgba(68, 255, 68, 0.1);
-            border: 1px solid #44ff44;
-            border-radius: 4px;
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        .submit-success.show {
-            display: block;
-        }
-        
-        .submit-error {
-            display: none;
-            padding: 20px;
-            background: rgba(255, 107, 107, 0.08);
-            border: 1px solid #ff6b6b;
-            border-radius: 4px;
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        .submit-error.show {
-            display: block;
-        }
-
         /* ── 服務項目：左右交錯圖文 ── */
         .service-row {
             display: grid; grid-template-columns: 1fr 1fr;
@@ -364,7 +310,6 @@
         </div>
     </section>
     
-    <!-- Stats Strip -->
     <!-- About Section -->
     <section id="about">
         <div class="container">
@@ -509,70 +454,25 @@
         <div class="container">
             <p class="section-label">Contact</p>
             <h2>聯絡我們</h2>
-            <div class="contact-grid">
-                <div>
-                    <form id="bookingForm" novalidate>
-                        <div class="form-group">
-                            <label>您的姓名 <span style="color: var(--accent)">*</span></label>
-                            <input type="text" id="name" name="name" placeholder="請輸入您的姓名" required>
-                            <span class="error-message">請輸入您的姓名</span>
-                        </div>
-                        <div class="form-group">
-                            <label>電子郵件 <span style="color: var(--accent)">*</span></label>
-                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                            <span class="error-message">請輸入有效的電子郵件</span>
-                        </div>
-                        <div class="form-group">
-                            <label>聯絡電話</label>
-                            <input type="tel" id="phone" name="phone" placeholder="0912-345-678">
-                        </div>
-                        <div class="form-group">
-                            <label>活動類型 <span style="color: var(--accent)">*</span></label>
-                            <select id="eventType" name="eventType" required>
-                                <option>請選擇活動類型</option>
-                                <option>企業活動</option>
-                                <option>婚禮派對</option>
-                                <option>夜店演出</option>
-                                <option>音樂節</option>
-                                <option>私人聚會</option>
-                                <option>其他</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>活動日期 <span style="color: var(--accent)">*</span></label>
-                            <input type="date" id="eventDate" name="eventDate" required>
-                            <span class="error-message">請選擇活動日期</span>
-                        </div>
-                        <div class="form-group">
-                            <label>詳細說明</label>
-                            <textarea id="message" name="message" placeholder="請描述您的需求..."></textarea>
-                        </div>
-                        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;">
-                        <button type="submit" class="btn-primary" id="submitBtn" style="width: 100%;">送出詢問</button>
-                        <div class="submit-success" id="submitSuccess">
-                            <p style="color: #44ff44; font-size: 18px; margin-bottom: 10px;">✓ 已送出，感謝您的詢問！</p>
-                            <p style="color: #b3b3ba;">我們會盡快以 Email 回覆您。</p>
-                        </div>
-                        <div class="submit-error" id="submitError">
-                            <p style="color: #ff6b6b; margin-bottom: 6px;">送出失敗，請改用 Email 與我們聯繫：</p>
-                            <a href="mailto:sebulurco@gmail.com" style="color: var(--accent);">sebulurco@gmail.com</a>
-                        </div>
-                    </form>
+            <p class="about-text" style="margin-bottom:52px;">把活動日期、場地與大致需求寄給我們，我們會盡快回覆並提供建議與報價。</p>
+
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <div class="contact-label">電子郵件</div>
+                    <a class="contact-value" href="mailto:sebulurco@gmail.com?subject=%E6%B4%BB%E5%8B%95%20DJ%20%E8%A9%A2%E5%95%8F&body=%E6%B4%BB%E5%8B%95%E6%97%A5%E6%9C%9F%EF%BC%9A%0A%E6%B4%BB%E5%8B%95%E5%9C%B0%E9%BB%9E%EF%BC%9A%0A%E6%B4%BB%E5%8B%95%E9%A1%9E%E5%9E%8B%EF%BC%9A%0A%E9%A0%90%E8%A8%88%E4%BA%BA%E6%95%B8%EF%BC%9A%0A%E9%9C%80%E6%B1%82%E8%AA%AA%E6%98%8E%EF%BC%9A%0A">sebulurco@gmail.com</a>
+                    <p class="contact-note">點擊會自動帶出詢問格式</p>
                 </div>
-                <div class="contact-info">
-                    <h3>聯絡資訊</h3>
-                    <div class="contact-item">
-                        <div class="contact-label">電子郵件</div>
-                        <div class="contact-text">sebulurco@gmail.com</div>
+                <div class="contact-card">
+                    <div class="contact-label">社群媒體</div>
+                    <div class="social-links" style="margin-top: 14px;">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-label">社群媒體</div>
-                        <div class="social-links" style="margin-top: 12px;">
-                            <a href="#" class="social-link">f</a>
-                            <a href="#" class="social-link">ig</a>
-                            <a href="#" class="social-link">yt</a>
-                        </div>
-                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-label">服務範圍</div>
+                    <p class="contact-value-sm">全台皆可接洽，主要活動範圍為台北、宜蘭與花蓮。</p>
                 </div>
             </div>
         </div>
@@ -632,158 +532,6 @@
                 behavior: 'smooth'
             });
         });
-        
-        // ── 預約表單送出設定 ──
-        // 到 https://formspree.io 用 sebulurco@gmail.com 註冊 → New Form → 複製結尾代碼貼在下面
-        // 例如端點是 https://formspree.io/f/abcdwxyz，就把 YOUR_FORM_ID 換成 abcdwxyz
-        const FORMSPREE_ID = 'YOUR_FORM_ID';
-        const CONTACT_EMAIL = 'sebulurco@gmail.com';
-
-        function showResult(ok) {
-            document.getElementById('submitSuccess').classList.toggle('show', ok);
-            document.getElementById('submitError').classList.toggle('show', !ok);
-        }
-
-        async function sendBooking(form, formGroups) {
-            const btn = document.getElementById('submitBtn');
-            const data = new FormData(form);
-            data.append('_subject', 'Sebulur 官網預約詢問');
-
-            // 尚未設定 Formspree 時，改用使用者的信箱軟體寄出，確保訊息不會消失
-            if (FORMSPREE_ID === 'YOUR_FORM_ID') {
-                const body = [
-                    '姓名：' + (data.get('name') || ''),
-                    'Email：' + (data.get('email') || ''),
-                    '電話：' + (data.get('phone') || ''),
-                    '活動類型：' + (data.get('eventType') || ''),
-                    '活動日期：' + (data.get('eventDate') || ''),
-                    '',
-                    '需求說明：',
-                    data.get('message') || ''
-                ].join('\n');
-                window.location.href = 'mailto:' + CONTACT_EMAIL +
-                    '?subject=' + encodeURIComponent('Sebulur 預約詢問') +
-                    '&body=' + encodeURIComponent(body);
-                return;
-            }
-
-            btn.disabled = true;
-            const label = btn.textContent;
-            btn.textContent = '送出中…';
-
-            try {
-                const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
-                    method: 'POST',
-                    body: data,
-                    headers: { Accept: 'application/json' }
-                });
-                if (!res.ok) throw new Error('bad response');
-                showResult(true);
-                form.reset();
-                formGroups.forEach(g => g.classList.remove('success'));
-                setTimeout(() => showResult(false), 6000);
-            } catch (err) {
-                showResult(false);
-                document.getElementById('submitError').classList.add('show');
-            } finally {
-                btn.disabled = false;
-                btn.textContent = label;
-            }
-        }
-
-        // Form Validation
-        const bookingForm = document.getElementById('bookingForm');
-        
-        if (bookingForm) {
-            bookingForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Reset previous validation states
-                const formGroups = bookingForm.querySelectorAll('.form-group');
-                formGroups.forEach(group => {
-                    group.classList.remove('error', 'success');
-                });
-                
-                let isValid = true;
-                
-                // Validate name
-                const nameInput = document.getElementById('name');
-                if (!nameInput.value.trim()) {
-                    nameInput.parentElement.classList.add('error');
-                    isValid = false;
-                } else {
-                    nameInput.parentElement.classList.add('success');
-                }
-                
-                // Validate email
-                const emailInput = document.getElementById('email');
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(emailInput.value)) {
-                    emailInput.parentElement.classList.add('error');
-                    isValid = false;
-                } else {
-                    emailInput.parentElement.classList.add('success');
-                }
-                
-                // Validate event type
-                const eventTypeSelect = document.getElementById('eventType');
-                if (eventTypeSelect.value === '請選擇活動類型' || !eventTypeSelect.value) {
-                    eventTypeSelect.parentElement.classList.add('error');
-                    isValid = false;
-                } else {
-                    eventTypeSelect.parentElement.classList.add('success');
-                }
-                
-                // Validate date
-                const dateInput = document.getElementById('eventDate');
-                if (!dateInput.value) {
-                    dateInput.parentElement.classList.add('error');
-                    isValid = false;
-                } else {
-                    const selectedDate = new Date(dateInput.value);
-                    const today = new Date();
-                    today.setHours(0, 0, 0, 0);
-                    
-                    if (selectedDate < today) {
-                        dateInput.parentElement.classList.add('error');
-                        dateInput.parentElement.querySelector('.error-message').textContent = '請選擇未來的日期';
-                        isValid = false;
-                    } else {
-                        dateInput.parentElement.classList.add('success');
-                    }
-                }
-                
-                if (!isValid) return;
-
-                sendBooking(bookingForm, formGroups);
-            });
-            
-            // Real-time validation
-            const inputs = bookingForm.querySelectorAll('input, select, textarea');
-            inputs.forEach(input => {
-                input.addEventListener('blur', function() {
-                    const formGroup = this.parentElement;
-                    formGroup.classList.remove('error', 'success');
-                    
-                    if (this.hasAttribute('required')) {
-                        if (!this.value.trim()) {
-                            formGroup.classList.add('error');
-                        } else {
-                            if (this.type === 'email') {
-                                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                                if (!emailRegex.test(this.value)) {
-                                    formGroup.classList.add('error');
-                                } else {
-                                    formGroup.classList.add('success');
-                                }
-                            } else {
-                                formGroup.classList.add('success');
-                            }
-                        }
-                    }
-                });
-            });
-        }
         
         // Mobile menu toggle
         function toggleMobileMenu() {
