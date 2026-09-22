@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/anim.css?v=1.0.0">
     <style>
         * {
             box-sizing: border-box;
@@ -730,7 +731,7 @@
         <div class="container">
             <a href="../artists.html" class="back-link">← 返回全部 DJ</a>
             <div class="profile-grid">
-                <div class="profile-image">
+                <div class="profile-image" data-reveal="mask">
                     <span class="profile-initial">V</span>
                     <img src="../images/djs/visin.jpg" alt="Visin" class="profile-photo">
                 </div>
@@ -773,20 +774,20 @@
     <!-- About Section -->
     <section class="bg-dark">
         <div class="container">
-            <p class="section-label">About</p>
-            <h2>關於 Visin</h2>
-            <p class="bio-text">
+            <p class="section-label" data-reveal>About</p>
+            <h2 data-reveal style="--reveal-delay:.08s">關於 Visin</h2>
+            <p class="bio-text" data-reveal="fade">
                 <strong>來自花蓮的阿美族 DJ</strong>，Visin 將原住民音樂元素與現代電子音樂完美融合。專精於 Disco 和南非 Amapiano 風格，創造出獨一無二的音樂體驗。
             </p>
-            <p class="bio-text">
+            <p class="bio-text" data-reveal="fade">
                 Visin 的音樂旅程始於對傳統原住民音樂的熱愛，透過現代電子音樂的詮釋，他將族群文化推向國際舞台。他的 DJ Set 充滿了驚喜，將傳統打擊樂器的節奏與電子音樂的律動完美結合。
             </p>
-            <p class="bio-text">
+            <p class="bio-text" data-reveal="fade">
                 作為台灣少數專精於 Amapiano 風格的 DJ，Visin 經常受邀於各大音樂節演出，包括原住民文化音樂節、國際電子音樂節等。他的演出不僅是音樂的呈現，更是文化的交流與傳承。
             </p>
             
-            <div class="skills-grid">
-                <div class="skill-card">
+            <div class="skills-grid" data-stagger>
+                <div class="skill-card" data-reveal>
                     <h3>音樂風格</h3>
                     <div class="skill-list">
                         <div class="skill-item">
@@ -806,7 +807,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" data-reveal>
                     <h3>專業技能</h3>
                     <div class="skill-list">
                         <div class="skill-item">
@@ -833,30 +834,30 @@
     <!-- Quick Info Section -->
     <section>
         <div class="container">
-            <p class="section-label">Profile</p>
-            <h2>快速資訊</h2>
-            <div class="info-grid">
-                <div class="info-item">
+            <p class="section-label" data-reveal>Profile</p>
+            <h2 data-reveal style="--reveal-delay:.08s">快速資訊</h2>
+            <div class="info-grid" data-stagger>
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">族群</span>
                     <span class="info-value">阿美族</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">家鄉</span>
                     <span class="info-value">花蓮</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">經驗</span>
                     <span class="info-value">6年+</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">演出場次</span>
                     <span class="info-value">500+</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">音樂風格</span>
                     <span class="info-value">Disco, Amapiano</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">語言</span>
                     <span class="info-value">中文、英文、阿美族語</span>
                 </div>
@@ -867,10 +868,10 @@
     <!-- Experience Section -->
     <section class="bg-dark">
         <div class="container">
-            <p class="section-label">Experience</p>
-            <h2>演出經歷</h2>
-            <div class="experience-grid">
-                <div class="exp-column">
+            <p class="section-label" data-reveal>Experience</p>
+            <h2 data-reveal style="--reveal-delay:.08s">演出經歷</h2>
+            <div class="experience-grid" data-stagger>
+                <div class="exp-column" data-reveal>
                     <h3>重要演出</h3>
                     <div class="exp-list">
                         <div class="exp-item">
@@ -895,7 +896,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="exp-column">
+                <div class="exp-column" data-reveal>
                     <h3>合作單位</h3>
                     <div class="exp-list">
                         <div class="exp-item">
@@ -927,19 +928,19 @@
     <!-- Gallery Section -->
     <section>
         <div class="container">
-            <p class="section-label">Gallery</p>
-            <h2>精彩照片</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
+            <p class="section-label" data-reveal>Gallery</p>
+            <h2 data-reveal style="--reveal-delay:.08s">精彩照片</h2>
+            <div class="gallery-grid" data-stagger>
+                <div class="gallery-item" data-reveal="zoom">
                     <img src="../images/gallery/visin-performance-1.jpg" alt="Visin Performance">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" data-reveal="zoom">
                     <img src="../images/gallery/visin-performance-2.jpg" alt="Visin Live Performance">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" data-reveal="zoom">
                     <img src="../images/gallery/visin-performance-3.jpg" alt="Visin Live">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" data-reveal="zoom">
                     <img src="../images/gallery/visin-performance-4.jpg" alt="Visin Performance">
                 </div>
             </div>
@@ -949,10 +950,10 @@
     <!-- Testimonials Section -->
     <section class="bg-dark">
         <div class="container">
-            <p class="section-label">Reviews</p>
-            <h2>客戶評價</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
+            <p class="section-label" data-reveal>Reviews</p>
+            <h2 data-reveal style="--reveal-delay:.08s">客戶評價</h2>
+            <div class="testimonials-grid" data-stagger>
+                <div class="testimonial-card" data-reveal>
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">
                         "Visin 的音樂融合風格太特別了！在我們的婚禮上，他完美地結合了傳統與現代，賓客都讚不絕口。"
@@ -960,7 +961,7 @@
                     <div class="testimonial-author">陳先生 & 林小姐</div>
                     <div class="testimonial-meta">2025年3月 - 戶外婚禮</div>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial-card" data-reveal>
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">
                         "Amapiano 風格配上原住民元素，創造出前所未有的音樂體驗。Visin 是真正的音樂藝術家！"
@@ -990,5 +991,7 @@
         <p class="footer-copyright">© 2026 Sebulur. All rights reserved.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js" defer></script>
+    <script src="../js/anim.js?v=1.0.0" defer></script>
 </body>
 </html>

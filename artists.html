@@ -33,6 +33,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/main.css?v=1.0.0">
+    <link rel="stylesheet" href="css/anim.css?v=1.0.0">
     <style>
         /* ── 頁面載入動畫 ── */
         .page-loader {
@@ -276,22 +277,22 @@
     <!-- Page Hero -->
     <section class="artist-hero">
         <div class="container">
-            <p class="section-label">The Crew</p>
-            <h1>DJ 陣容</h1>
-            <p class="hero-sub">從 EDM、Hip-Hop 到 Disco、Amapiano 與 Melodic House，Sebulur 的每一位 DJ 都有自己的舞池語言。滑過卡片認識他們，點擊看完整介紹。</p>
-            <div class="artist-count">5 位 DJ</div>
+            <p class="section-label" data-reveal>The Crew</p>
+            <h1 data-reveal style="--reveal-delay:.08s">DJ 陣容</h1>
+            <p class="hero-sub" data-reveal style="--reveal-delay:.18s">從 EDM、Hip-Hop 到 Disco、Amapiano 與 Melodic House，Sebulur 的每一位 DJ 都有自己的舞池語言。滑過卡片認識他們，點擊看完整介紹。</p>
+            <div class="artist-count" data-reveal style="--reveal-delay:.26s">5 位 DJ</div>
         </div>
     </section>
 
     <!-- Artist Grid -->
     <section id="artists">
         <div class="container">
-            <div class="artist-grid">
+            <div class="artist-grid" data-stagger>
                 <!-- REDSHOU -->
-                <article class="artist-card">
+                <article class="artist-card" data-reveal>
                     <a class="artist-link" href="djs/dj1.html" aria-label="REDSHOU 個人介紹"></a>
                     <span class="artist-initial">R</span>
-                    <img src="images/djs/redshou.jpg" alt="REDSHOU" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/djs/redshou.jpg" alt="REDSHOU" fetchpriority="high" onerror="this.style.display='none'">
                     <div class="artist-hover">
                         <div class="artist-body">
                             <div class="artist-tags">
@@ -311,10 +312,10 @@
                 </article>
 
                 <!-- Visin -->
-                <article class="artist-card">
+                <article class="artist-card" data-reveal>
                     <a class="artist-link" href="djs/dj2.html" aria-label="Visin 個人介紹"></a>
                     <span class="artist-initial">V</span>
-                    <img src="images/djs/visin.jpg" alt="Visin" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/djs/visin.jpg" alt="Visin" fetchpriority="high" onerror="this.style.display='none'">
                     <div class="artist-hover">
                         <div class="artist-body">
                             <div class="artist-tags">
@@ -334,10 +335,10 @@
                 </article>
 
                 <!-- Dinos -->
-                <article class="artist-card">
+                <article class="artist-card" data-reveal>
                     <a class="artist-link" href="djs/dj3.html" aria-label="Dinos 個人介紹"></a>
                     <span class="artist-initial">D</span>
-                    <img src="images/djs/dinos.jpg" alt="Dinos" loading="lazy" onerror="this.style.display='none'">
+                    <img src="images/djs/dinos.jpg" alt="Dinos" fetchpriority="high" onerror="this.style.display='none'">
                     <div class="artist-hover">
                         <div class="artist-body">
                             <div class="artist-tags">
@@ -357,7 +358,7 @@
                 </article>
 
                 <!-- DINOjin -->
-                <article class="artist-card">
+                <article class="artist-card" data-reveal>
                     <a class="artist-link" href="djs/dj4.html" aria-label="DINOjin 個人介紹"></a>
                     <span class="artist-initial">D</span>
                     <img src="images/djs/dinojin-profile.jpg" alt="DINOjin" loading="lazy" onerror="this.style.display='none'">
@@ -380,7 +381,7 @@
                 </article>
 
                 <!-- AT -->
-                <article class="artist-card">
+                <article class="artist-card" data-reveal>
                     <a class="artist-link" href="djs/dj5.html" aria-label="AT 個人介紹"></a>
                     <span class="artist-initial">A</span>
                     <img src="images/djs/at.jpg" alt="AT" loading="lazy" onerror="this.style.display='none'">
@@ -408,9 +409,9 @@
     <!-- CTA -->
     <section class="artist-cta">
         <div class="container">
-            <p class="section-label">Booking</p>
-            <h2>想找哪一位？</h2>
-            <p>告訴我們活動型態、時間與場地，我們會依現場氛圍推薦最合適的 DJ 組合。</p>
+            <p class="section-label" data-reveal>Booking</p>
+            <h2 data-reveal style="--reveal-delay:.08s">想找哪一位？</h2>
+            <p data-reveal style="--reveal-delay:.16s">告訴我們活動型態、時間與場地，我們會依現場氛圍推薦最合適的 DJ 組合。</p>
             <a href="index.html#contact" class="btn-primary">立即預約</a>
         </div>
     </section>
@@ -473,5 +474,7 @@
             if (e.key === 'Escape') closeMobileMenu();
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js" defer></script>
+    <script src="js/anim.js?v=1.0.0" defer></script>
 </body>
 </html>

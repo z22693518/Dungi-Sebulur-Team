@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/anim.css?v=1.0.0">
     <style>
         * {
             box-sizing: border-box;
@@ -730,7 +731,7 @@
         <div class="container">
             <a href="../artists.html" class="back-link">← 返回全部 DJ</a>
             <div class="profile-grid">
-                <div class="profile-image">
+                <div class="profile-image" data-reveal="mask">
                     <span class="profile-initial">D</span>
                     <img src="../images/djs/dinojin-profile.jpg" alt="DINOjin" class="profile-photo">
                 </div>
@@ -773,20 +774,20 @@
     <!-- About Section -->
     <section class="bg-dark">
         <div class="container">
-            <p class="section-label">About</p>
-            <h2>關於 DINOjin</h2>
-            <p class="bio-text">
+            <p class="section-label" data-reveal>About</p>
+            <h2 data-reveal style="--reveal-delay:.08s">關於 DINOjin</h2>
+            <p class="bio-text" data-reveal="fade">
                 發跡於花蓮，以高質量的音樂製作能力及DJ操作技巧，加上充滿派對感的MC喊麥技術獲得業界人物讚賞。是目前少數有在獨立經營YouTube頻道的DJ及音樂製作人，同時是台灣少數專精4軌放歌技術的DJ。
             </p>
-            <p class="bio-text">
+            <p class="bio-text" data-reveal="fade">
                 也因此得到北流Pioneer DJ長期合作機會，並在2025年發佈了原民風個人單曲「Kuya」以及Latin House風格的Boom Boom Pow Remake單曲。兩首單曲皆廣受業界DJ及製作人好評，其中Boom Boom Pow Remake更是收穫共8000次觀看及近千次下載。
             </p>
-            <p class="bio-text">
+            <p class="bio-text" data-reveal="fade">
                 2025年也成功獲得YouTube官方合作音樂藝人認證商標。過去也有在社團任聘導師、在大學進行公開演講等經歷。現今則專注於影像作品及YouTube頻道經營及推動新生代DJ，並在2025年進駐台中PinkB擔任駐店DJ。
             </p>
             
-            <div class="skills-grid">
-                <div class="skill-card">
+            <div class="skills-grid" data-stagger>
+                <div class="skill-card" data-reveal>
                     <h3>音樂風格</h3>
                     <div class="skill-list">
                         <div class="skill-item">
@@ -806,7 +807,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" data-reveal>
                     <h3>專業設備</h3>
                     <div class="skill-list">
                         <div class="skill-item">
@@ -833,30 +834,30 @@
     <!-- Quick Info Section -->
     <section>
         <div class="container">
-            <p class="section-label">Profile</p>
-            <h2>快速資訊</h2>
-            <div class="info-grid">
-                <div class="info-item">
+            <p class="section-label" data-reveal>Profile</p>
+            <h2 data-reveal style="--reveal-delay:.08s">快速資訊</h2>
+            <div class="info-grid" data-stagger>
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">經驗</span>
                     <span class="info-value">4年</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">演出場次</span>
                     <span class="info-value">150+</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">音樂風格</span>
                     <span class="info-value">Melodic House / Peak House</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">語言</span>
                     <span class="info-value">中文、英文</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">服務地區</span>
                     <span class="info-value">台北、台中</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">基本費用</span>
                     <span class="info-value">NT$ 18,000 起</span>
                 </div>
@@ -867,10 +868,10 @@
     <!-- Experience Section -->
     <section class="bg-dark">
         <div class="container">
-            <p class="section-label">Experience</p>
-            <h2>演出經歷</h2>
-            <div class="experience-grid">
-                <div class="exp-column">
+            <p class="section-label" data-reveal>Experience</p>
+            <h2 data-reveal style="--reveal-delay:.08s">演出經歷</h2>
+            <div class="experience-grid" data-stagger>
+                <div class="exp-column" data-reveal>
                     <h3>音樂節演出</h3>
                     <div class="exp-list">
                         <div class="exp-item">
@@ -895,7 +896,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="exp-column">
+                <div class="exp-column" data-reveal>
                     <h3>夜店駐場</h3>
                     <div class="exp-list">
                         <div class="exp-item">
@@ -927,19 +928,19 @@
     <!-- Gallery Section -->
     <section>
         <div class="container">
-            <p class="section-label">Gallery</p>
-            <h2>精彩照片</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
+            <p class="section-label" data-reveal>Gallery</p>
+            <h2 data-reveal style="--reveal-delay:.08s">精彩照片</h2>
+            <div class="gallery-grid" data-stagger>
+                <div class="gallery-item" data-reveal="zoom">
                     <img src="../images/gallery/dinojin-gallery-1.jpg" alt="DINOjin Performance 1">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" data-reveal="zoom">
                     <img src="../images/gallery/dinojin-gallery-2.jpg" alt="DINOjin Performance 2">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" data-reveal="zoom">
                     <img src="../images/gallery/dinojin-gallery-3.jpg" alt="DINOjin Performance 3">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" data-reveal="zoom">
                     <video controls style="width: 100%; height: 100%; object-fit: contain;">
                         <source src="../images/gallery/dinojin-performance-compressed.mp4" type="video/mp4">
                         您的瀏覽器不支援影片播放。
@@ -952,10 +953,10 @@
     <!-- Testimonials Section -->
     <section class="bg-dark">
         <div class="container">
-            <p class="section-label">Reviews</p>
-            <h2>客戶評價</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
+            <p class="section-label" data-reveal>Reviews</p>
+            <h2 data-reveal style="--reveal-delay:.08s">客戶評價</h2>
+            <div class="testimonials-grid" data-stagger>
+                <div class="testimonial-card" data-reveal>
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">
                         "DINOjin的4軌混音技術令人驚艷！他在我們的音樂節上展現了驚人的混音功力，每一個過渡都完美無瑕，現場氣氛超級熱烈！"
@@ -963,7 +964,7 @@
                     <div class="testimonial-author">林小姐</div>
                     <div class="testimonial-meta">2025年3月 - 花蓮音樂節</div>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial-card" data-reveal>
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">
                         "從YouTube看到DINOjin的表演就被吸引了！現場演出更是超乎期待，他的Melodic House和Peak House選曲真的太適合派對了！"
@@ -993,5 +994,7 @@
         <p class="footer-copyright">© 2026 Sebulur. All rights reserved.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js" defer></script>
+    <script src="../js/anim.js?v=1.0.0" defer></script>
 </body>
 </html>

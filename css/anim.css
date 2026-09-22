@@ -1,0 +1,81 @@
+/* Sebulur - 捲動動效 */
+/* Version: 1.0.0 */
+
+/* ── Lenis 平滑捲動需要的樣式 ── */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+/* ── 進場動畫 ── */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+        opacity 0.55s cubic-bezier(0.22, 0.75, 0.3, 1),
+        transform 0.55s cubic-bezier(0.22, 0.75, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0s);
+    will-change: opacity, transform;
+}
+
+[data-reveal="fade"] {
+    transform: none;
+}
+
+[data-reveal="left"] {
+    transform: translateX(-24px);
+}
+
+[data-reveal="right"] {
+    transform: translateX(24px);
+}
+
+[data-reveal="zoom"] {
+    transform: scale(0.96);
+}
+
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* 圖片由下往上揭開 */
+[data-reveal="mask"] {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 0.7s cubic-bezier(0.22, 0.75, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0s);
+}
+
+[data-reveal="mask"].is-visible {
+    clip-path: inset(0 0 0 0);
+}
+
+/* 動畫結束後移除 will-change，避免長期佔用繪圖資源 */
+[data-reveal].is-settled {
+    will-change: auto;
+}
+
+/* ── 使用者要求減少動態時全部關閉 ── */
+@media (prefers-reduced-motion: reduce) {
+    [data-reveal],
+    [data-reveal].is-visible {
+        opacity: 1 !important;
+        transform: none !important;
+        clip-path: none !important;
+        transition: none !important;
+    }
+}

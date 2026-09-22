@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/anim.css?v=1.0.0">
     <style>
         * {
             box-sizing: border-box;
@@ -730,7 +731,7 @@
         <div class="container">
             <a href="../artists.html" class="back-link">← 返回全部 DJ</a>
             <div class="profile-grid">
-                <div class="profile-image">
+                <div class="profile-image" data-reveal="mask">
                     <span class="profile-initial">D</span>
                     <img src="../images/djs/dinos.jpg" alt="Dinos" class="profile-photo">
                 </div>
@@ -774,20 +775,20 @@
     <!-- About Section -->
     <section class="bg-dark">
         <div class="container">
-            <p class="section-label">About</p>
-            <h2>關於 Dinos</h2>
-            <p class="bio-text">
+            <p class="section-label" data-reveal>About</p>
+            <h2 data-reveal style="--reveal-delay:.08s">關於 Dinos</h2>
+            <p class="bio-text" data-reveal="fade">
                 來自台東的阿美族 Dinos，外表無法掩蓋的 Hip-Hop 底氣，血液裡蘊藏濃厚的 R&B 氣息，他的品味遊走在各個年代。現場 Mic control 能量讓派對為之瘋狂，以 scratch 感受現場氣氛快速切換曲風，直到你的現實動態佔滿他的身影。
             </p>
-            <p class="bio-text">
+            <p class="bio-text" data-reveal="fade">
                 Dinos 因嘻哈文化影響曾是 B-boy，也加入台中嘻哈福音饒舌團體 Flawless Music，團內負責饒舌創作 DJ，受邀各地區表演活動黑門音樂祭、Oceanworship、原住民文化音樂節、婚禮DJ，眾多表演經驗下也擔任 Party MC 街舞 Free style battle Host。
             </p>
-            <p class="bio-text">
+            <p class="bio-text" data-reveal="fade">
                 經常活躍於台中 Afro party，和來自南非的派對主理人有深厚連結，在 Amapiano 曲風沐浴之下，嘗試鑽研電子音樂 GQOM 與台灣原住民元素做結合，碰撞出新火花。
             </p>
             
-            <div class="skills-grid">
-                <div class="skill-card">
+            <div class="skills-grid" data-stagger>
+                <div class="skill-card" data-reveal>
                     <h3>音樂風格</h3>
                     <div class="skill-list">
                         <div class="skill-item">
@@ -807,7 +808,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="skill-card">
+                <div class="skill-card" data-reveal>
                     <h3>專業技能</h3>
                     <div class="skill-list">
                         <div class="skill-item">
@@ -834,30 +835,30 @@
     <!-- Quick Info Section -->
     <section>
         <div class="container">
-            <p class="section-label">Profile</p>
-            <h2>快速資訊</h2>
-            <div class="info-grid">
-                <div class="info-item">
+            <p class="section-label" data-reveal>Profile</p>
+            <h2 data-reveal style="--reveal-delay:.08s">快速資訊</h2>
+            <div class="info-grid" data-stagger>
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">經驗</span>
                     <span class="info-value">5年</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">演出場次</span>
                     <span class="info-value">200+</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">音樂風格</span>
                     <span class="info-value">Hip-Hop / R&B</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">語言</span>
                     <span class="info-value">中文、英文</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">服務地區</span>
                     <span class="info-value">全台灣</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item" data-reveal="fade">
                     <span class="info-label">基本費用</span>
                     <span class="info-value">NT$ 20,000 起</span>
                 </div>
@@ -868,10 +869,10 @@
     <!-- Experience Section -->
     <section class="bg-dark">
         <div class="container">
-            <p class="section-label">Experience</p>
-            <h2>演出經歷</h2>
-            <div class="experience-grid">
-                <div class="exp-column">
+            <p class="section-label" data-reveal>Experience</p>
+            <h2 data-reveal style="--reveal-delay:.08s">演出經歷</h2>
+            <div class="experience-grid" data-stagger>
+                <div class="exp-column" data-reveal>
                     <h3>音樂節 & 活動</h3>
                     <div class="exp-list">
                         <div class="exp-item">
@@ -896,7 +897,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="exp-column">
+                <div class="exp-column" data-reveal>
                     <h3>派對 & 活動</h3>
                     <div class="exp-list">
                         <div class="exp-item">
@@ -928,19 +929,19 @@
     <!-- Gallery Section -->
     <section>
         <div class="container">
-            <p class="section-label">Gallery</p>
-            <h2>精彩照片</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
+            <p class="section-label" data-reveal>Gallery</p>
+            <h2 data-reveal style="--reveal-delay:.08s">精彩照片</h2>
+            <div class="gallery-grid" data-stagger>
+                <div class="gallery-item" data-reveal="zoom">
                     <img src="../images/gallery/dinos-performance-1.jpg" alt="Dinos Performance">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" data-reveal="zoom">
                     <img src="../images/gallery/dinos-performance-2.jpg" alt="Dinos Live">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" data-reveal="zoom">
                     <img src="../images/gallery/dinos-performance-3.jpg" alt="Dinos Scratch">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item" data-reveal="zoom">
                     <img src="../images/gallery/dinos-performance-4.jpg" alt="Dinos Party">
                 </div>
             </div>
@@ -950,10 +951,10 @@
     <!-- Testimonials Section -->
     <section class="bg-dark">
         <div class="container">
-            <p class="section-label">Reviews</p>
-            <h2>客戶評價</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
+            <p class="section-label" data-reveal>Reviews</p>
+            <h2 data-reveal style="--reveal-delay:.08s">客戶評價</h2>
+            <div class="testimonials-grid" data-stagger>
+                <div class="testimonial-card" data-reveal>
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">
                         "Dinos 的 Hip-Hop 和 R&B 混音太厲害了！他的 scratch 技巧讓全場都瘋狂，街舞 Battle 的音樂掌控更是一流，每個 dancer 都能找到自己的 groove。"
@@ -961,7 +962,7 @@
                     <div class="testimonial-author">陳先生</div>
                     <div class="testimonial-meta">2025年3月 - 街舞 Battle</div>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial-card" data-reveal>
                     <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">
                         "Dinos 不只是 DJ，更是個出色的 MC！他的主持功力讓整個 Afro Party 氣氛超嗨，Amapiano 和 GQOM 的選曲讓大家從頭跳到尾，真的是台中最棒的 Afro DJ！"
@@ -991,5 +992,7 @@
         <p class="footer-copyright">© 2026 Sebulur. All rights reserved.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js" defer></script>
+    <script src="../js/anim.js?v=1.0.0" defer></script>
 </body>
 </html>

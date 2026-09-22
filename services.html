@@ -26,6 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/main.css?v=1.0.0">
+    <link rel="stylesheet" href="css/anim.css?v=1.0.0">
     <style>
         /* ── 頁首大標 ── */
         .page-hero {
@@ -105,43 +106,6 @@
         .step-card h4 { font-family: var(--display-font); font-size: 20px; margin-bottom: 10px; }
         .step-card p { color: rgba(255, 255, 255, 0.6); font-size: 14.5px; }
 
-        /* ── 方案 ── */
-        .plan-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 24px; margin-top: 52px;
-        }
-        .plan-card {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: #0f0f14; padding: 38px 30px 34px;
-            display: flex; flex-direction: column;
-            transition: border-color .3s ease, transform .3s ease;
-        }
-        .plan-card:hover { transform: translateY(-5px); }
-        .plan-card.featured { border-color: var(--accent); }
-        .plan-badge {
-            display: inline-block; align-self: flex-start;
-            background: var(--accent); color: #fff;
-            font-family: var(--display-font); font-size: 11px;
-            letter-spacing: 0.18em; text-transform: uppercase;
-            padding: 5px 12px; margin-bottom: 16px;
-        }
-        .plan-name {
-            font-family: var(--display-font); font-size: 22px;
-            letter-spacing: 0.06em; margin-bottom: 8px;
-        }
-        .plan-price {
-            font-family: var(--display-font); font-size: 38px; font-weight: 700;
-            color: var(--accent); line-height: 1.1;
-        }
-        .plan-unit { color: #5f5f6a; font-size: 14px; margin-bottom: 26px; }
-        .plan-list { list-style: none; padding: 0; display: grid; gap: 12px; margin-bottom: 30px; flex: 1; }
-        .plan-list li {
-            display: flex; gap: 11px; align-items: baseline;
-            color: rgba(255, 255, 255, 0.72); font-size: 14.5px;
-        }
-        .plan-list li i { color: var(--accent); font-size: 12px; flex: none; }
-        .plan-list li.off { color: #4d4d57; }
-        .plan-list li.off i { color: #3a3a44; }
         .plan-note {
             margin-top: 34px; color: #5f5f6a; font-size: 14px;
             border-left: 2px solid rgba(255, 255, 255, 0.12); padding-left: 16px;
@@ -158,7 +122,6 @@
         @media (max-width: 960px) {
             .svc-grid { grid-template-columns: 1fr; }
             .step-grid { grid-template-columns: repeat(2, 1fr); }
-            .plan-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 600px) {
             .page-hero { padding: 150px 6vw 60px; }
@@ -211,23 +174,23 @@
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="container">
-            <p class="section-label">Services</p>
-            <h1>服務項目</h1>
-            <p class="hero-sub">從單場 DJ 到整場活動的音樂規劃。依你的場地、預算與客群量身安排，現場控場到器材配置都能一併處理。</p>
+            <p class="section-label" data-reveal>Services</p>
+            <h1 data-reveal style="--reveal-delay:.08s">服務項目</h1>
+            <p class="hero-sub" data-reveal style="--reveal-delay:.18s">從單場 DJ 到整場活動的音樂規劃。依你的場地、預算與客群量身安排，現場控場到器材配置都能一併處理。</p>
         </div>
     </section>
 
     <!-- Service Categories -->
     <section id="categories">
         <div class="container">
-            <p class="section-label">What We Do</p>
-            <h2>四大服務類別</h2>
+            <p class="section-label" data-reveal>What We Do</p>
+            <h2 data-reveal style="--reveal-delay:.08s">四大服務類別</h2>
 
-            <div class="svc-grid">
-                <article class="svc-card">
+            <div class="svc-grid" data-stagger>
+                <article class="svc-card" data-reveal>
                     <div class="svc-media">
                         <span class="svc-no">01</span>
-                        <img src="images/gallery/dinos-performance-4.jpg" alt="企業活動 DJ" loading="lazy">
+                        <img src="images/gallery/dinos-performance-4.jpg" alt="企業活動 DJ" fetchpriority="high">
                     </div>
                     <div class="svc-body">
                         <h3>企業活動</h3>
@@ -247,10 +210,10 @@
                     </div>
                 </article>
 
-                <article class="svc-card">
+                <article class="svc-card" data-reveal>
                     <div class="svc-media">
                         <span class="svc-no">02</span>
-                        <img src="images/gallery/dinos-performance-1.jpg" alt="婚禮派對 DJ" loading="lazy">
+                        <img src="images/gallery/dinos-performance-1.jpg" alt="婚禮派對 DJ" fetchpriority="high">
                     </div>
                     <div class="svc-body">
                         <h3>婚禮派對</h3>
@@ -270,7 +233,7 @@
                     </div>
                 </article>
 
-                <article class="svc-card">
+                <article class="svc-card" data-reveal>
                     <div class="svc-media">
                         <span class="svc-no">03</span>
                         <img src="images/gallery/alta-performance.jpg" alt="夜店活動 DJ" loading="lazy">
@@ -293,7 +256,7 @@
                     </div>
                 </article>
 
-                <article class="svc-card">
+                <article class="svc-card" data-reveal>
                     <div class="svc-media">
                         <span class="svc-no">04</span>
                         <img src="images/gallery/dinojin-gallery-2.jpg" alt="私人聚會 DJ" loading="lazy">
@@ -322,25 +285,25 @@
     <!-- Process -->
     <section id="process">
         <div class="container">
-            <p class="section-label">Process</p>
-            <h2>服務流程</h2>
-            <div class="step-grid">
-                <div class="step-card">
+            <p class="section-label" data-reveal>Process</p>
+            <h2 data-reveal style="--reveal-delay:.08s">服務流程</h2>
+            <div class="step-grid" data-stagger>
+                <div class="step-card" data-reveal>
                     <div class="step-num">01</div>
                     <h4>初步諮詢</h4>
                     <p>了解活動型態、場地、時間與預算範圍。</p>
                 </div>
-                <div class="step-card">
+                <div class="step-card" data-reveal>
                     <div class="step-num">02</div>
                     <h4>制定方案</h4>
                     <p>依需求推薦適合的 DJ 與器材配置，提供報價。</p>
                 </div>
-                <div class="step-card">
+                <div class="step-card" data-reveal>
                     <div class="step-num">03</div>
                     <h4>確認合作</h4>
                     <p>簽訂合約、確定細節與歌單方向，必要時場勘。</p>
                 </div>
-                <div class="step-card">
+                <div class="step-card" data-reveal>
                     <div class="step-num">04</div>
                     <h4>現場演出</h4>
                     <p>提前進場架設與試音，全程依現場氣氛控場。</p>
@@ -349,67 +312,46 @@
         </div>
     </section>
 
-    <!-- Plans -->
+    <!-- Pricing note -->
     <section id="plans">
         <div class="container">
-            <p class="section-label">Plans</p>
-            <h2>服務方案</h2>
+            <p class="section-label" data-reveal>Pricing</p>
+            <h2 data-reveal style="--reveal-delay:.08s">報價方式</h2>
+            <p class="about-text" data-reveal style="--reveal-delay:.16s;margin-bottom:52px;">每場活動的條件差異大，我們採個案報價，不設固定價目表。</p>
 
-            <div class="plan-grid">
-                <div class="plan-card">
-                    <p class="plan-name">基本方案</p>
-                    <p class="plan-price">NT$ 15,000</p>
-                    <p class="plan-unit">起 / 3 小時</p>
-                    <ul class="plan-list">
-                        <li><i class="fas fa-check"></i> 專業 DJ</li>
-                        <li><i class="fas fa-check"></i> 基本音響設備</li>
-                        <li><i class="fas fa-check"></i> 歌單規劃</li>
-                        <li class="off"><i class="fas fa-times"></i> 燈光效果</li>
-                        <li class="off"><i class="fas fa-times"></i> 主持服務</li>
-                    </ul>
-                    <a href="index.html#contact" class="btn-outline">來信詢問</a>
+            <div class="step-grid" data-stagger>
+                <div class="step-card" data-reveal>
+                    <div class="step-num">01</div>
+                    <h4>演出時長</h4>
+                    <p>場次長度與是否需要多組 DJ 輪替。</p>
                 </div>
-
-                <div class="plan-card featured">
-                    <span class="plan-badge">最多人選擇</span>
-                    <p class="plan-name">專業方案</p>
-                    <p class="plan-price">NT$ 25,000</p>
-                    <p class="plan-unit">起 / 4 小時</p>
-                    <ul class="plan-list">
-                        <li><i class="fas fa-check"></i> 專業 DJ</li>
-                        <li><i class="fas fa-check"></i> 高階音響設備</li>
-                        <li><i class="fas fa-check"></i> 客製化歌單</li>
-                        <li><i class="fas fa-check"></i> 基本燈光效果</li>
-                        <li><i class="fas fa-check"></i> 簡單主持</li>
-                    </ul>
-                    <a href="index.html#contact" class="btn-primary">來信詢問</a>
+                <div class="step-card" data-reveal>
+                    <div class="step-num">02</div>
+                    <h4>器材需求</h4>
+                    <p>場地是否已有音響，需不需要我們帶設備與燈光。</p>
                 </div>
-
-                <div class="plan-card">
-                    <p class="plan-name">豪華方案</p>
-                    <p class="plan-price">NT$ 40,000</p>
-                    <p class="plan-unit">起 / 5 小時</p>
-                    <ul class="plan-list">
-                        <li><i class="fas fa-check"></i> 資深 DJ</li>
-                        <li><i class="fas fa-check"></i> 頂級音響設備</li>
-                        <li><i class="fas fa-check"></i> 完全客製化</li>
-                        <li><i class="fas fa-check"></i> 專業燈光秀</li>
-                        <li><i class="fas fa-check"></i> 全程主持</li>
-                    </ul>
-                    <a href="index.html#contact" class="btn-outline">來信詢問</a>
+                <div class="step-card" data-reveal>
+                    <div class="step-num">03</div>
+                    <h4>活動規模</h4>
+                    <p>場地大小、參加人數與流程複雜度。</p>
+                </div>
+                <div class="step-card" data-reveal>
+                    <div class="step-num">04</div>
+                    <h4>時段與地點</h4>
+                    <p>檔期熱門度、跨縣市車程與進退場時間。</p>
                 </div>
             </div>
 
-            <p class="plan-note">以上為參考價，實際費用依場地條件、器材需求、時段與車程調整。超時、加開設備或跨縣市演出會另行報價，請來信詢問。</p>
+            <p class="plan-note" data-reveal="fade">把上面四項的大致資訊寄給我們，通常一至兩個工作天內會回覆報價與建議配置。</p>
         </div>
     </section>
 
     <!-- CTA -->
     <section class="page-cta">
         <div class="container">
-            <p class="section-label">Booking</p>
-            <h2>還不確定要哪一種？</h2>
-            <p>把活動日期、場地與大致人數寄給我們，我們會依現場條件推薦最合適的組合。</p>
+            <p class="section-label" data-reveal>Booking</p>
+            <h2 data-reveal style="--reveal-delay:.08s">還不確定要哪一種？</h2>
+            <p data-reveal style="--reveal-delay:.16s">把活動日期、場地與大致人數寄給我們，我們會依現場條件推薦最合適的組合。</p>
             <a href="index.html#contact" class="btn-primary">聯絡我們</a>
         </div>
     </section>
@@ -449,5 +391,7 @@
             if (e.key === 'Escape') closeMobileMenu();
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js" defer></script>
+    <script src="js/anim.js?v=1.0.0" defer></script>
 </body>
 </html>
