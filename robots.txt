@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://z22693518.github.io/Dungi-Sebulur-Team/sitemap.xml

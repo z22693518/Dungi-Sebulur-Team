@@ -579,14 +579,14 @@ h2 {
     .gallery-play { width: 48px; height: 48px; margin: -24px 0 0 -24px; font-size: 15px; }
 }
 
-.gallery-empty {
+.empty-state {
     margin-top: 52px;
     padding: 90px 30px;
     border: 1px dashed rgba(255, 255, 255, 0.12);
     text-align: center;
 }
 
-.gallery-empty p {
+.empty-state p {
     color: #5f5f6a;
     font-size: 15px;
     letter-spacing: 0.04em;
