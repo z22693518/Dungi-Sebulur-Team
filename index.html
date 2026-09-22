@@ -163,6 +163,20 @@
         .submit-success.show {
             display: block;
         }
+        
+        .submit-error {
+            display: none;
+            padding: 20px;
+            background: rgba(255, 107, 107, 0.08);
+            border: 1px solid #ff6b6b;
+            border-radius: 4px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .submit-error.show {
+            display: block;
+        }
 
         /* ── 服務項目：左右交錯圖文 ── */
         .service-row {
@@ -565,6 +579,10 @@
                             <span class="error-message">請輸入有效的電子郵件</span>
                         </div>
                         <div class="form-group">
+                            <label>聯絡電話</label>
+                            <input type="tel" id="phone" name="phone" placeholder="0912-345-678">
+                        </div>
+                        <div class="form-group">
                             <label>活動類型 <span style="color: var(--accent)">*</span></label>
                             <select id="eventType" name="eventType" required>
                                 <option>請選擇活動類型</option>
@@ -585,10 +603,15 @@
                             <label>詳細說明</label>
                             <textarea id="message" name="message" placeholder="請描述您的需求..."></textarea>
                         </div>
-                        <button type="submit" class="btn-primary" style="width: 100%;">送出詢問</button>
+                        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;">
+                        <button type="submit" class="btn-primary" id="submitBtn" style="width: 100%;">送出詢問</button>
                         <div class="submit-success" id="submitSuccess">
-                            <p style="color: #44ff44; font-size: 18px; margin-bottom: 10px;">✓ 表單已成功送出！</p>
-                            <p style="color: #b3b3ba;">我們會在 24 小時內與您聯繫。</p>
+                            <p style="color: #44ff44; font-size: 18px; margin-bottom: 10px;">✓ 已送出，感謝您的詢問！</p>
+                            <p style="color: #b3b3ba;">我們會盡快以 Email 回覆您。</p>
+                        </div>
+                        <div class="submit-error" id="submitError">
+                            <p style="color: #ff6b6b; margin-bottom: 6px;">送出失敗，請改用 Email 與我們聯繫：</p>
+                            <a href="mailto:sebulurco@gmail.com" style="color: var(--accent);">sebulurco@gmail.com</a>
                         </div>
                     </form>
                 </div>
@@ -666,6 +689,64 @@
             });
         });
         
+        // ── 預約表單送出設定 ──
+        // 到 https://formspree.io 用 sebulurco@gmail.com 註冊 → New Form → 複製結尾代碼貼在下面
+        // 例如端點是 https://formspree.io/f/abcdwxyz，就把 YOUR_FORM_ID 換成 abcdwxyz
+        const FORMSPREE_ID = 'YOUR_FORM_ID';
+        const CONTACT_EMAIL = 'sebulurco@gmail.com';
+
+        function showResult(ok) {
+            document.getElementById('submitSuccess').classList.toggle('show', ok);
+            document.getElementById('submitError').classList.toggle('show', !ok);
+        }
+
+        async function sendBooking(form, formGroups) {
+            const btn = document.getElementById('submitBtn');
+            const data = new FormData(form);
+            data.append('_subject', 'Sebulur 官網預約詢問');
+
+            // 尚未設定 Formspree 時，改用使用者的信箱軟體寄出，確保訊息不會消失
+            if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+                const body = [
+                    '姓名：' + (data.get('name') || ''),
+                    'Email：' + (data.get('email') || ''),
+                    '電話：' + (data.get('phone') || ''),
+                    '活動類型：' + (data.get('eventType') || ''),
+                    '活動日期：' + (data.get('eventDate') || ''),
+                    '',
+                    '需求說明：',
+                    data.get('message') || ''
+                ].join('\n');
+                window.location.href = 'mailto:' + CONTACT_EMAIL +
+                    '?subject=' + encodeURIComponent('Sebulur 預約詢問') +
+                    '&body=' + encodeURIComponent(body);
+                return;
+            }
+
+            btn.disabled = true;
+            const label = btn.textContent;
+            btn.textContent = '送出中…';
+
+            try {
+                const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+                    method: 'POST',
+                    body: data,
+                    headers: { Accept: 'application/json' }
+                });
+                if (!res.ok) throw new Error('bad response');
+                showResult(true);
+                form.reset();
+                formGroups.forEach(g => g.classList.remove('success'));
+                setTimeout(() => showResult(false), 6000);
+            } catch (err) {
+                showResult(false);
+                document.getElementById('submitError').classList.add('show');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = label;
+            }
+        }
+
         // Form Validation
         const bookingForm = document.getElementById('bookingForm');
         
@@ -728,20 +809,9 @@
                     }
                 }
                 
-                // If form is valid, show success message
-                if (isValid) {
-                    const successDiv = document.getElementById('submitSuccess');
-                    successDiv.classList.add('show');
-                    
-                    // Reset form after 3 seconds
-                    setTimeout(() => {
-                        bookingForm.reset();
-                        formGroups.forEach(group => {
-                            group.classList.remove('success');
-                        });
-                        successDiv.classList.remove('show');
-                    }, 3000);
-                }
+                if (!isValid) return;
+
+                sendBooking(bookingForm, formGroups);
             });
             
             // Real-time validation
