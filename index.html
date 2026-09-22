@@ -28,6 +28,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/main.css?v=1.0.0">
     <style>
         /* Page-specific styles only */
@@ -217,6 +218,57 @@
             .feature-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
+        /* ── 相簿燈箱 ── */
+        .lightbox {
+            position: fixed; inset: 0; z-index: 3000; display: none;
+            align-items: center; justify-content: center;
+            background: rgba(5, 5, 8, 0.95); backdrop-filter: blur(8px);
+        }
+        .lightbox.open { display: flex; animation: lbFade .25s ease; }
+        @keyframes lbFade { from { opacity: 0 } to { opacity: 1 } }
+        .lightbox-stage {
+            position: relative; max-width: 92vw; max-height: 82vh;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .lightbox-stage img,
+        .lightbox-stage video {
+            max-width: 92vw; max-height: 82vh;
+            display: block; background: #000;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+            animation: lbZoom .3s cubic-bezier(.2, .7, .3, 1);
+        }
+        @keyframes lbZoom { from { opacity: 0; transform: scale(.96) } to { opacity: 1; transform: none } }
+        .lightbox-caption {
+            position: absolute; left: 0; right: 0; bottom: 26px;
+            text-align: center; color: rgba(255, 255, 255, 0.75);
+            font-family: var(--display-font); font-size: 14px; letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+        .lightbox-count {
+            position: absolute; top: 26px; left: 30px;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: var(--display-font); font-size: 13px; letter-spacing: 0.2em;
+        }
+        .lightbox-close, .lightbox-nav {
+            position: absolute; z-index: 5;
+            width: 52px; height: 52px; border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.04); color: #fff;
+            display: grid; place-items: center; cursor: pointer;
+            font-size: 18px; transition: background .25s, border-color .25s, transform .25s;
+        }
+        .lightbox-close:hover, .lightbox-nav:hover {
+            background: var(--accent); border-color: var(--accent); transform: scale(1.06);
+        }
+        .lightbox-close { top: 22px; right: 26px; font-size: 22px; }
+        .lightbox-nav.prev { left: 26px; top: 50%; margin-top: -26px; }
+        .lightbox-nav.next { right: 26px; top: 50%; margin-top: -26px; }
+        @media (max-width: 768px) {
+            .lightbox-nav { width: 44px; height: 44px; }
+            .lightbox-nav.prev { left: 10px; }
+            .lightbox-nav.next { right: 10px; }
+            .lightbox-caption { font-size: 12px; bottom: 16px; }
+        }
     </style>
 </head>
 <body>
@@ -487,43 +539,48 @@
         <div class="container">
             <p class="section-label">Gallery</p>
             <h2>活動花絮</h2>
+            <p class="about-text" style="margin-bottom:52px;">現場、後台與舞池。點任一張看大圖，影片會在點擊後才載入。</p>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <i class="fas fa-image"></i>
-                        <span>活動照片 1</span>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <i class="fas fa-image"></i>
-                        <span>活動照片 2</span>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <i class="fas fa-image"></i>
-                        <span>活動照片 3</span>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <i class="fas fa-image"></i>
-                        <span>活動照片 4</span>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <i class="fas fa-image"></i>
-                        <span>活動照片 5</span>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-placeholder">
-                        <i class="fas fa-image"></i>
-                        <span>活動照片 6</span>
-                    </div>
-                </div>
+                <figure class="gallery-item g-wide" data-type="image" data-src="images/gallery/redshou-performance-3.jpg" data-caption="REDSHOU · 現場演出">
+                    <img src="images/gallery/redshou-performance-3.jpg" alt="REDSHOU 現場演出" loading="lazy" width="2000" height="1333">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
+                <figure class="gallery-item g-tall" data-type="image" data-src="images/gallery/visin-performance-3.jpg" data-caption="Visin · 現場演出">
+                    <img src="images/gallery/visin-performance-3.jpg" alt="Visin 現場演出" loading="lazy" width="959" height="1705">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
+                <figure class="gallery-item" data-type="video" data-src="images/gallery/redshou-video-2.mp4" data-caption="REDSHOU · 演出片段">
+                    <img src="images/gallery/omni-performance.jpg" alt="REDSHOU 演出片段" loading="lazy" width="1567" height="1045">
+                    <span class="gallery-play"><i class="fas fa-play"></i></span>
+                </figure>
+                <figure class="gallery-item" data-type="image" data-src="images/gallery/dinos-performance-3.jpg" data-caption="Dinos · 現場演出">
+                    <img src="images/gallery/dinos-performance-3.jpg" alt="Dinos 現場演出" loading="lazy" width="1125" height="747">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
+                <figure class="gallery-item g-tall" data-type="image" data-src="images/gallery/dinos-performance-2.jpg" data-caption="Dinos · 舞台側拍">
+                    <img src="images/gallery/dinos-performance-2.jpg" alt="Dinos 舞台側拍" loading="lazy" width="1045" height="1565">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
+                <figure class="gallery-item" data-type="image" data-src="images/gallery/visin-performance-1.jpg" data-caption="Visin · 舞池現場">
+                    <img src="images/gallery/visin-performance-1.jpg" alt="Visin 舞池現場" loading="lazy" width="1567" height="1045">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
+                <figure class="gallery-item" data-type="video" data-src="images/gallery/redshou-video-1.mp4" data-caption="REDSHOU · 演出片段">
+                    <img src="images/gallery/alta-performance.jpg" alt="REDSHOU 演出片段" loading="lazy" width="1800" height="1201">
+                    <span class="gallery-play"><i class="fas fa-play"></i></span>
+                </figure>
+                <figure class="gallery-item g-wide" data-type="image" data-src="images/gallery/dinos-performance-4.jpg" data-caption="Dinos · 派對現場">
+                    <img src="images/gallery/dinos-performance-4.jpg" alt="Dinos 派對現場" loading="lazy" width="1206" height="804">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
+                <figure class="gallery-item" data-type="image" data-src="images/gallery/visin-performance-2.jpg" data-caption="Visin · 現場演出">
+                    <img src="images/gallery/visin-performance-2.jpg" alt="Visin 現場演出" loading="lazy" width="1567" height="1045">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
+                <figure class="gallery-item" data-type="image" data-src="images/gallery/dinojin-gallery-3.jpg" data-caption="DINOjin · 現場演出">
+                    <img src="images/gallery/dinojin-gallery-3.jpg" alt="DINOjin 現場演出" loading="lazy" width="640" height="359">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
             </div>
         </div>
     </section>
@@ -608,6 +665,16 @@
         </div>
     </footer>
     
+    <!-- Gallery Lightbox -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <span class="lightbox-count" id="lightboxCount"></span>
+        <button class="lightbox-close" id="lightboxClose" aria-label="關閉">&times;</button>
+        <button class="lightbox-nav prev" id="lightboxPrev" aria-label="上一張"><i class="fas fa-chevron-left"></i></button>
+        <button class="lightbox-nav next" id="lightboxNext" aria-label="下一張"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-stage" id="lightboxStage"></div>
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+
     <script>
         // Page Loader
         window.addEventListener('load', function() {
@@ -804,6 +871,82 @@
                 }
             });
         });
+
+        // ── 相簿燈箱 ──
+        (function () {
+            const items = Array.from(document.querySelectorAll('.gallery-item'));
+            if (!items.length) return;
+
+            const box = document.getElementById('lightbox');
+            const stage = document.getElementById('lightboxStage');
+            const caption = document.getElementById('lightboxCaption');
+            const count = document.getElementById('lightboxCount');
+            let index = 0;
+
+            function render(i) {
+                index = (i + items.length) % items.length;
+                const el = items[index];
+                const type = el.dataset.type;
+                const src = el.dataset.src;
+                stage.innerHTML = '';
+
+                if (type === 'video') {
+                    const v = document.createElement('video');
+                    v.src = src;
+                    v.controls = true;
+                    v.autoplay = true;
+                    v.playsInline = true;
+                    v.preload = 'metadata';
+                    stage.appendChild(v);
+                } else {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = el.dataset.caption || '';
+                    stage.appendChild(img);
+                }
+
+                caption.textContent = el.dataset.caption || '';
+                count.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(items.length).padStart(2, '0');
+            }
+
+            function open(i) {
+                render(i);
+                box.classList.add('open');
+                box.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function close() {
+                box.classList.remove('open');
+                box.setAttribute('aria-hidden', 'true');
+                stage.innerHTML = '';
+                document.body.style.overflow = '';
+            }
+
+            items.forEach((el, i) => el.addEventListener('click', () => open(i)));
+            document.getElementById('lightboxClose').addEventListener('click', close);
+            document.getElementById('lightboxPrev').addEventListener('click', () => render(index - 1));
+            document.getElementById('lightboxNext').addEventListener('click', () => render(index + 1));
+            box.addEventListener('click', e => { if (e.target === box) close(); });
+
+            document.addEventListener('keydown', e => {
+                if (!box.classList.contains('open')) return;
+                if (e.key === 'Escape') close();
+                if (e.key === 'ArrowLeft') render(index - 1);
+                if (e.key === 'ArrowRight') render(index + 1);
+            });
+
+            // 手機滑動切換
+            let startX = null;
+            box.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+            box.addEventListener('touchend', e => {
+                if (startX === null) return;
+                const dx = e.changedTouches[0].clientX - startX;
+                if (Math.abs(dx) > 60) render(index + (dx < 0 ? 1 : -1));
+                startX = null;
+            });
+        })();
+
     </script>
 
 </body>

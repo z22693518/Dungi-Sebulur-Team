@@ -366,75 +366,7 @@ h2 {
     max-width: 900px;
 }
 
-/* DJs Section */
-#djs {
-    background: #0d0d11;
-}
-
-.dj-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-top: 52px;
-}
-
-.dj-card {
-    display: block;
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    background: linear-gradient(150deg, #1a1a20, #0d0d11);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    aspect-ratio: 3/4;
-    transition: all 0.25s;
-}
-
-.dj-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-6px);
-}
-
-.dj-initial {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: var(--display-font);
-    font-size: 120px;
-    font-weight: 700;
-    color: rgba(255, 43, 77, 0.13);
-}
-
-.dj-image {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.dj-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 42%, rgba(10, 10, 13, 0.94));
-}
-
-.dj-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 22px 22px 24px;
-}
-
-.dj-genres {
-    display: flex;
-    gap: 7px;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-}
-
+/* DJ 曲風標籤（artists.html 使用） */
 .genre-tag {
     padding: 4px 11px;
     border-radius: 3px;
@@ -445,26 +377,6 @@ h2 {
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-}
-
-.dj-name {
-    font-family: var(--display-font);
-    font-size: 26px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-}
-
-.dj-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--display-font);
-    font-size: 12px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-top: 8px;
 }
 
 /* Events Section */
@@ -559,24 +471,25 @@ h2 {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 190px;
+    grid-auto-flow: dense;
+    gap: 14px;
     margin-top: 52px;
 }
 
 .gallery-item {
     position: relative;
-    border-radius: 8px;
+    margin: 0;
     overflow: hidden;
     background: linear-gradient(135deg, #1a1a20, #0d0d11);
-    aspect-ratio: 16/9;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: border-color 0.3s ease, transform 0.3s ease;
 }
+
+.gallery-item.g-wide { grid-column: span 2; }
+.gallery-item.g-tall { grid-row: span 2; }
 
 .gallery-item:hover {
     border-color: var(--accent);
@@ -587,31 +500,83 @@ h2 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s;
+    display: block;
+    transition: transform 0.6s cubic-bezier(.2, .7, .3, 1);
 }
 
 .gallery-item:hover img {
-    transform: scale(1.05);
+    transform: scale(1.06);
 }
 
-.gallery-placeholder {
-    text-align: center;
-    padding: 20px;
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(10, 10, 13, 0.75));
+    opacity: 0;
+    transition: opacity 0.35s ease;
 }
 
-.gallery-placeholder i {
-    font-size: 2rem;
-    color: rgba(255, 255, 255, 0.2);
-    margin-bottom: 10px;
+.gallery-item:hover::after { opacity: 1; }
+
+.gallery-zoom,
+.gallery-play {
+    position: absolute;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #fff;
+    transition: opacity 0.35s ease, transform 0.35s ease, background 0.25s ease;
 }
 
-.gallery-placeholder span {
-    display: block;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.2);
-    font-family: var(--display-font);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+.gallery-zoom {
+    right: 14px;
+    bottom: 14px;
+    width: 38px;
+    height: 38px;
+    font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+.gallery-item:hover .gallery-zoom {
+    opacity: 1;
+    transform: none;
+}
+
+.gallery-zoom:hover { background: var(--accent); border-color: var(--accent); }
+
+.gallery-play {
+    top: 50%;
+    left: 50%;
+    width: 62px;
+    height: 62px;
+    margin: -31px 0 0 -31px;
+    font-size: 18px;
+    background: rgba(255, 43, 77, 0.9);
+    box-shadow: 0 6px 24px rgba(255, 43, 77, 0.35);
+}
+
+.gallery-item:hover .gallery-play { transform: scale(1.1); }
+
+@media (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 170px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 150px;
+        gap: 10px;
+    }
+    .gallery-item.g-wide { grid-column: span 2; }
+    .gallery-item.g-tall { grid-row: span 1; }
+    .gallery-play { width: 48px; height: 48px; margin: -24px 0 0 -24px; font-size: 15px; }
 }
 
 /* Contact Section */
@@ -957,10 +922,6 @@ footer {
 
 /* Responsive */
 @media (max-width: 1024px) {
-    .dj-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
     .stats-container {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -995,16 +956,8 @@ footer {
         padding: 80px 4vw;
     }
     
-    .dj-grid {
-        grid-template-columns: 1fr;
-    }
-    
     .stats-container {
         grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .gallery-grid {
-        grid-template-columns: 1fr;
     }
     
     .contact-grid {
