@@ -145,6 +145,82 @@
             .feature-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
+        /* ── Hero 漂浮卡牌 ── */
+        .hero-card-stage {
+            position: absolute;
+            right: 8vw; top: 50%;
+            transform: translateY(-50%);
+            perspective: 900px;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .hero-card {
+            position: relative;
+            width: 268px; aspect-ratio: 3 / 4.2;
+            border-radius: 18px;
+            transform-style: preserve-3d;
+            transform:
+                rotateX(calc(var(--hrx, 8) * 1deg))
+                rotateY(calc(var(--hry, -16) * 1deg));
+            transition: transform .6s cubic-bezier(.2, .7, .3, 1);
+            animation: heroFloat 7s ease-in-out infinite;
+        }
+        @keyframes heroFloat {
+            0%, 100% { translate: 0 0; }
+            50% { translate: 0 -18px; }
+        }
+        .hero-card-face {
+            position: absolute; inset: 0;
+            border-radius: 18px;
+            border: 2px solid transparent;
+            background:
+                repeating-conic-gradient(from 0deg at 50% 50%,
+                    rgba(255, 43, 77, .1) 0deg 12deg, transparent 12deg 24deg) padding-box,
+                radial-gradient(circle at 50% 42%, #2b1620, #16121b 55%, #0a0a0d) padding-box,
+                conic-gradient(from 140deg, #ffe9a8, #ff2b4d 20%, #ffc043 38%,
+                    #ff6b8a 55%, #ffd479 72%, #ff2b4d 88%, #ffe9a8) border-box;
+            box-shadow: inset 0 0 60px rgba(0, 0, 0, .6), 0 40px 80px rgba(0, 0, 0, .55);
+            display: grid; place-items: center;
+            overflow: hidden;
+        }
+        .hero-card-face::before {
+            content: ''; position: absolute; inset: 14px;
+            border: 1px solid rgba(255, 192, 67, .22); border-radius: 11px;
+        }
+        .hero-card-face::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(105deg, transparent 32%,
+                rgba(255, 255, 255, .22) 50%, transparent 68%);
+            background-size: 240% 100%;
+            animation: heroSheen 5.5s ease-in-out infinite;
+            mix-blend-mode: soft-light;
+        }
+        @keyframes heroSheen {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .hero-card-logo {
+            position: relative;
+            font-family: var(--display-font);
+            font-size: 84px; font-weight: 700;
+            color: rgba(255, 43, 77, .55);
+            text-shadow: 0 0 28px rgba(255, 43, 77, .6);
+        }
+        .hero-card-tag {
+            position: absolute; bottom: 26px; left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--display-font);
+            font-size: 11px; letter-spacing: .26em; text-transform: uppercase;
+            color: rgba(255, 255, 255, .42);
+            white-space: nowrap;
+        }
+
+        @media (max-width: 1180px) { .hero-card-stage { display: none; } }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-card { animation: none; transition: none; }
+            .hero-card-face::after { animation: none; }
+        }
+
         /* ── 曲風光譜 ── */
         #sound { background: #0d0d11; }
         .genre-cloud {
@@ -378,6 +454,15 @@
                 <a href="artists.html" class="btn-outline">認識 DJ →</a>
             </div>
         </div>
+        <div class="hero-card-stage" aria-hidden="true">
+            <div class="hero-card" id="heroCard">
+                <div class="hero-card-face">
+                    <span class="hero-card-logo">S</span>
+                    <span class="hero-card-tag">Sebulur Deck</span>
+                </div>
+            </div>
+        </div>
+
         <div class="scroll-indicator">
             <span class="scroll-text">Scroll</span>
             <span class="scroll-line"></span>
@@ -759,6 +844,26 @@
             list.addEventListener('mouseleave', clear);
             document.addEventListener('click', e => {
                 if (!cloud.contains(e.target) && !list.contains(e.target)) clear();
+            });
+        })();
+
+
+        // ── Hero 漂浮卡牌跟著游標轉 ──
+        (function () {
+            const card = document.getElementById('heroCard');
+            if (!card) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            let raf = null;
+            document.addEventListener('pointermove', function (e) {
+                if (raf) return;
+                raf = requestAnimationFrame(function () {
+                    raf = null;
+                    const x = e.clientX / window.innerWidth - 0.5;
+                    const y = e.clientY / window.innerHeight - 0.5;
+                    card.style.setProperty('--hry', (-16 + x * 30).toFixed(1));
+                    card.style.setProperty('--hrx', (8 - y * 24).toFixed(1));
+                });
             });
         })();
 

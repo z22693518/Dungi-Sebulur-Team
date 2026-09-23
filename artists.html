@@ -145,6 +145,38 @@
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
+        /* 金屬漸層邊框 */
+        .pcard-link {
+            border: 2px solid transparent;
+            background:
+                linear-gradient(160deg, #26262f 0%, #15151c 42%, #0b0b10 100%) padding-box,
+                conic-gradient(from 140deg,
+                    #ffe9a8, #ff2b4d 20%, #ffc043 38%, #ff6b8a 55%,
+                    #ffd479 72%, #ff2b4d 88%, #ffe9a8) border-box;
+        }
+        .pcard:hover .pcard-link {
+            box-shadow:
+                0 54px 100px rgba(0, 0, 0, .75),
+                0 20px 40px rgba(0, 0, 0, .5),
+                0 0 34px rgba(255, 192, 67, .3);
+        }
+
+        /* ── 漂浮 ── */
+        .pcard {
+            animation: cardFloat 6.5s ease-in-out infinite;
+            animation-delay: var(--fd, 0s);
+        }
+        .pcard:hover { animation-play-state: paused; }
+        @keyframes cardFloat {
+            0%, 100% { translate: 0 0; }
+            50% { translate: 0 -14px; }
+        }
+        .pcard:nth-child(1) { --fd: 0s; }
+        .pcard:nth-child(2) { --fd: -1.3s; }
+        .pcard:nth-child(3) { --fd: -2.6s; }
+        .pcard:nth-child(4) { --fd: -3.9s; }
+        .pcard:nth-child(5) { --fd: -5.2s; }
+
         /* 內層各自浮出不同高度，轉動時產生深度差 */
         .pcard-level,
         .pcard-race,
@@ -269,8 +301,17 @@
             transition: opacity .35s ease;
             transform: translateZ(1px);
         }
-        .pcard:hover .pcard-holo,
+        .pcard-holo {
+            opacity: .32;
+            animation: cardSheen 7s ease-in-out infinite;
+            animation-delay: var(--fd, 0s);
+        }
+        .pcard:hover .pcard-holo { opacity: 1; animation: none; }
         .pcard:hover .pcard-glare { opacity: 1; }
+        @keyframes cardSheen {
+            0%, 100% { background-position: 8% 50%; }
+            50% { background-position: 92% 50%; }
+        }
 
         .pcard-holo {
             background: linear-gradient(
@@ -317,6 +358,150 @@
         }
         @media (max-width: 620px) {
             .pcards { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
+        }
+
+        /* ── 發牌進場 ── */
+        .pcards.is-dealing .pcard {
+            transform: translate(var(--dx, 0), var(--dy, 0)) rotate(var(--dr, 0deg)) scale(.55);
+            opacity: 0;
+        }
+        .pcards .pcard {
+            transform: none; opacity: 1;
+            transition:
+                transform .8s cubic-bezier(.16, .84, .32, 1) var(--dd, 0s),
+                opacity .5s ease var(--dd, 0s);
+        }
+
+        /* ── 召喚展示 ── */
+        .summon {
+            position: fixed; inset: 0; z-index: 4000;
+            background: radial-gradient(circle at 50% 45%, rgba(255, 43, 77, .18), rgba(5, 5, 8, .94) 60%);
+            backdrop-filter: blur(6px);
+            display: grid; place-items: center;
+            opacity: 0; transition: opacity .25s ease;
+        }
+        .summon.on { opacity: 1; }
+        .summon-card {
+            position: fixed; margin: 0;
+            transform-origin: center;
+            transition: transform .75s cubic-bezier(.2, .8, .25, 1);
+            will-change: transform;
+        }
+        .summon-flash {
+            position: fixed; left: 50%; top: 50%;
+            width: 10px; height: 10px; border-radius: 50%;
+            background: #fff; opacity: 0;
+            box-shadow: 0 0 60px 30px rgba(255, 255, 255, .9), 0 0 140px 70px rgba(255, 43, 77, .6);
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .summon-flash.go { animation: summonFlash .75s ease-out forwards; }
+        @keyframes summonFlash {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+            35% { opacity: 1; transform: translate(-50%, -50%) scale(14); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(34); }
+        }
+
+        /* ── 抽卡 ── */
+        .draw-box { margin-top: 30px; }
+        .btn-draw {
+            display: inline-flex; align-items: center; gap: 12px;
+            padding: 16px 34px; border-radius: 4px; cursor: pointer;
+            border: 1px solid rgba(255, 192, 67, .6);
+            background: linear-gradient(135deg, rgba(255, 192, 67, .16), rgba(255, 43, 77, .16));
+            color: #ffd479;
+            font-family: var(--display-font); font-size: 15px; font-weight: 600;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            transition: background .25s, box-shadow .25s, transform .25s;
+        }
+        .btn-draw:hover {
+            background: linear-gradient(135deg, rgba(255, 192, 67, .3), rgba(255, 43, 77, .3));
+            box-shadow: 0 10px 30px rgba(255, 192, 67, .25);
+            transform: translateY(-2px);
+        }
+
+        .drawer {
+            position: fixed; inset: 0; z-index: 4000; display: none;
+            place-items: center; padding: 24px;
+            background: radial-gradient(circle at 50% 45%, rgba(255, 43, 77, .14), rgba(5, 5, 8, .95) 62%);
+            backdrop-filter: blur(8px);
+        }
+        .drawer.on { display: grid; }
+        .drawer-stage { perspective: 1200px; text-align: center; }
+        .drawer-card {
+            position: relative; width: min(330px, 78vw); aspect-ratio: 3 / 4.2;
+            margin: 0 auto; transform-style: preserve-3d;
+            transform: rotateY(180deg);
+            transition: transform .9s cubic-bezier(.2, .8, .25, 1);
+        }
+        .drawer-card.shuffling { animation: shuffleSpin .55s ease-in-out 2; }
+        .drawer-card.flipped { transform: rotateY(0deg); }
+        @keyframes shuffleSpin {
+            0% { transform: rotateY(180deg) translateY(0) rotate(0deg); }
+            50% { transform: rotateY(180deg) translateY(-26px) rotate(-7deg); }
+            100% { transform: rotateY(180deg) translateY(0) rotate(0deg); }
+        }
+        .drawer-face {
+            position: absolute; inset: 0; border-radius: 20px;
+            backface-visibility: hidden; overflow: hidden;
+        }
+        .drawer-front {
+            background: linear-gradient(160deg, #26262f, #15151c 42%, #0b0b10);
+            border: 2px solid rgba(255, 192, 67, .7);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .7), 0 0 40px rgba(255, 192, 67, .25);
+            padding: 20px; display: flex; flex-direction: column;
+        }
+        .drawer-back { transform: rotateY(180deg); }
+        .drawer-photo {
+            position: relative; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, .14); margin-bottom: 14px;
+            background: linear-gradient(150deg, #1a1a20, #0d0d11);
+        }
+        .drawer-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .drawer-name {
+            font-family: var(--display-font); font-size: 26px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px;
+        }
+        .drawer-race { font-size: 12px; color: rgba(255, 255, 255, .55); letter-spacing: .08em; }
+        .drawer-actions {
+            margin-top: 26px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+        }
+        .drawer-hint {
+            margin-top: 16px; font-family: var(--display-font); font-size: 12px;
+            letter-spacing: .2em; text-transform: uppercase; color: rgba(255, 255, 255, .4);
+        }
+        .drawer-close {
+            position: absolute; top: 22px; right: 26px;
+            width: 48px; height: 48px; border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, .25);
+            background: rgba(255, 255, 255, .04); color: #fff;
+            font-size: 22px; cursor: pointer; display: grid; place-items: center;
+        }
+        .drawer-close:hover { background: var(--accent); border-color: var(--accent); }
+
+        /* 卡背圖樣（抽卡與 404 共用的視覺） */
+        .cardback {
+            background:
+                repeating-conic-gradient(from 0deg at 50% 50%,
+                    rgba(255, 43, 77, .12) 0deg 12deg, transparent 12deg 24deg),
+                radial-gradient(circle at 50% 42%, #2b1620, #16121b 55%, #0a0a0d);
+            border: 2px solid rgba(255, 43, 77, .55);
+            display: grid; place-items: center;
+            box-shadow: inset 0 0 60px rgba(0, 0, 0, .6);
+        }
+        .cardback::before {
+            content: ''; position: absolute; inset: 16px;
+            border: 1px solid rgba(255, 192, 67, .25); border-radius: 12px;
+        }
+        .cardback span {
+            font-family: var(--display-font); font-size: 74px; font-weight: 700;
+            color: rgba(255, 43, 77, .55);
+            text-shadow: 0 0 26px rgba(255, 43, 77, .6);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .pcards .pcard { transition: none; animation: none; }
+            .pcard-holo { animation: none; }
+            .drawer-card { transition: none; }
         }
 
         /* ── 底部 CTA ── */
@@ -502,7 +687,7 @@
     <section id="artists">
         <div class="container">
             <div class="pcards" data-stagger>
-                <article class="pcard" data-reveal>
+                <article class="pcard">
                     <a class="pcard-link" href="djs/dj1.html">
                         <div class="pcard-top">
                             <span class="pcard-name">REDSHOU</span>
@@ -533,7 +718,7 @@
                     </a>
                 </article>
 
-                <article class="pcard" data-reveal>
+                <article class="pcard">
                     <a class="pcard-link" href="djs/dj2.html">
                         <div class="pcard-top">
                             <span class="pcard-name">Visin</span>
@@ -562,7 +747,7 @@
                     </a>
                 </article>
 
-                <article class="pcard" data-reveal>
+                <article class="pcard">
                     <a class="pcard-link" href="djs/dj3.html">
                         <div class="pcard-top">
                             <span class="pcard-name">Dinos</span>
@@ -590,7 +775,7 @@
                     </a>
                 </article>
 
-                <article class="pcard" data-reveal>
+                <article class="pcard">
                     <a class="pcard-link" href="djs/dj4.html">
                         <div class="pcard-top">
                             <span class="pcard-name">DINOjin</span>
@@ -621,7 +806,7 @@
                     </a>
                 </article>
 
-                <article class="pcard" data-reveal>
+                <article class="pcard">
                     <a class="pcard-link" href="djs/dj5.html">
                         <div class="pcard-top">
                             <span class="pcard-name">AT</span>
@@ -666,8 +851,41 @@
             <h2 data-reveal style="--reveal-delay:.08s">想找哪一位？</h2>
             <p data-reveal style="--reveal-delay:.16s">告訴我們活動型態、時間與場地，我們會依現場氛圍推薦最合適的 DJ 組合。</p>
             <a href="index.html#contact" class="btn-primary">立即預約</a>
+
+            <div class="draw-box" data-reveal="fade">
+                <button type="button" class="btn-draw" id="drawBtn">
+                    <i class="fas fa-layer-group" aria-hidden="true"></i> 不知道找誰？抽一張
+                </button>
+            </div>
         </div>
     </section>
+
+    <!-- 召喚展示 -->
+    <div class="summon" id="summon" aria-hidden="true">
+        <div class="summon-flash" id="summonFlash"></div>
+    </div>
+
+    <!-- 抽卡 -->
+    <div class="drawer" id="drawer" aria-hidden="true">
+        <button class="drawer-close" id="drawerClose" aria-label="關閉">&times;</button>
+        <div class="drawer-stage">
+            <div class="drawer-card" id="drawerCard">
+                <div class="drawer-face drawer-front">
+                    <div class="drawer-photo">
+                        <img id="drawerImg" src="" alt="">
+                    </div>
+                    <p class="drawer-name" id="drawerName"></p>
+                    <p class="drawer-race" id="drawerRace"></p>
+                </div>
+                <div class="drawer-face drawer-back cardback"><span>S</span></div>
+            </div>
+            <p class="drawer-hint" id="drawerHint">洗牌中…</p>
+            <div class="drawer-actions" id="drawerActions" style="visibility:hidden">
+                <a class="btn-primary" id="drawerLink" href="#">看他的介紹</a>
+                <button type="button" class="btn-outline" id="drawAgain">再抽一張</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -766,6 +984,169 @@
 
                 card.addEventListener('pointermove', move);
                 card.addEventListener('pointerleave', reset);
+            });
+        })();
+
+
+        // ── 發牌進場：五張卡從中央飛到定位 ──
+        (function () {
+            const grid = document.querySelector('.pcards');
+            if (!grid) return;
+            const cards = Array.from(grid.querySelectorAll('.pcard'));
+            if (!cards.length) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            function deal() {
+                const gr = grid.getBoundingClientRect();
+                const cx = gr.left + gr.width / 2;
+                const cy = gr.top + gr.height / 2;
+
+                cards.forEach(function (card, i) {
+                    const r = card.getBoundingClientRect();
+                    card.style.setProperty('--dx', (cx - r.left - r.width / 2).toFixed(0) + 'px');
+                    card.style.setProperty('--dy', (cy - r.top - r.height / 2).toFixed(0) + 'px');
+                    card.style.setProperty('--dr', ((i - 2) * 6 - 10).toFixed(0) + 'deg');
+                    card.style.setProperty('--dd', (i * 0.11).toFixed(2) + 's');
+                });
+
+                grid.classList.add('is-dealing');
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () { grid.classList.remove('is-dealing'); });
+                });
+            }
+
+            // 捲到卡片區才發牌
+            const io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (!e.isIntersecting) return;
+                    io.disconnect();
+                    deal();
+                });
+            }, { threshold: 0.15 });
+            io.observe(grid);
+        })();
+
+        // ── 召喚展示：點卡片先放大到中央再進個人頁 ──
+        (function () {
+            const layer = document.getElementById('summon');
+            const flash = document.getElementById('summonFlash');
+            if (!layer) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            document.querySelectorAll('.pcard .pcard-link').forEach(function (link) {
+                link.addEventListener('click', function (e) {
+                    if (e.metaKey || e.ctrlKey || e.shiftKey) return;   // 讓新分頁開啟維持原樣
+                    e.preventDefault();
+
+                    const href = link.getAttribute('href');
+                    const card = link.closest('.pcard');
+                    const r = link.getBoundingClientRect();
+
+                    const clone = link.cloneNode(true);
+                    clone.classList.add('summon-card');
+                    clone.style.left = r.left + 'px';
+                    clone.style.top = r.top + 'px';
+                    clone.style.width = r.width + 'px';
+                    clone.style.height = r.height + 'px';
+                    if (card) clone.dataset.rarity = card.dataset.rarity || '';
+                    layer.appendChild(clone);
+
+                    layer.setAttribute('aria-hidden', 'false');
+                    layer.classList.add('on');
+                    document.body.style.overflow = 'hidden';
+
+                    const targetScale = Math.min(
+                        (window.innerHeight * 0.82) / r.height,
+                        (window.innerWidth * 0.86) / r.width,
+                        1.9
+                    );
+                    const tx = window.innerWidth / 2 - (r.left + r.width / 2);
+                    const ty = window.innerHeight / 2 - (r.top + r.height / 2);
+
+                    requestAnimationFrame(function () {
+                        clone.style.transform =
+                            'translate(' + tx + 'px,' + ty + 'px) scale(' + targetScale + ') rotateY(360deg)';
+                    });
+
+                    setTimeout(function () { flash.classList.add('go'); }, 430);
+                    setTimeout(function () { window.location.href = href; }, 980);
+                });
+            });
+        })();
+
+        // ── 抽卡 ──
+        (function () {
+            const btn = document.getElementById('drawBtn');
+            const box = document.getElementById('drawer');
+            if (!btn || !box) return;
+
+            const cardEl = document.getElementById('drawerCard');
+            const hint = document.getElementById('drawerHint');
+            const actions = document.getElementById('drawerActions');
+            const imgEl = document.getElementById('drawerImg');
+            const nameEl = document.getElementById('drawerName');
+            const raceEl = document.getElementById('drawerRace');
+            const linkEl = document.getElementById('drawerLink');
+
+            const deck = Array.from(document.querySelectorAll('.pcard')).map(function (c) {
+                return {
+                    name: c.querySelector('.pcard-name').textContent.trim(),
+                    race: c.querySelector('.pcard-race').textContent.trim(),
+                    img: c.querySelector('.pcard-photo img').getAttribute('src'),
+                    href: c.querySelector('.pcard-link').getAttribute('href')
+                };
+            });
+            if (!deck.length) return;
+
+            let last = -1;
+
+            function draw() {
+                cardEl.classList.remove('flipped');
+                actions.style.visibility = 'hidden';
+                hint.textContent = '洗牌中…';
+
+                let i = Math.floor(Math.random() * deck.length);
+                if (deck.length > 1 && i === last) i = (i + 1) % deck.length;
+                last = i;
+                const dj = deck[i];
+
+                cardEl.classList.remove('shuffling');
+                void cardEl.offsetWidth;
+                cardEl.classList.add('shuffling');
+
+                setTimeout(function () {
+                    imgEl.src = dj.img;
+                    imgEl.alt = dj.name;
+                    nameEl.textContent = dj.name;
+                    raceEl.textContent = dj.race;
+                    linkEl.href = dj.href;
+                    cardEl.classList.remove('shuffling');
+                    cardEl.classList.add('flipped');
+                    hint.textContent = '你抽到了';
+                    actions.style.visibility = 'visible';
+                }, 1150);
+            }
+
+            function open() {
+                box.classList.add('on');
+                box.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                draw();
+            }
+
+            function close() {
+                box.classList.remove('on');
+                box.setAttribute('aria-hidden', 'true');
+                cardEl.classList.remove('flipped', 'shuffling');
+                document.body.style.overflow = '';
+            }
+
+            btn.addEventListener('click', open);
+            document.getElementById('drawerClose').addEventListener('click', close);
+            document.getElementById('drawAgain').addEventListener('click', draw);
+            box.addEventListener('click', function (e) { if (e.target === box) close(); });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && box.classList.contains('on')) close();
             });
         })();
 
