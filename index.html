@@ -145,6 +145,53 @@
             .feature-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
+        /* ── 曲風光譜 ── */
+        #sound { background: #0d0d11; }
+        .genre-cloud {
+            display: flex; flex-wrap: wrap; align-items: baseline;
+            gap: 14px 26px; margin-top: 52px;
+            padding-bottom: 46px; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .g-chip {
+            background: none; border: none; padding: 0; cursor: pointer;
+            font-family: var(--display-font); font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.02em;
+            color: rgba(255,255,255,0.42); line-height: 1.1;
+            transition: color .25s ease, opacity .25s ease, transform .25s ease;
+        }
+        .g-chip.g-lg { font-size: clamp(30px, 4.6vw, 52px); color: rgba(255,255,255,0.72); }
+        .g-chip.g-md { font-size: clamp(22px, 3.2vw, 36px); color: rgba(255,255,255,0.56); }
+        .g-chip.g-sm { font-size: clamp(16px, 2.1vw, 24px); }
+        .g-chip:hover, .g-chip.is-on { color: var(--accent); transform: translateY(-2px); }
+        .genre-cloud.has-focus .g-chip:not(.is-on) { opacity: 0.22; }
+
+        .genre-djs {
+            display: grid; grid-template-columns: repeat(5, 1fr);
+            gap: 1px; margin-top: 46px;
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1);
+        }
+        .gdj {
+            display: block; background: #0d0d11; padding: 26px 22px 28px;
+            transition: background .3s ease, opacity .25s ease;
+        }
+        .gdj:hover, .gdj.is-on { background: #15151b; }
+        .genre-djs.has-focus .gdj:not(.is-on) { opacity: 0.3; }
+        .gdj-name {
+            display: block; font-family: var(--display-font); font-size: 20px;
+            font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+            margin-bottom: 10px;
+        }
+        .gdj:hover .gdj-name, .gdj.is-on .gdj-name { color: var(--accent); }
+        .gdj-genres { display: block; font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+        @media (max-width: 900px) {
+            .genre-djs { grid-template-columns: repeat(2, 1fr); }
+            .genre-cloud { gap: 10px 18px; }
+        }
+        @media (max-width: 520px) {
+            .genre-djs { grid-template-columns: 1fr; }
+        }
+
         /* ── 相簿燈箱 ── */
         .lightbox {
             position: fixed; inset: 0; z-index: 3000; display: none;
@@ -347,6 +394,59 @@
             </p>
             <div style="margin-top:36px;" data-reveal>
                 <a href="services.html" class="btn-outline">我們提供的服務 →</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sound Section -->
+    <section id="sound">
+        <div class="container">
+            <p class="section-label" data-reveal>Sound</p>
+            <h2 data-reveal style="--reveal-delay:.08s">曲風光譜</h2>
+            <p class="about-text" data-reveal style="--reveal-delay:.16s">五位 DJ 的守備範圍加起來橫跨 18 種曲風，從舞池主流到南非 Amapiano、從 Old School 到 Melodic Techno。滑過任一曲風，看看誰放得動。</p>
+
+            <div class="genre-cloud" id="genreCloud" data-reveal="fade">
+                <button type="button" class="g-chip g-lg" data-djs="dj1 dj3">Hip-Hop</button>
+                <button type="button" class="g-chip g-md" data-djs="dj1">EDM</button>
+                <button type="button" class="g-chip g-sm" data-djs="dj1">Trap</button>
+                <button type="button" class="g-chip g-sm" data-djs="dj1">Electronic</button>
+                <button type="button" class="g-chip g-md" data-djs="dj2">Disco</button>
+                <button type="button" class="g-chip g-lg" data-djs="dj2 dj3">Amapiano</button>
+                <button type="button" class="g-chip g-sm" data-djs="dj2">Fusion</button>
+                <button type="button" class="g-chip g-sm" data-djs="dj2">World Music</button>
+                <button type="button" class="g-chip g-lg" data-djs="dj3 dj5">R&amp;B</button>
+                <button type="button" class="g-chip g-sm" data-djs="dj3">Scratch</button>
+                <button type="button" class="g-chip g-sm" data-djs="dj3">Gqom</button>
+                <button type="button" class="g-chip g-md" data-djs="dj4">Melodic House</button>
+                <button type="button" class="g-chip g-sm" data-djs="dj4">Peak House</button>
+                <button type="button" class="g-chip g-sm" data-djs="dj4">Minimal House</button>
+                <button type="button" class="g-chip g-md" data-djs="dj4">Melodic Techno</button>
+                <button type="button" class="g-chip g-md" data-djs="dj5">Funk Disco</button>
+                <button type="button" class="g-chip g-sm" data-djs="dj5">Old School Hiphop</button>
+                <button type="button" class="g-chip g-sm" data-djs="dj5">Footwork</button>
+            </div>
+
+            <div class="genre-djs" id="genreDjs" data-stagger>
+                <a class="gdj" data-dj="dj1" href="djs/dj1.html" data-reveal>
+                    <span class="gdj-name">REDSHOU</span>
+                    <span class="gdj-genres">EDM · Hip-Hop · Trap · Electronic</span>
+                </a>
+                <a class="gdj" data-dj="dj2" href="djs/dj2.html" data-reveal>
+                    <span class="gdj-name">Visin</span>
+                    <span class="gdj-genres">Disco · Amapiano · Fusion · World Music</span>
+                </a>
+                <a class="gdj" data-dj="dj3" href="djs/dj3.html" data-reveal>
+                    <span class="gdj-name">Dinos</span>
+                    <span class="gdj-genres">Hip-Hop · R&amp;B · Scratch · Amapiano · Gqom</span>
+                </a>
+                <a class="gdj" data-dj="dj4" href="djs/dj4.html" data-reveal>
+                    <span class="gdj-name">DINOjin</span>
+                    <span class="gdj-genres">Melodic House · Peak House · Minimal House · Melodic Techno</span>
+                </a>
+                <a class="gdj" data-dj="dj5" href="djs/dj5.html" data-reveal>
+                    <span class="gdj-name">AT</span>
+                    <span class="gdj-genres">Funk Disco · Old School Hiphop · R&amp;B · Footwork</span>
+                </a>
             </div>
         </div>
     </section>
@@ -611,6 +711,54 @@
                 const dx = e.changedTouches[0].clientX - startX;
                 if (Math.abs(dx) > 60) render(index + (dx < 0 ? 1 : -1));
                 startX = null;
+            });
+        })();
+
+
+        // ── 曲風光譜：曲風與 DJ 互相對應 ──
+        (function () {
+            const cloud = document.getElementById('genreCloud');
+            const list = document.getElementById('genreDjs');
+            if (!cloud || !list) return;
+
+            const chips = Array.from(cloud.querySelectorAll('.g-chip'));
+            const cards = Array.from(list.querySelectorAll('.gdj'));
+
+            function clear() {
+                cloud.classList.remove('has-focus');
+                list.classList.remove('has-focus');
+                chips.forEach(c => c.classList.remove('is-on'));
+                cards.forEach(c => c.classList.remove('is-on'));
+            }
+
+            function focusDjs(keys) {
+                clear();
+                if (!keys.length) return;
+                cloud.classList.add('has-focus');
+                list.classList.add('has-focus');
+                chips.forEach(c => {
+                    if (c.dataset.djs.split(' ').some(k => keys.includes(k))) c.classList.add('is-on');
+                });
+                cards.forEach(c => {
+                    if (keys.includes(c.dataset.dj)) c.classList.add('is-on');
+                });
+            }
+
+            chips.forEach(chip => {
+                chip.addEventListener('mouseenter', () => focusDjs(chip.dataset.djs.split(' ')));
+                chip.addEventListener('focus', () => focusDjs(chip.dataset.djs.split(' ')));
+                chip.addEventListener('click', () => focusDjs(chip.dataset.djs.split(' ')));
+            });
+
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => focusDjs([card.dataset.dj]));
+                card.addEventListener('focus', () => focusDjs([card.dataset.dj]));
+            });
+
+            cloud.addEventListener('mouseleave', clear);
+            list.addEventListener('mouseleave', clear);
+            document.addEventListener('click', e => {
+                if (!cloud.contains(e.target) && !list.contains(e.target)) clear();
             });
         })();
 
