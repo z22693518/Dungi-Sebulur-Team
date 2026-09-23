@@ -373,22 +373,15 @@
         }
 
         /* ── 召喚展示 ── */
+        /* 只有點擊卡片時才由 JS 建立這一層，平時不存在於頁面上 */
         .summon {
             position: fixed; inset: 0; z-index: 4000;
             background: radial-gradient(circle at 50% 45%, rgba(255, 43, 77, .18), rgba(5, 5, 8, .94) 60%);
             backdrop-filter: blur(6px);
             display: grid; place-items: center;
-            opacity: 0;
-            visibility: hidden;      /* 未啟用時不可見也不攔截點擊 */
-            pointer-events: none;
-            transition: opacity .25s ease, visibility 0s linear .25s;
+            opacity: 0; transition: opacity .25s ease;
         }
-        .summon.on {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-            transition: opacity .25s ease, visibility 0s;
-        }
+        .summon.on { opacity: 1; }
         .summon-card {
             position: fixed; margin: 0;
             transform-origin: center;
@@ -868,11 +861,6 @@
         </div>
     </section>
 
-    <!-- 召喚展示 -->
-    <div class="summon" id="summon" aria-hidden="true">
-        <div class="summon-flash" id="summonFlash"></div>
-    </div>
-
     <!-- 抽卡 -->
     <div class="drawer" id="drawer" aria-hidden="true">
         <button class="drawer-close" id="drawerClose" aria-label="關閉">&times;</button>
@@ -1036,19 +1024,23 @@
 
         // ── 召喚展示：點卡片先放大到中央再進個人頁 ──
         (function () {
-            const layer = document.getElementById('summon');
-            const flash = document.getElementById('summonFlash');
-            if (!layer) return;
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
             document.querySelectorAll('.pcard .pcard-link').forEach(function (link) {
                 link.addEventListener('click', function (e) {
-                    if (e.metaKey || e.ctrlKey || e.shiftKey) return;   // 讓新分頁開啟維持原樣
+                    if (e.metaKey || e.ctrlKey || e.shiftKey) return;   // 保留開新分頁
                     e.preventDefault();
 
                     const href = link.getAttribute('href');
-                    const card = link.closest('.pcard');
                     const r = link.getBoundingClientRect();
+
+                    // 圖層只在動畫期間存在，平時不會蓋住頁面
+                    const layer = document.createElement('div');
+                    layer.className = 'summon';
+
+                    const flash = document.createElement('div');
+                    flash.className = 'summon-flash';
+                    layer.appendChild(flash);
 
                     const clone = link.cloneNode(true);
                     clone.classList.add('summon-card');
@@ -1056,14 +1048,12 @@
                     clone.style.top = r.top + 'px';
                     clone.style.width = r.width + 'px';
                     clone.style.height = r.height + 'px';
-                    if (card) clone.dataset.rarity = card.dataset.rarity || '';
                     layer.appendChild(clone);
 
-                    layer.setAttribute('aria-hidden', 'false');
-                    layer.classList.add('on');
+                    document.body.appendChild(layer);
                     document.body.style.overflow = 'hidden';
 
-                    const targetScale = Math.min(
+                    const scale = Math.min(
                         (window.innerHeight * 0.82) / r.height,
                         (window.innerWidth * 0.86) / r.width,
                         1.9
@@ -1072,12 +1062,20 @@
                     const ty = window.innerHeight / 2 - (r.top + r.height / 2);
 
                     requestAnimationFrame(function () {
+                        layer.classList.add('on');
                         clone.style.transform =
-                            'translate(' + tx + 'px,' + ty + 'px) scale(' + targetScale + ') rotateY(360deg)';
+                            'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ') rotateY(360deg)';
                     });
 
                     setTimeout(function () { flash.classList.add('go'); }, 430);
                     setTimeout(function () { window.location.href = href; }, 980);
+
+                    // 按上一頁回來時清掉，避免殘留擋畫面
+                    window.addEventListener('pageshow', function cleanup() {
+                        layer.remove();
+                        document.body.style.overflow = '';
+                        window.removeEventListener('pageshow', cleanup);
+                    });
                 });
             });
         })();
