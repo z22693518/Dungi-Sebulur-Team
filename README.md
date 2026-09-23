@@ -1,147 +1,110 @@
-# Dungi Sebulur Team - DJ 團隊官方網站
+# Sebulur - DJ 團隊官方網站
 
-專業 DJ 團隊服務平台，為您的活動帶來最佳音樂體驗
+專業 DJ 團隊網站，結合原住民文化與現代電子音樂。
 
-🌐 **Live Site**: [https://z22693518.github.io/Dungi-Sebulur-Team/](https://z22693518.github.io/Dungi-Sebulur-Team/)
+🌐 **線上網址**：[https://z22693518.github.io/Dungi-Sebulur-Team/](https://z22693518.github.io/Dungi-Sebulur-Team/)
 
-## 🎵 關於我們
+## 團隊成員
 
-Dungi Sebulur Team 是一個專業的 DJ 團隊，結合原住民文化與現代電子音樂，為各種活動提供獨特的音樂體驗。我們的 DJ 來自花蓮與台東阿美族，將部落文化元素融入現代音樂創作中。
+| DJ | 曲風 | 特色 |
+|---|---|---|
+| **REDSHOU** | EDM、Hip-Hop | 花蓮阿美族，台北 OMNI ALTA 駐場 |
+| **Visin** | Disco、Amapiano | 花蓮阿美族，原民元素融合電子節奏 |
+| **Dinos** | Hip-Hop、R&B | 派對與品牌活動演出 |
+| **DINOjin** | Melodic House、Peak House | 4 軌放歌技術，台中 PinkB 駐店 |
+| **AT** | Funk Disco、Old School Hip-Hop | 「pa在路上」主理人，街舞賽事 Battle DJ |
 
-### 我們的優勢
-- ✨ 獨特的原住民文化音樂融合
-- 🎧 專業的音響設備和燈光效果
-- 📅 國際級夜店駐場經驗
-- 💰 透明的價格方案
-- ⭐ 優質的客戶評價
-
-## 👥 團隊成員
-
-| DJ 名稱 | 專長風格 | 特色 | 駐場/合作 |
-|--------|---------|------|----------|
-| **DJ REDSHOU** | EDM, Hip-Hop | 花蓮阿美族，部落電音先驅 | OMNI ALTA 台北駐場，Jay Park 合作 |
-| **DJ Visin** | Disco, Amapiano | 花蓮阿美族，南非音樂風格專家 | 國際音樂節演出 |
-| **DJ Dinos** | Hip-Hop, R&B, Scratch | 台東阿美族，B-boy 背景，MC 主持 | 台中 Afro Party 常駐，街舞 Battle DJ |
-| **DJ Luna** | Techno, Deep House | 電子音樂女王，藝術展覽音樂總監 | 時裝秀 After Party 專屬 DJ |
-
-## 🌟 網站特色
-
-### 現代化設計
-- 🎨 Dark Cyberpunk 主題設計
-- 📱 完全響應式網頁 (RWD)
-- ⚡ 流暢的動畫效果
-- 🖼️ 高品質照片與影片展示
-
-### 主要頁面
-1. **首頁** - 團隊形象展示、服務簡介、DJ 陣容
-2. **DJ 個人檔案** - 每位 DJ 獨立頁面，包含：
-   - 個人簡介與經歷
-   - 表演照片與影片
-   - 音樂風格專長
-   - 客戶評價見證
-   - 線上預約功能
-
-3. **服務項目**
-   - 企業活動（尾牙、產品發表會）
-   - 婚禮派對（婚宴、求婚派對）
-   - 夜店活動（主題派對、節日活動）
-   - 音樂節慶（戶外音樂節、原住民文化節）
-   - 街舞 Battle DJ
-
-## 🛠️ 技術架構
-
-### 前端技術
-- HTML5 / CSS3
-- JavaScript (Vanilla)
-- Bootstrap 5 (部分頁面)
-- Custom CSS with CSS Variables
-- Font Awesome Icons
-- Google Fonts (Oswald, Poppins)
-
-### 設計特色
-- 色彩主題：#ff2b4d (主色), #0a0a0d (背景)
-- 漸層效果與霓虹光暈
-- 響應式網格系統
-- 模態對話框 (Modal) 預約系統
-
-## 📁 專案結構
+## 網站結構
 
 ```
 Dungi-Sebulur-Team/
-├── index-personal.html  # 主要首頁（Colorlib Personal 模板）
-├── djs/                # DJ 個人頁面
-│   ├── dj1.html       # DJ REDSHOU
-│   ├── dj2.html       # DJ Visin
-│   ├── dj3.html       # DJ Dinos
-│   └── dj4.html       # DJ Luna
+├── index.html            # 首頁（單頁式：關於／服務／特色／演出／相簿／聯絡）
+├── services.html         # 服務項目（四大類別、服務流程、報價方式）
+├── artists.html          # DJ 陣容（滑過浮出資訊，點擊進個人頁）
+├── djs/
+│   ├── dj1.html          # REDSHOU
+│   ├── dj2.html          # Visin
+│   ├── dj3.html          # Dinos
+│   ├── dj4.html          # DINOjin
+│   └── dj5.html          # AT
+├── 404.html
+├── index-personal.html   # 舊網址導向頁（轉往 index.html）
+├── css/
+│   ├── main.css          # 主樣式
+│   └── anim.css          # 捲動動效
+├── js/
+│   └── anim.js           # 平滑捲動與進場動畫
 ├── images/
-│   ├── djs/           # DJ 個人照片
-│   │   ├── redshou.jpg
-│   │   ├── visin.jpg
-│   │   ├── dinos.jpg
-│   │   └── luna.jpg
-│   └── gallery/       # 表演照片與影片
-│       ├── alta-performance.jpg
-│       ├── omni-performance.jpg
-│       ├── redshou-performance-*.jpg
-│       ├── visin-performance-*.jpg
-│       ├── dinos-performance-*.jpg
-│       └── *.mp4 (表演影片)
-├── services.html      # 服務項目
-├── portfolio.html     # 作品集
-├── contact.html       # 聯絡我們
-└── about.html        # 關於我們
+│   ├── djs/              # DJ 個人照
+│   └── gallery/          # 演出照片與影片
+├── favicon.svg
+├── robots.txt
+└── sitemap.xml
 ```
 
-## 🚀 開發進度
+## 技術
 
-- [x] 專案規劃與 GitHub 建立
-- [x] 網站設計（Dark Cyberpunk 主題）
-- [x] 前端頁面開發
-- [x] DJ 資料收集與個人頁面
-- [x] 照片/影片素材整合
-- [x] 響應式設計優化
-- [x] 預約系統（Modal 對話框）
-- [x] GitHub Pages 部署
-- [x] 客戶評價更新
+- HTML5 / CSS3 / Vanilla JavaScript，無建置流程
+- [Lenis](https://github.com/darkroomengineering/lenis) 平滑捲動（CDN）
+- IntersectionObserver 進場動畫，支援 `prefers-reduced-motion`
+- Font Awesome 圖示、Google Fonts（Oswald / Poppins / Noto Sans TC）
+- JSON-LD 結構化資料、sitemap 與 robots.txt
+- GitHub Pages 部署（推上 `main` 即自動更新）
 
-## 📸 特色功能
+### 設計
 
-### 照片展示系統
-- 自適應網格佈局
-- 防止圖片裁切（object-fit: contain）
-- 懸浮放大效果
-- 支援影片播放
+- 主色 `#ff2b4d`，背景 `#0a0a0d`
+- 標題字體 Oswald，內文 Poppins + Noto Sans TC
+- 響應式：桌機 / 平板 / 手機三段
 
-### 預約系統
-- 整合式 Modal 預約表單
-- 保持視覺一致性
-- 表單驗證功能
-- 即時確認訊息
+## 開發方式
 
-## 📞 聯絡資訊
+純靜態網站，直接開啟 `index.html` 即可預覽。若要測試相對路徑與 JSON-LD，建議起一個本機伺服器：
 
-- 📧 Email: sebulurco@gmail.com
-- 📍 地址: 台北市信義區
-- 🌐 社群媒體:
-  - Instagram: [@redshou_89](https://instagram.com/redshou_89) (DJ REDSHOU)
-  - Facebook: [Dungi Sebulur Team]
-  - YouTube: [表演影片頻道]
+```bash
+python3 -m http.server 8000
+# 瀏覽 http://localhost:8000
+```
 
-## 🎯 近期更新
+## 維護筆記
 
-- 2026年1月：更新版權年份至 2026
-- 2025年12月：新增 DJ Dinos 取代 DJ Alex
-- 2025年12月：更新客戶評價，移除重複內容
-- 2025年12月：修正照片顯示問題，防止裁切
-- 2025年12月：整合預約系統為 Modal 對話框
-- 2025年12月：移除 Spotify 連結圖標
+### 相簿放回照片
 
-## 📝 授權條款
+首頁「活動花絮」目前留白，`css/main.css` 的磚牆版型與 `index.html` 的燈箱程式碼都保留著。要放回內容，在 `#gallery` 區塊內加入：
 
-Copyright © 2026 Dungi Sebulur Team. All rights reserved.
+```html
+<div class="gallery-grid">
+    <figure class="gallery-item" data-type="image"
+            data-src="images/gallery/檔名.jpg" data-caption="說明文字">
+        <img src="images/gallery/檔名.jpg" alt="說明文字" loading="lazy">
+        <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+    </figure>
+</div>
+```
+
+影片用 `data-type="video"`，加上 `class="g-wide"`（跨兩欄）或 `g-tall`（跨兩列）可做出磚牆變化。
+
+### 圖片與影片
+
+上傳前請先壓縮，圖片最長邊建議 1600px：
+
+```bash
+ffmpeg -i 原檔.jpg -vf "scale='min(1600,iw)':'min(1600,ih)':force_original_aspect_ratio=decrease" -q:v 4 輸出.jpg
+ffmpeg -i 原檔.mp4 -vf "hqdn3d=2:1:3:3" -c:v libx264 -crf 30 -preset medium -movflags +faststart -c:a aac -b:a 80k 輸出.mp4
+```
+
+### 待補內容
+
+- [ ] `images/djs/at.jpg`（AT 的照片）
+- [ ] 社群連結：首頁 FB／IG／YouTube、各 DJ 的 IG／FB／SoundCloud（目前皆為 `#`）
+- [ ] 首頁「近期演出」與「活動花絮」的實際內容
+- [ ] `images/gallery/dinojin-performance-compressed.mp4` 仍有 32MB，建議剪短或改嵌 YouTube
+
+## 聯絡資訊
+
+- Email：sebulurco@gmail.com
+- 服務範圍：全台皆可接洽，主要為台北、宜蘭、花蓮
 
 ---
 
-*讓音樂點亮您的活動 - Dungi Sebulur Team*
-*原住民文化 x 現代電音的完美融合*
+Copyright © 2026 Sebulur. All rights reserved.
