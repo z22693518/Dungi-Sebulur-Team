@@ -236,17 +236,30 @@
             border-top: 1px solid rgba(255, 255, 255, .14);
         }
         .pcard-stat {
-            display: flex; align-items: baseline; gap: 6px;
+            display: flex; align-items: baseline; gap: 8px;
             font-family: var(--display-font);
         }
         .pcard-stat span {
+            display: flex; flex-direction: column; line-height: 1.25;
             font-size: 11px; letter-spacing: 0.14em;
             color: rgba(255, 255, 255, 0.45);
+        }
+        .pcard-stat span em {
+            font-style: normal; font-size: 9.5px; letter-spacing: 0.08em;
+            color: rgba(255, 255, 255, 0.32);
         }
         .pcard-stat strong {
             font-size: 18px; font-weight: 600; letter-spacing: 0.02em;
             color: #ffd9a0;
         }
+
+        .pcard-legend {
+            margin-top: 46px; text-align: center;
+            font-size: 13px; color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.04em;
+        }
+        .pcard-legend i { color: #ffc043; margin-right: 4px; }
+        .pcard-legend .sep { margin: 0 10px; color: rgba(255, 255, 255, 0.2); }
 
         /* 光澤圖層 */
         .pcard-holo,
@@ -512,8 +525,8 @@
                         <div class="pcard-race">[ DJ <span class="sep">/</span> EDM / Hip-Hop / Trap ]</div>
                         <p class="pcard-desc">花蓮阿美族，把部落的熱度帶進舞池；台北 OMNI ALTA 駐場。</p>
                         <div class="pcard-stats">
-                            <div class="pcard-stat"><span>ATK</span><strong>300+</strong></div>
-                            <div class="pcard-stat"><span>DEF</span><strong>8年+</strong></div>
+                            <div class="pcard-stat"><span>ATK<em>場次</em></span><strong>300+</strong></div>
+                            <div class="pcard-stat"><span>DEF<em>年資</em></span><strong>8年+</strong></div>
                         </div>
                         <div class="pcard-holo" aria-hidden="true"></div>
                         <div class="pcard-glare" aria-hidden="true"></div>
@@ -541,8 +554,8 @@
                         <div class="pcard-race">[ DJ <span class="sep">/</span> Disco / Amapiano / World ]</div>
                         <p class="pcard-desc">花蓮阿美族，擅長把原民音樂元素放進南非節奏裡。</p>
                         <div class="pcard-stats">
-                            <div class="pcard-stat"><span>ATK</span><strong>100+</strong></div>
-                            <div class="pcard-stat"><span>DEF</span><strong>6年+</strong></div>
+                            <div class="pcard-stat"><span>ATK<em>場次</em></span><strong>100+</strong></div>
+                            <div class="pcard-stat"><span>DEF<em>年資</em></span><strong>6年+</strong></div>
                         </div>
                         <div class="pcard-holo" aria-hidden="true"></div>
                         <div class="pcard-glare" aria-hidden="true"></div>
@@ -569,8 +582,8 @@
                         <div class="pcard-race">[ DJ <span class="sep">/</span> Hip-Hop / R&amp;B / Scratch ]</div>
                         <p class="pcard-desc">B-boy 背景出身，熟悉 Battle 賽制與街舞現場。</p>
                         <div class="pcard-stats">
-                            <div class="pcard-stat"><span>ATK</span><strong>100+</strong></div>
-                            <div class="pcard-stat"><span>DEF</span><strong>5年</strong></div>
+                            <div class="pcard-stat"><span>ATK<em>場次</em></span><strong>100+</strong></div>
+                            <div class="pcard-stat"><span>DEF<em>年資</em></span><strong>5年</strong></div>
                         </div>
                         <div class="pcard-holo" aria-hidden="true"></div>
                         <div class="pcard-glare" aria-hidden="true"></div>
@@ -600,8 +613,8 @@
                         <div class="pcard-race">[ DJ <span class="sep">/</span> Melodic House / Techno ]</div>
                         <p class="pcard-desc">少數專精 4 軌放歌技術的 DJ 與製作人，台中 PinkB 駐店。</p>
                         <div class="pcard-stats">
-                            <div class="pcard-stat"><span>ATK</span><strong>300+</strong></div>
-                            <div class="pcard-stat"><span>DEF</span><strong>8年+</strong></div>
+                            <div class="pcard-stat"><span>ATK<em>場次</em></span><strong>300+</strong></div>
+                            <div class="pcard-stat"><span>DEF<em>年資</em></span><strong>8年+</strong></div>
                         </div>
                         <div class="pcard-holo" aria-hidden="true"></div>
                         <div class="pcard-glare" aria-hidden="true"></div>
@@ -629,14 +642,20 @@
                         <div class="pcard-race">[ DJ <span class="sep">/</span> Funk Disco / Old School ]</div>
                         <p class="pcard-desc">「pa在路上」主理人，70-80 年代 Funk 與街舞賽事專長。</p>
                         <div class="pcard-stats">
-                            <div class="pcard-stat"><span>ATK</span><strong>—</strong></div>
-                            <div class="pcard-stat"><span>DEF</span><strong>6年</strong></div>
+                            <div class="pcard-stat"><span>ATK<em>場次</em></span><strong>—</strong></div>
+                            <div class="pcard-stat"><span>DEF<em>年資</em></span><strong>6年</strong></div>
                         </div>
                         <div class="pcard-holo" aria-hidden="true"></div>
                         <div class="pcard-glare" aria-hidden="true"></div>
                     </a>
                 </article>
             </div>
+
+            <p class="pcard-legend" data-reveal="fade">
+                <i class="fas fa-star" aria-hidden="true"></i> 等級＝資歷年數
+                <span class="sep">·</span> ATK＝累積演出場次
+                <span class="sep">·</span> DEF＝入行年資
+            </p>
         </div>
     </section>
 
