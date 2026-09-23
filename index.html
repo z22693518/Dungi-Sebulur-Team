@@ -127,40 +127,6 @@
             box-shadow: 0 6px 20px rgba(255, 43, 77, 0.4);
         }
         
-        /* ── 服務項目：左右交錯圖文 ── */
-        .service-row {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 60px; align-items: center; margin-bottom: 90px;
-        }
-        .service-row:last-child { margin-bottom: 0; }
-        .service-row:nth-child(even) .service-media { order: 2; }
-        .service-media {
-            position: relative; aspect-ratio: 4 / 3; overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .service-media img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform .7s ease;
-        }
-        .service-row:hover .service-media img { transform: scale(1.06); }
-        .service-no {
-            position: absolute; left: 0; top: 0; z-index: 2;
-            background: var(--accent); color: #fff;
-            font-family: var(--display-font); font-size: 15px;
-            padding: 8px 18px; letter-spacing: 2px;
-        }
-        .service-text h3 {
-            font-family: var(--display-font); font-size: 30px;
-            margin-bottom: 16px; letter-spacing: 1px;
-        }
-        .service-text p { color: rgba(255,255,255,0.62); margin-bottom: 22px; }
-        .service-points { list-style: none; display: grid; gap: 10px; padding: 0; }
-        .service-points li {
-            display: flex; gap: 12px; align-items: baseline;
-            color: rgba(255,255,255,0.62); font-size: 15px;
-        }
-        .service-points li::before { content: '—'; color: var(--accent); }
-
         /* ── 四宮格特色 ── */
         .feature-grid {
             display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
@@ -176,8 +142,6 @@
         .feature-card p { color: rgba(255,255,255,0.62); font-size: 14.5px; }
 
         @media (max-width: 960px) {
-            .service-row { grid-template-columns: 1fr; gap: 26px; margin-bottom: 60px; }
-            .service-row:nth-child(even) .service-media { order: 0; }
             .feature-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
@@ -381,86 +345,12 @@
             <p class="about-text" data-reveal style="--reveal-delay:.16s">
                 Sebulur 是一個充滿活力的專業 DJ 團隊，我們結合了不同的音樂風格和文化背景，為每個活動帶來獨特的音樂體驗。從電子舞曲到嘻哈，從原民音樂到國際流行，我們的 DJ 都是各自領域的專家。
             </p>
+            <div style="margin-top:36px;" data-reveal>
+                <a href="services.html" class="btn-outline">我們提供的服務 →</a>
+            </div>
         </div>
     </section>
     
-    <!-- Services Section -->
-    <section id="services">
-        <div class="container">
-            <p class="section-label" data-reveal>Services</p>
-            <h2 data-reveal style="--reveal-delay:.08s">服務項目</h2>
-            <p class="about-text" data-reveal style="--reveal-delay:.16s;margin-bottom:56px;">從單場 DJ 到整場活動的音樂規劃，依你的場地、預算與客群量身安排。</p>
-
-            <div class="service-row">
-                <div class="service-media" data-reveal="mask">
-                    <span class="service-no">01</span>
-                    <img src="images/gallery/alta-performance.jpg" alt="活動與派對 DJ">
-                </div>
-                <div class="service-text" data-reveal="right" style="--reveal-delay:.12s">
-                    <h3>活動與派對 DJ</h3>
-                    <p>夜店、品牌活動、尾牙春酒、開幕派對。依現場客群即時調整選曲節奏，把氣氛帶到你要的位置。</p>
-                    <ul class="service-points">
-                        <li>EDM／Hip-Hop／Disco／House 多風格對應</li>
-                        <li>可搭配 MC 喊麥與燈光節奏配合</li>
-                        <li>2 至 6 小時彈性場次</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="service-row">
-                <div class="service-media" data-reveal="mask">
-                    <span class="service-no">02</span>
-                    <img src="images/gallery/dinos-performance-1.jpg" alt="婚禮與宴會音樂" loading="lazy">
-                </div>
-                <div class="service-text" data-reveal="right" style="--reveal-delay:.12s">
-                    <h3>婚禮與宴會音樂</h3>
-                    <p>從進場、敬酒到送客，依流程安排完整音樂腳本，讓每個橋段都有對的情緒。</p>
-                    <ul class="service-points">
-                        <li>婚禮流程音樂企劃與彩排</li>
-                        <li>宴會廳音響配置建議</li>
-                        <li>中英日語歌單皆可安排</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="service-row">
-                <div class="service-media" data-reveal="mask">
-                    <span class="service-no">03</span>
-                    <img src="images/gallery/dinojin-gallery-1.jpg" alt="街舞賽事與文化活動" loading="lazy">
-                </div>
-                <div class="service-text" data-reveal="right" style="--reveal-delay:.12s">
-                    <h3>街舞賽事與文化活動</h3>
-                    <p>Battle 賽制熟悉，能即時配合舞者節奏切歌，也承接市集、藝術節與劇場演出。</p>
-                    <ul class="service-points">
-                        <li>Footwork／Breaking／Freestyle Battle 伴奏</li>
-                        <li>原住民音樂與在地文化元素融合</li>
-                        <li>賽事流程與計分時段配樂</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="service-row">
-                <div class="service-media" data-reveal="mask">
-                    <span class="service-no">04</span>
-                    <img src="images/gallery/dinojin-gallery-2.jpg" alt="品牌音樂企劃與設備規劃" loading="lazy">
-                </div>
-                <div class="service-text" data-reveal="right" style="--reveal-delay:.12s">
-                    <h3>品牌音樂企劃與設備規劃</h3>
-                    <p>不只是放歌。從品牌調性出發設計聲音風格，並依場地條件規劃音響與器材配置。</p>
-                    <ul class="service-points">
-                        <li>品牌活動聲音識別規劃</li>
-                        <li>場地音響、器材與電源評估</li>
-                        <li>一對一 DJ 教學與團體課程</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div style="margin-top:56px;" data-reveal>
-                <a href="services.html" class="btn-outline">看完整服務內容與方案 →</a>
-            </div>
-        </div>
-    </section>
-
     <!-- Why Us Section -->
     <section id="why">
         <div class="container">
