@@ -100,107 +100,210 @@
             content: ''; width: 54px; height: 1px; background: var(--accent);
         }
 
-        /* ── 陣容網格 ── */
+        /* ── 卡牌區 ── */
         #artists { background: #0d0d11; padding-top: 80px; }
 
-        .artist-grid {
+        .pcards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 26px;
+            gap: 44px 34px;
         }
 
-        .artist-card {
+        /* 每張卡有自己的透視原點，立體感才明顯 */
+        .pcard {
             position: relative;
-            aspect-ratio: 3 / 4;
-            overflow: hidden;
-            cursor: pointer;
-            background: linear-gradient(150deg, #1a1a20, #0d0d11);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            transition: border-color .3s ease, transform .3s ease;
+            perspective: 760px;
         }
-        .artist-card:hover { border-color: var(--accent); transform: translateY(-6px); }
+        .pcard:hover { z-index: 3; }
 
-        .artist-card img {
+        /* 卡面：高度由內容決定，不裁切，也不能用 overflow 否則 3D 會被壓扁 */
+        .pcard-link {
+            position: relative;
+            display: block;
+            transform-style: preserve-3d;
+            transform:
+                translateY(calc(var(--lift, 0) * 1px))
+                rotateX(calc(var(--rx, 0) * 1deg))
+                rotateY(calc(var(--ry, 0) * 1deg))
+                scale(var(--sc, 1));
+            will-change: transform;
+            border-radius: 20px;
+            padding: 18px 18px 20px;
+            background: linear-gradient(160deg, #23232c 0%, #14141b 42%, #0b0b10 100%);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow:
+                0 14px 34px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.14);
+            transition: transform .5s cubic-bezier(.2, .7, .3, 1), box-shadow .45s ease;
+        }
+        .pcard.is-live .pcard-link { transition: transform .1s cubic-bezier(.2, .7, .3, 1), box-shadow .4s ease; }
+        .pcard:hover .pcard-link {
+            box-shadow:
+                0 54px 100px rgba(0, 0, 0, 0.75),
+                0 20px 40px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 43, 77, 0.55),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        /* 內層各自浮出不同高度，轉動時產生深度差 */
+        .pcard-level,
+        .pcard-race,
+        .pcard-top,
+        .pcard-photo,
+        .pcard-desc,
+        .pcard-stats {
+            transform: translateZ(0);
+            transition: transform .5s cubic-bezier(.2, .7, .3, 1);
+        }
+        .pcard:hover .pcard-top { transform: translateZ(58px); }
+        .pcard:hover .pcard-level { transform: translateZ(54px); }
+        .pcard:hover .pcard-photo { transform: translateZ(88px); }
+        .pcard:hover .pcard-race { transform: translateZ(46px); }
+        .pcard:hover .pcard-desc { transform: translateZ(32px); }
+        .pcard:hover .pcard-stats { transform: translateZ(40px); }
+
+        /* 卡頭：名字 + 屬性圓章 */
+        .pcard-top {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 10px; margin-bottom: 8px;
+        }
+        .pcard-name {
+            font-family: var(--display-font);
+            font-size: clamp(19px, 1.5vw, 24px);
+            font-weight: 600; letter-spacing: 0.04em;
+            text-transform: uppercase; line-height: 1;
+        }
+        .pcard-attr {
+            flex: none; width: 34px; height: 34px; border-radius: 50%;
+            display: grid; place-items: center; font-size: 14px; color: #fff;
+            background: radial-gradient(circle at 32% 28%, #ff6d86, var(--accent) 62%, #9c0d27);
+            box-shadow: 0 3px 10px rgba(255, 43, 77, .45), inset 0 1px 2px rgba(255, 255, 255, .5);
+        }
+
+        /* 等級星星 */
+        .pcard-level {
+            display: flex; justify-content: flex-end; gap: 3px;
+            margin-bottom: 12px; min-height: 16px;
+        }
+        .pcard-level i {
+            font-size: 12px;
+            color: #ffc043;
+            text-shadow: 0 0 6px rgba(255, 192, 67, .55);
+        }
+
+        /* 種族／屬性欄（遊戲王的中括號那行） */
+        .pcard-race {
+            display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+            padding: 7px 10px; margin-bottom: 12px;
+            border-top: 1px solid rgba(255, 255, 255, .12);
+            border-bottom: 1px solid rgba(255, 255, 255, .12);
+            background: rgba(255, 255, 255, .03);
+            font-family: var(--display-font);
+            font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase;
+            color: rgba(255, 255, 255, .72);
+        }
+        .pcard-race .sep { color: rgba(255, 255, 255, .3); }
+
+        /* 照片窗 */
+        .pcard-photo {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            border-radius: 12px; overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: linear-gradient(150deg, #1a1a20, #0d0d11);
+            margin-bottom: 14px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+        }
+        .pcard-photo img {
             position: absolute; inset: 0;
             width: 100%; height: 100%; object-fit: cover; display: block;
-            filter: grayscale(0);
-            transition: transform .6s cubic-bezier(.2, .7, .3, 1);
         }
-        .artist-card:hover img { transform: scale(1.07); }
-
-        .artist-initial {
+        .pcard-initial {
             position: absolute; inset: 0; display: grid; place-items: center;
-            font-family: var(--display-font); font-size: 110px; font-weight: 700;
+            font-family: var(--display-font); font-size: 82px; font-weight: 700;
             color: rgba(255, 43, 77, 0.14);
         }
 
-        .artist-link {
-            position: absolute; inset: 0; z-index: 4;
+        .pcard-desc {
+            font-size: 12.5px; color: rgba(255, 255, 255, 0.52);
+            line-height: 1.55; margin-bottom: 14px;
         }
 
-        .artist-hover {
-            position: absolute; inset: 0; z-index: 5;
-            pointer-events: none;
-            display: flex; flex-direction: column; justify-content: flex-end;
-            padding: 30px 26px 26px;
-            background: linear-gradient(180deg, rgba(10, 10, 13, 0) 30%, rgba(10, 10, 13, 0.92) 100%);
-            opacity: 0;
-            transition: opacity .4s ease;
+        /* ATK / DEF（靠右，模仿怪獸卡底部） */
+        .pcard-stats {
+            display: flex; justify-content: flex-end; gap: 20px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, .14);
         }
-        .artist-card:hover .artist-hover { opacity: 1; }
-
-        .artist-body { transform: translateY(14px); transition: transform .45s cubic-bezier(.2, .7, .3, 1); }
-        .artist-card:hover .artist-body { transform: none; }
-
-        .artist-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
-
-        .artist-name {
+        .pcard-stat {
+            display: flex; align-items: baseline; gap: 6px;
             font-family: var(--display-font);
-            font-size: 30px; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 0.02em;
-            line-height: 1.1;
         }
-        .artist-meta {
-            color: rgba(255, 255, 255, 0.55);
-            font-size: 13.5px; letter-spacing: 0.06em; margin-top: 4px;
+        .pcard-stat span {
+            font-size: 11px; letter-spacing: 0.14em;
+            color: rgba(255, 255, 255, 0.45);
         }
-        .artist-more {
-            display: inline-block; margin-top: 16px;
-            padding: 9px 22px;
-            border: 1px solid rgba(255, 255, 255, 0.45);
-            background: transparent; color: #fff; cursor: pointer;
-            font-family: var(--display-font); font-size: 12px;
-            letter-spacing: 0.2em; text-transform: uppercase;
-            transition: background .25s, border-color .25s;
+        .pcard-stat strong {
+            font-size: 18px; font-weight: 600; letter-spacing: 0.02em;
+            color: #ffd9a0;
         }
-        .artist-more:hover { background: var(--accent); border-color: var(--accent); }
 
-        .artist-social {
-            pointer-events: auto;
-            display: flex; gap: 10px; margin-top: 18px;
-            padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.12);
+        /* 光澤圖層 */
+        .pcard-holo,
+        .pcard-glare {
+            position: absolute; inset: 0; border-radius: 20px;
+            pointer-events: none; opacity: 0;
+            transition: opacity .35s ease;
+            transform: translateZ(1px);
         }
-        .artist-social a {
-            width: 34px; height: 34px; border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            display: grid; place-items: center; font-size: 14px;
-            transition: background .25s, border-color .25s, color .25s;
-        }
-        .artist-social a:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+        .pcard:hover .pcard-holo,
+        .pcard:hover .pcard-glare { opacity: 1; }
 
-        /* 觸控裝置沒有 hover，資訊直接顯示 */
+        .pcard-holo {
+            background: linear-gradient(
+                105deg,
+                transparent 30%,
+                rgba(255, 255, 255, .06) 42%,
+                rgba(255, 255, 255, .26) 50%,
+                rgba(255, 43, 77, .16) 55%,
+                rgba(255, 255, 255, .06) 62%,
+                transparent 74%
+            );
+            background-size: 260% 100%;
+            background-position: calc(var(--mx, 50) * 1%) 50%;
+            mix-blend-mode: soft-light;
+        }
+
+        .pcard-glare {
+            background: radial-gradient(
+                circle at calc(var(--mx, 50) * 1%) calc(var(--my, 50) * 1%),
+                rgba(255, 255, 255, .28) 0%,
+                rgba(255, 255, 255, .07) 24%,
+                transparent 58%
+            );
+            mix-blend-mode: overlay;
+        }
+
+        /* 觸控裝置：不傾斜，改用緩慢流動的光澤 */
         @media (hover: none) {
-            .artist-hover { opacity: 1; }
-            .artist-body { transform: none; }
+            .pcard-holo { opacity: .35; animation: holoDrift 7s ease-in-out infinite; }
+            .pcard-glare { opacity: .5; }
+        }
+        @keyframes holoDrift {
+            0%, 100% { background-position: 10% 50%; }
+            50% { background-position: 90% 50%; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .pcard, .pcard * { transform: none !important; transition: none !important; }
+            .pcard-holo, .pcard-glare { display: none; }
         }
 
         @media (max-width: 1024px) {
-            .artist-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .pcards { grid-template-columns: repeat(2, 1fr); gap: 34px 24px; }
         }
-        @media (max-width: 600px) {
-            .artist-hero { padding: 150px 6vw 60px; }
-            .artist-grid { grid-template-columns: 1fr; }
-            .artist-name { font-size: 26px; }
+        @media (max-width: 620px) {
+            .pcards { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
         }
 
         /* ── 底部 CTA ── */
@@ -377,7 +480,7 @@
         <div class="container">
             <p class="section-label" data-reveal>The Crew</p>
             <h1 data-reveal style="--reveal-delay:.08s">DJ 陣容</h1>
-            <p class="hero-sub" data-reveal style="--reveal-delay:.18s">從 EDM、Hip-Hop 到 Disco、Amapiano 與 Melodic House，Sebulur 的每一位 DJ 都有自己的舞池語言。滑過卡片認識他們，點擊看完整介紹。</p>
+            <p class="hero-sub" data-reveal style="--reveal-delay:.18s">從 EDM、Hip-Hop 到 Disco、Amapiano 與 Melodic House，Sebulur 的每一位 DJ 都有自己的舞池語言。每張卡片都可以拿起來轉一轉，點擊看完整介紹。</p>
             <div class="artist-count" data-reveal style="--reveal-delay:.26s">5 位 DJ</div>
         </div>
     </section>
@@ -385,120 +488,153 @@
     <!-- Artist Grid -->
     <section id="artists">
         <div class="container">
-            <div class="artist-grid" data-stagger>
-                <!-- REDSHOU -->
-                <article class="artist-card" data-reveal>
-                    <a class="artist-link" href="djs/dj1.html" aria-label="REDSHOU 個人介紹"></a>
-                    <span class="artist-initial">R</span>
-                    <img src="images/djs/redshou.jpg" alt="REDSHOU" fetchpriority="high" onerror="this.style.display='none'">
-                    <div class="artist-hover">
-                        <div class="artist-body">
-                            <div class="artist-tags">
-                                <span class="genre-tag">EDM</span>
-                                <span class="genre-tag">Hip-Hop</span>
-                            </div>
-                            <h2 class="artist-name">REDSHOU</h2>
-                            <p class="artist-meta">花蓮阿美族 · 台北駐場</p>
-                            <span class="artist-more">See More</span>
-                            <div class="artist-social">
-                                <a href="#" onclick="return false;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="#" onclick="return false;" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" onclick="return false;" aria-label="SoundCloud"><i class="fab fa-soundcloud"></i></a>
-                            </div>
+            <div class="pcards" data-stagger>
+                <article class="pcard" data-reveal>
+                    <a class="pcard-link" href="djs/dj1.html">
+                        <div class="pcard-top">
+                            <span class="pcard-name">REDSHOU</span>
+                            <span class="pcard-attr" aria-hidden="true"><i class="fas fa-bolt"></i></span>
                         </div>
-                    </div>
+                        <div class="pcard-level" aria-label="等級 8">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <div class="pcard-photo">
+                            <span class="pcard-initial">R</span>
+                            <img src="images/djs/redshou.jpg" alt="REDSHOU" loading="lazy" onerror="this.style.display='none'">
+                        </div>
+                        <div class="pcard-race">[ DJ <span class="sep">/</span> EDM / Hip-Hop / Trap ]</div>
+                        <p class="pcard-desc">花蓮阿美族，把部落的熱度帶進舞池；台北 OMNI ALTA 駐場。</p>
+                        <div class="pcard-stats">
+                            <div class="pcard-stat"><span>ATK</span><strong>300+</strong></div>
+                            <div class="pcard-stat"><span>DEF</span><strong>8年+</strong></div>
+                        </div>
+                        <div class="pcard-holo" aria-hidden="true"></div>
+                        <div class="pcard-glare" aria-hidden="true"></div>
+                    </a>
                 </article>
 
-                <!-- Visin -->
-                <article class="artist-card" data-reveal>
-                    <a class="artist-link" href="djs/dj2.html" aria-label="Visin 個人介紹"></a>
-                    <span class="artist-initial">V</span>
-                    <img src="images/djs/visin.jpg" alt="Visin" fetchpriority="high" onerror="this.style.display='none'">
-                    <div class="artist-hover">
-                        <div class="artist-body">
-                            <div class="artist-tags">
-                                <span class="genre-tag">Disco</span>
-                                <span class="genre-tag">Amapiano</span>
-                            </div>
-                            <h2 class="artist-name">Visin</h2>
-                            <p class="artist-meta">花蓮阿美族 · 原民電子</p>
-                            <span class="artist-more">See More</span>
-                            <div class="artist-social">
-                                <a href="#" onclick="return false;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="#" onclick="return false;" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" onclick="return false;" aria-label="SoundCloud"><i class="fab fa-soundcloud"></i></a>
-                            </div>
+                <article class="pcard" data-reveal>
+                    <a class="pcard-link" href="djs/dj2.html">
+                        <div class="pcard-top">
+                            <span class="pcard-name">Visin</span>
+                            <span class="pcard-attr" aria-hidden="true"><i class="fas fa-globe"></i></span>
                         </div>
-                    </div>
+                        <div class="pcard-level" aria-label="等級 6">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <div class="pcard-photo">
+                            <span class="pcard-initial">V</span>
+                            <img src="images/djs/visin.jpg" alt="Visin" loading="lazy" onerror="this.style.display='none'">
+                        </div>
+                        <div class="pcard-race">[ DJ <span class="sep">/</span> Disco / Amapiano / World ]</div>
+                        <p class="pcard-desc">花蓮阿美族，擅長把原民音樂元素放進南非節奏裡。</p>
+                        <div class="pcard-stats">
+                            <div class="pcard-stat"><span>ATK</span><strong>100+</strong></div>
+                            <div class="pcard-stat"><span>DEF</span><strong>6年+</strong></div>
+                        </div>
+                        <div class="pcard-holo" aria-hidden="true"></div>
+                        <div class="pcard-glare" aria-hidden="true"></div>
+                    </a>
                 </article>
 
-                <!-- Dinos -->
-                <article class="artist-card" data-reveal>
-                    <a class="artist-link" href="djs/dj3.html" aria-label="Dinos 個人介紹"></a>
-                    <span class="artist-initial">D</span>
-                    <img src="images/djs/dinos.jpg" alt="Dinos" fetchpriority="high" onerror="this.style.display='none'">
-                    <div class="artist-hover">
-                        <div class="artist-body">
-                            <div class="artist-tags">
-                                <span class="genre-tag">Hip-Hop</span>
-                                <span class="genre-tag">R&amp;B</span>
-                            </div>
-                            <h2 class="artist-name">Dinos</h2>
-                            <p class="artist-meta">派對 · 品牌活動</p>
-                            <span class="artist-more">See More</span>
-                            <div class="artist-social">
-                                <a href="#" onclick="return false;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="#" onclick="return false;" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" onclick="return false;" aria-label="SoundCloud"><i class="fab fa-soundcloud"></i></a>
-                            </div>
+                <article class="pcard" data-reveal>
+                    <a class="pcard-link" href="djs/dj3.html">
+                        <div class="pcard-top">
+                            <span class="pcard-name">Dinos</span>
+                            <span class="pcard-attr" aria-hidden="true"><i class="fas fa-record-vinyl"></i></span>
                         </div>
-                    </div>
+                        <div class="pcard-level" aria-label="等級 5">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <div class="pcard-photo">
+                            <span class="pcard-initial">D</span>
+                            <img src="images/djs/dinos.jpg" alt="Dinos" loading="lazy" onerror="this.style.display='none'">
+                        </div>
+                        <div class="pcard-race">[ DJ <span class="sep">/</span> Hip-Hop / R&amp;B / Scratch ]</div>
+                        <p class="pcard-desc">B-boy 背景出身，熟悉 Battle 賽制與街舞現場。</p>
+                        <div class="pcard-stats">
+                            <div class="pcard-stat"><span>ATK</span><strong>100+</strong></div>
+                            <div class="pcard-stat"><span>DEF</span><strong>5年</strong></div>
+                        </div>
+                        <div class="pcard-holo" aria-hidden="true"></div>
+                        <div class="pcard-glare" aria-hidden="true"></div>
+                    </a>
                 </article>
 
-                <!-- DINOjin -->
-                <article class="artist-card" data-reveal>
-                    <a class="artist-link" href="djs/dj4.html" aria-label="DINOjin 個人介紹"></a>
-                    <span class="artist-initial">D</span>
-                    <img src="images/djs/dinojin-profile.jpg" alt="DINOjin" loading="lazy" onerror="this.style.display='none'">
-                    <div class="artist-hover">
-                        <div class="artist-body">
-                            <div class="artist-tags">
-                                <span class="genre-tag">Melodic House</span>
-                                <span class="genre-tag">Peak House</span>
-                            </div>
-                            <h2 class="artist-name">DINOjin</h2>
-                            <p class="artist-meta">台中 PinkB 駐店</p>
-                            <span class="artist-more">See More</span>
-                            <div class="artist-social">
-                                <a href="#" onclick="return false;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="#" onclick="return false;" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" onclick="return false;" aria-label="SoundCloud"><i class="fab fa-soundcloud"></i></a>
-                            </div>
+                <article class="pcard" data-reveal>
+                    <a class="pcard-link" href="djs/dj4.html">
+                        <div class="pcard-top">
+                            <span class="pcard-name">DINOjin</span>
+                            <span class="pcard-attr" aria-hidden="true"><i class="fas fa-wave-square"></i></span>
                         </div>
-                    </div>
+                        <div class="pcard-level" aria-label="等級 8">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <div class="pcard-photo">
+                            <span class="pcard-initial">D</span>
+                            <img src="images/djs/dinojin-profile.jpg" alt="DINOjin" loading="lazy" onerror="this.style.display='none'">
+                        </div>
+                        <div class="pcard-race">[ DJ <span class="sep">/</span> Melodic House / Techno ]</div>
+                        <p class="pcard-desc">少數專精 4 軌放歌技術的 DJ 與製作人，台中 PinkB 駐店。</p>
+                        <div class="pcard-stats">
+                            <div class="pcard-stat"><span>ATK</span><strong>300+</strong></div>
+                            <div class="pcard-stat"><span>DEF</span><strong>8年+</strong></div>
+                        </div>
+                        <div class="pcard-holo" aria-hidden="true"></div>
+                        <div class="pcard-glare" aria-hidden="true"></div>
+                    </a>
                 </article>
 
-                <!-- AT -->
-                <article class="artist-card" data-reveal>
-                    <a class="artist-link" href="djs/dj5.html" aria-label="AT 個人介紹"></a>
-                    <span class="artist-initial">A</span>
-                    <img src="images/djs/at.jpg" alt="AT" loading="lazy" onerror="this.style.display='none'">
-                    <div class="artist-hover">
-                        <div class="artist-body">
-                            <div class="artist-tags">
-                                <span class="genre-tag">Funk Disco</span>
-                                <span class="genre-tag">Old School</span>
-                            </div>
-                            <h2 class="artist-name">AT</h2>
-                            <p class="artist-meta">「pa在路上」主理人</p>
-                            <span class="artist-more">See More</span>
-                            <div class="artist-social">
-                                <a href="#" onclick="return false;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="#" onclick="return false;" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" onclick="return false;" aria-label="SoundCloud"><i class="fab fa-soundcloud"></i></a>
-                            </div>
+                <article class="pcard" data-reveal>
+                    <a class="pcard-link" href="djs/dj5.html">
+                        <div class="pcard-top">
+                            <span class="pcard-name">AT</span>
+                            <span class="pcard-attr" aria-hidden="true"><i class="fas fa-compact-disc"></i></span>
                         </div>
-                    </div>
+                        <div class="pcard-level" aria-label="等級 6">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <div class="pcard-photo">
+                            <span class="pcard-initial">A</span>
+                            <img src="images/djs/at.jpg" alt="AT" loading="lazy" onerror="this.style.display='none'">
+                        </div>
+                        <div class="pcard-race">[ DJ <span class="sep">/</span> Funk Disco / Old School ]</div>
+                        <p class="pcard-desc">「pa在路上」主理人，70-80 年代 Funk 與街舞賽事專長。</p>
+                        <div class="pcard-stats">
+                            <div class="pcard-stat"><span>ATK</span><strong>—</strong></div>
+                            <div class="pcard-stat"><span>DEF</span><strong>6年</strong></div>
+                        </div>
+                        <div class="pcard-holo" aria-hidden="true"></div>
+                        <div class="pcard-glare" aria-hidden="true"></div>
+                    </a>
                 </article>
             </div>
         </div>
@@ -571,6 +707,49 @@
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') closeMobileMenu();
         });
+
+        // ── 卡牌 3D 傾斜與光澤 ──
+        (function () {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            if (!window.matchMedia('(hover: hover)').matches) return;
+
+            const MAX = 13; // 最大傾斜角度
+            document.querySelectorAll('.pcard').forEach(function (card) {
+                let raf = null;
+
+                function move(e) {
+                    if (raf) return;
+                    raf = requestAnimationFrame(function () {
+                        raf = null;
+                        const r = card.getBoundingClientRect();
+                        const px = (e.clientX - r.left) / r.width;
+                        const py = (e.clientY - r.top) / r.height;
+                        card.style.setProperty('--mx', (px * 100).toFixed(1));
+                        card.style.setProperty('--my', (py * 100).toFixed(1));
+                        card.style.setProperty('--ry', ((px - 0.5) * 2 * MAX).toFixed(2));
+                        card.style.setProperty('--rx', ((0.5 - py) * 2 * MAX).toFixed(2));
+                        card.style.setProperty('--sc', '1.05');
+                        card.style.setProperty('--lift', '-18');
+                        card.classList.add('is-live');
+                    });
+                }
+
+                function reset() {
+                    if (raf) { cancelAnimationFrame(raf); raf = null; }
+                    card.classList.remove('is-live');
+                    card.style.setProperty('--rx', '0');
+                    card.style.setProperty('--ry', '0');
+                    card.style.setProperty('--sc', '1');
+                    card.style.setProperty('--lift', '0');
+                    card.style.setProperty('--mx', '50');
+                    card.style.setProperty('--my', '50');
+                }
+
+                card.addEventListener('pointermove', move);
+                card.addEventListener('pointerleave', reset);
+            });
+        })();
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js" defer></script>
     <script src="js/anim.js?v=1.0.0" defer></script>
