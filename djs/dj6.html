@@ -648,6 +648,47 @@
                 font-size: 48px;
             }
         }
+
+        /* 音樂專案影片 */
+        .yt-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 24px; margin-top: 44px;
+        }
+        .yt-card {
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px; overflow: hidden;
+            background: #12121a;
+            transition: border-color .3s ease, transform .3s ease;
+        }
+        .yt-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+        .yt-frame {
+            position: relative; aspect-ratio: 16 / 9;
+            cursor: pointer; background: #000;
+        }
+        .yt-frame img,
+        .yt-frame iframe {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%; border: 0; display: block;
+            object-fit: cover;
+        }
+        .yt-play {
+            position: absolute; top: 50%; left: 50%;
+            width: 66px; height: 66px; margin: -33px 0 0 -33px;
+            border-radius: 50%; display: grid; place-items: center;
+            background: rgba(255, 43, 77, .92); color: #fff; font-size: 20px;
+            box-shadow: 0 8px 26px rgba(255, 43, 77, .4);
+            transition: transform .25s ease, background .25s ease;
+        }
+        .yt-frame:hover .yt-play { transform: scale(1.1); background: var(--accent); }
+        .yt-body { padding: 20px 22px 22px; }
+        .yt-body h3 {
+            font-family: var(--display-font); font-size: 18px; font-weight: 600;
+            margin-bottom: 8px; letter-spacing: .02em;
+        }
+        .yt-body p { font-size: 14px; color: rgba(255,255,255,0.55); }
+        @media (max-width: 768px) {
+            .yt-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -922,19 +963,28 @@
         <div class="container">
             <p class="section-label" data-reveal>Projects</p>
             <h2 data-reveal style="--reveal-delay:.08s">音樂專案</h2>
-            <div class="skills-grid" data-stagger>
-                <div class="skill-card" data-reveal>
-                    <h3>HUF TAIPEI Live DJ Session</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">與 AlphaTheta × HUF TAIPEI 合作的店內 Live Set。</div>
+            <div class="yt-grid" data-stagger>
+                <article class="yt-card" data-reveal>
+                    <div class="yt-frame" data-yt="D_B5RGbL4KE" role="button" tabindex="0" aria-label="播放 HUF TAIPEI Live DJ Session">
+                        <img src="https://i.ytimg.com/vi/D_B5RGbL4KE/hqdefault.jpg" alt="HUF TAIPEI Live DJ Session" loading="lazy">
+                        <span class="yt-play" aria-hidden="true"><i class="fas fa-play"></i></span>
                     </div>
-                </div>
-                <div class="skill-card" data-reveal>
-                    <h3>In Koh Samui</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">泰國蘇美島實景錄製，Afro House &amp; Amapiano 主題。</div>
+                    <div class="yt-body">
+                        <h3>HUF TAIPEI Live DJ Session</h3>
+                        <p>與 AlphaTheta × HUF TAIPEI 合作的店內 Live Set。</p>
                     </div>
-                </div>
+                </article>
+
+                <article class="yt-card" data-reveal>
+                    <div class="yt-frame" data-yt="m0Lm2EisHTQ" role="button" tabindex="0" aria-label="播放 In Koh Samui DJ Set">
+                        <img src="https://i.ytimg.com/vi/m0Lm2EisHTQ/hqdefault.jpg" alt="In Koh Samui DJ Set" loading="lazy">
+                        <span class="yt-play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                    </div>
+                    <div class="yt-body">
+                        <h3>In Koh Samui DJ Set</h3>
+                        <p>泰國蘇美島實景錄製，Afro House &amp; Amapiano 主題。</p>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -956,6 +1006,29 @@
         <div class="footer-brand">Sebulur</div>
         <p class="footer-copyright">© 2026 Sebulur. All rights reserved.</p>
     </footer>
+
+
+    <script>
+        // 點擊後才載入 YouTube，避免一進頁面就拉外部資源
+        document.querySelectorAll('.yt-frame').forEach(function (box) {
+            function load() {
+                if (box.querySelector('iframe')) return;
+                const id = box.dataset.yt;
+                const f = document.createElement('iframe');
+                f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+                f.title = 'YouTube 影片播放器';
+                f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                f.allowFullscreen = true;
+                box.innerHTML = '';
+                box.appendChild(f);
+                box.style.cursor = 'default';
+            }
+            box.addEventListener('click', load);
+            box.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); load(); }
+            });
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js" defer></script>
     <script src="../js/anim.js?v=1.0.0" defer></script>
