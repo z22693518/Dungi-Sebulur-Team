@@ -661,6 +661,79 @@
                 font-size: 48px;
             }
         }
+
+        /* 影片作品：左播放右選單 */
+        .vplayer {
+            display: grid; grid-template-columns: 1.85fr 1fr;
+            gap: 22px; margin-top: 44px;
+        }
+        .vstage {
+            position: relative; aspect-ratio: 16 / 9;
+            border-radius: 12px; overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: #000; cursor: pointer;
+        }
+        .vstage img, .vstage iframe {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%; border: 0; display: block; object-fit: cover;
+        }
+        .vstage::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 55%, rgba(10,10,13,.6));
+            pointer-events: none; transition: opacity .3s;
+        }
+        .vstage.playing::after { opacity: 0; }
+        .vplay {
+            position: absolute; top: 50%; left: 50%;
+            width: 74px; height: 74px; margin: -37px 0 0 -37px; z-index: 2;
+            border-radius: 50%; display: grid; place-items: center;
+            background: rgba(255,43,77,.92); color: #fff; font-size: 22px;
+            box-shadow: 0 10px 30px rgba(255,43,77,.45);
+            transition: transform .25s ease;
+        }
+        .vstage:hover .vplay { transform: scale(1.1); }
+        .vstage-title {
+            position: absolute; left: 18px; right: 18px; bottom: 16px; z-index: 2;
+            font-family: var(--display-font); font-size: 15px; letter-spacing: .04em;
+            color: rgba(255,255,255,.9);
+        }
+
+        .vmenu {
+            display: flex; flex-direction: column; gap: 10px;
+            max-height: 100%; overflow-y: auto; padding-right: 4px;
+        }
+        .vitem {
+            display: grid; grid-template-columns: 104px 1fr; gap: 12px;
+            align-items: center; padding: 8px; cursor: pointer;
+            background: #12121a; border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px; text-align: left;
+            transition: border-color .25s, background .25s, transform .25s;
+        }
+        .vitem:hover { border-color: rgba(255,43,77,.5); transform: translateX(3px); }
+        .vitem.is-active { border-color: var(--accent); background: #191921; }
+        .vitem-thumb {
+            position: relative; aspect-ratio: 16 / 9; border-radius: 6px; overflow: hidden;
+            background: #000;
+        }
+        .vitem-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .vitem.is-active .vitem-thumb::after {
+            content: '\f04b'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; inset: 0; display: grid; place-items: center;
+            background: rgba(255,43,77,.55); color: #fff; font-size: 13px;
+        }
+        .vitem-text {
+            font-size: 13px; line-height: 1.45; color: rgba(255,255,255,.75);
+        }
+        .vitem.is-active .vitem-text { color: #fff; }
+        .vitem-sub {
+            display: block; margin-top: 4px; font-size: 11px;
+            letter-spacing: .06em; color: rgba(255,255,255,.38);
+        }
+
+        @media (max-width: 900px) {
+            .vplayer { grid-template-columns: 1fr; }
+            .vmenu { max-height: none; }
+        }
     </style>
 </head>
 <body>
@@ -909,6 +982,40 @@
         </div>
     </section>
 
+    <!-- Video Section -->
+    <section class="bg-dark">
+        <div class="container">
+            <p class="section-label" data-reveal>Mixes</p>
+            <h2 data-reveal style="--reveal-delay:.08s">影片作品</h2>
+            <div class="vplayer" data-reveal="fade">
+                <div class="vstage" id="vStage" role="button" tabindex="0" aria-label="播放影片">
+                    <img id="vThumb" src="https://i.ytimg.com/vi/pAXseePg3zs/maxresdefault.jpg" alt="ALCHEMIST &amp; FRIENDS"
+                         onerror="this.src='https://i.ytimg.com/vi/pAXseePg3zs/hqdefault.jpg'">
+                    <span class="vplay" aria-hidden="true"><i class="fas fa-play"></i></span>
+                    <span class="vstage-title" id="vTitle">ALCHEMIST &amp; FRIENDS</span>
+                </div>
+                <div class="vmenu">
+                    <button type="button" class="vitem is-active" data-yt="pAXseePg3zs" data-start="2244" data-title="ALCHEMIST & FRIENDS">
+                        <span class="vitem-thumb"><img src="https://i.ytimg.com/vi/pAXseePg3zs/hqdefault.jpg" alt="ALCHEMIST &amp; FRIENDS" loading="lazy"></span>
+                        <span class="vitem-text">ALCHEMIST &amp; FRIENDS<span class="vitem-sub">Hip-Hop · R&amp;B · Miami Bass</span></span>
+                    </button>
+                    <button type="button" class="vitem" data-yt="EKIxRcubDg4" data-start="340" data-title="ALCHEMIST & FRIENDS">
+                        <span class="vitem-thumb"><img src="https://i.ytimg.com/vi/EKIxRcubDg4/hqdefault.jpg" alt="ALCHEMIST &amp; FRIENDS" loading="lazy"></span>
+                        <span class="vitem-text">ALCHEMIST &amp; FRIENDS<span class="vitem-sub">Baile Funk · Jersey Club · Higher Ground</span></span>
+                    </button>
+                    <button type="button" class="vitem" data-yt="sZXCTqjI-oY" data-start="0" data-title="RED RUM">
+                        <span class="vitem-thumb"><img src="https://i.ytimg.com/vi/sZXCTqjI-oY/hqdefault.jpg" alt="RED RUM" loading="lazy"></span>
+                        <span class="vitem-text">RED RUM<span class="vitem-sub">Hip-Hop · Trap · Afro Beat</span></span>
+                    </button>
+                    <button type="button" class="vitem" data-yt="e_9clBlTPg8" data-start="1289" data-title="UKG Vibe">
+                        <span class="vitem-thumb"><img src="https://i.ytimg.com/vi/e_9clBlTPg8/hqdefault.jpg" alt="UKG Vibe" loading="lazy"></span>
+                        <span class="vitem-text">UKG Vibe<span class="vitem-sub">UK Garage Set</span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="cta-box">
@@ -926,6 +1033,63 @@
         <div class="footer-brand">Sebulur</div>
         <p class="footer-copyright">© 2026 Sebulur. All rights reserved.</p>
     </footer>
+
+
+    <script>
+        // 影片選單：點縮圖或清單才載入 YouTube
+        (function () {
+            const stage = document.getElementById('vStage');
+            if (!stage) return;
+            const thumb = document.getElementById('vThumb');
+            const title = document.getElementById('vTitle');
+            const items = Array.from(document.querySelectorAll('.vitem'));
+            let current = items[0];
+
+            function play(item) {
+                const id = item.dataset.yt;
+                const start = item.dataset.start || 0;
+                const f = document.createElement('iframe');
+                f.src = 'https://www.youtube-nocookie.com/embed/' + id +
+                        '?autoplay=1&rel=0' + (start > 0 ? '&start=' + start : '');
+                f.title = item.dataset.title;
+                f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                f.allowFullscreen = true;
+                stage.innerHTML = '';
+                stage.appendChild(f);
+                stage.classList.add('playing');
+                stage.style.cursor = 'default';
+            }
+
+            function select(item, autoplay) {
+                items.forEach(i => i.classList.remove('is-active'));
+                item.classList.add('is-active');
+                current = item;
+
+                if (autoplay) { play(item); return; }
+                stage.classList.remove('playing');
+                stage.style.cursor = 'pointer';
+                stage.innerHTML =
+                    '<img id="vThumb" src="https://i.ytimg.com/vi/' + item.dataset.yt + '/maxresdefault.jpg" alt="" ' +
+                    'onerror="this.src=\'https://i.ytimg.com/vi/' + item.dataset.yt + '/hqdefault.jpg\'">' +
+                    '<span class="vplay" aria-hidden="true"><i class="fas fa-play"></i></span>' +
+                    '<span class="vstage-title">' + item.dataset.title + '</span>';
+            }
+
+            items.forEach(item => {
+                item.addEventListener('click', () => select(item, true));
+            });
+
+            stage.addEventListener('click', function () {
+                if (!stage.classList.contains('playing')) play(current);
+            });
+            stage.addEventListener('keydown', function (e) {
+                if ((e.key === 'Enter' || e.key === ' ') && !stage.classList.contains('playing')) {
+                    e.preventDefault();
+                    play(current);
+                }
+            });
+        })();
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js" defer></script>
     <script src="../js/anim.js?v=1.0.0" defer></script>
