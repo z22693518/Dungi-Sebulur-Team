@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAOMI | Hip-Hop & Trap DJ | Sebulur</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#0a0a0d">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/anim.css?v=1.0.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+            color: #e8e8ea;
+            background: #0a0a0d;
+            min-height: 100vh;
+            position: relative;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        :root {
+            --accent: #ff2b4d;
+            --display-font: 'Oswald', 'Noto Sans TC', sans-serif;
+        }
+        
+        ::selection {
+            background: var(--accent);
+            color: #0a0a0d;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0a0a0d;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a30;
+            border-radius: 8px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a3a44;
+        }
+        
+        /* Top Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6vw;
+            background: rgba(10, 10, 13, 0.82);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--display-font);
+            font-weight: 700;
+            font-size: 20px;
+            color: #fff;
+        }
+        
+        .logo-text {
+            font-family: var(--display-font);
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        nav a {
+            padding: 10px 16px;
+            font-family: var(--display-font);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #b3b3ba;
+            transition: color 0.2s;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        .btn-book {
+            margin-left: 10px;
+            padding: 11px 24px;
+            border-radius: 4px;
+            background: var(--accent);
+            color: #fff;
+            font-family: var(--display-font);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: box-shadow 0.2s;
+        }
+        
+        .btn-book:hover {
+            box-shadow: 0 8px 24px rgba(255, 43, 77, 0.4);
+            color: #fff;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            padding: 132px 6vw 90px;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            right: -8%;
+            width: 720px;
+            height: 720px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 43, 77, 0.2), transparent 66%);
+            pointer-events: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .back-link {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--display-font);
+            font-size: 13px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #8a8a94;
+            margin-bottom: 40px;
+            transition: color 0.2s;
+        }
+        
+        .back-link:hover {
+            color: var(--accent);
+        }
+        
+        .profile-grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 56px;
+            align-items: center;
+        }
+        
+        .profile-image {
+            position: relative;
+            aspect-ratio: 4/5;
+            border-radius: 12px;
+            overflow: hidden;
+            background: linear-gradient(150deg, #1a1a20, #0d0d11);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .profile-initial {
+            position: absolute;
+            font-family: var(--display-font);
+            font-size: 170px;
+            font-weight: 700;
+            color: rgba(255, 43, 77, 0.13);
+        }
+        
+        .profile-photo {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-intro {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-family: var(--display-font);
+            font-size: 14px;
+            letter-spacing: 0.36em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 22px;
+        }
+        
+        .intro-line {
+            width: 48px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        h1 {
+            font-family: var(--display-font);
+            font-size: clamp(52px, 7vw, 88px);
+            font-weight: 700;
+            line-height: 0.96;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        
+        .tagline {
+            font-size: 20px;
+            color: #c6c6cc;
+            margin-bottom: 24px;
+        }
+        
+        .genres {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+        
+        .genre-tag {
+            padding: 6px 15px;
+            border-radius: 3px;
+            background: rgba(255, 43, 77, 0.16);
+            border: 1px solid var(--accent);
+            color: #ffd2db;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        
+        .location-info {
+            font-size: 15px;
+            color: #b3b3ba;
+            margin-bottom: 32px;
+        }
+        
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 38px;
+            border-radius: 4px;
+            background: var(--accent);
+            color: #fff;
+            font-family: var(--display-font);
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: box-shadow 0.2s;
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 14px 34px rgba(255, 43, 77, 0.45);
+            color: #fff;
+        }
+        
+        /* Sections */
+        section {
+            padding: 100px 6vw;
+        }
+        
+        .bg-dark {
+            background: #0d0d11;
+        }
+        
+        .section-label {
+            font-family: var(--display-font);
+            font-size: 14px;
+            letter-spacing: 0.34em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+        
+        h2 {
+            font-family: var(--display-font);
+            font-size: clamp(34px, 4.5vw, 52px);
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 36px;
+        }
+        
+        .bio-text {
+            font-size: 17px;
+            color: #b3b3ba;
+            margin-bottom: 20px;
+            max-width: 900px;
+        }
+        
+        /* Skills Grid */
+        .skills-grid {
+            margin-top: 52px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .skill-card {
+            padding: 32px;
+            border-radius: 10px;
+            background: #12121a;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        
+        .skill-card h3 {
+            font-family: var(--display-font);
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #c6c6cc;
+            margin-bottom: 20px;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+        }
+        
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14.5px;
+            color: #b3b3ba;
+        }
+        
+        .skill-check {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 56px;
+            max-width: 960px;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 15px;
+        }
+        
+        .info-label {
+            color: #8a8a94;
+            font-family: var(--display-font);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        
+        .info-value {
+            color: #e8e8ea;
+            font-weight: 500;
+            text-align: right;
+        }
+        
+        /* Experience */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            margin-top: 48px;
+        }
+        
+        .exp-column h3 {
+            font-family: var(--display-font);
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #c6c6cc;
+            margin-bottom: 24px;
+        }
+        
+        .exp-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        
+        .exp-item {
+            display: flex;
+            gap: 14px;
+            font-size: 15px;
+            color: #b3b3ba;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        
+        .exp-bullet {
+            color: var(--accent);
+            flex: none;
+        }
+        
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            aspect-ratio: 16/9;
+            min-height: 300px;
+            border-radius: 12px;
+            background: linear-gradient(150deg, #1a1a20, #0d0d11);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 10px;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 43, 77, 0.2);
+            border-color: var(--accent);
+        }
+        
+        .gallery-item img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s;
+            border-radius: 8px;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-placeholder {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .gallery-placeholder i {
+            font-size: 2.5rem;
+            color: rgba(255, 43, 77, 0.2);
+            margin-bottom: 10px;
+        }
+        
+        .gallery-placeholder span {
+            display: block;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.3);
+            font-family: var(--display-font);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 6vw 120px;
+        }
+        
+        .cta-box {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 14px;
+            background: linear-gradient(150deg, #16161d, #0d0d11);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 64px 7% 68px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-bg {
+            position: absolute;
+            top: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 560px;
+            height: 560px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 43, 77, 0.15), transparent 68%);
+            pointer-events: none;
+        }
+        
+        .cta-content {
+            position: relative;
+        }
+        
+        .cta-title {
+            font-family: var(--display-font);
+            font-size: clamp(30px, 4vw, 46px);
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+        
+        .cta-text {
+            font-size: 17px;
+            color: #b3b3ba;
+            margin-bottom: 36px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 44px 6vw;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+            text-align: center;
+        }
+        
+        .footer-brand {
+            font-family: var(--display-font);
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .footer-copyright {
+            font-size: 12.5px;
+            color: #5f5f6a;
+        }
+        
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #b3b3ba;
+            transition: all 0.2s;
+        }
+        
+        .social-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .gallery-item {
+                min-height: 250px;
+            }
+            
+            nav {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navigation -->
+    <header>
+        <a href="../index.html" class="logo-link">
+            <span class="logo-box">S</span>
+            <span class="logo-text">Sebulur</span>
+        </a>
+        <nav>
+            <a href="../index.html#home">首頁</a>
+            <a href="../index.html#about">關於</a>
+            <a href="../services.html">服務</a>
+            <a href="../artists.html">DJ陣容</a>
+            <a href="../index.html#events">演出</a>
+            <a href="../index.html#gallery">相簿</a>
+            <a href="../index.html#contact">聯絡</a>
+            <a href="../index.html#contact" class="btn-book">預約</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <a href="../artists.html" class="back-link">← 返回全部 DJ</a>
+            <div class="profile-grid">
+                <div class="profile-image" data-reveal="mask">
+                    <span class="profile-initial">N</span>
+                    <img src="../images/djs/naomi.jpg" alt="NAOMI" class="profile-photo" onerror="this.style.display='none'">
+                </div>
+                <div>
+                    <p class="profile-intro">
+                        <span class="intro-line"></span>DJ Profile
+                    </p>
+                    <h1>NAOMI</h1>
+                    <p class="tagline">台灣新生代 DJ ｜ 舞者背景，16 歲開始接觸 DJ</p>
+                    <div class="genres">
+                        <span class="genre-tag">Hip-Hop</span>
+                        <span class="genre-tag">Trap</span>
+                        <span class="genre-tag">Afro / Amapiano</span>
+                        <span class="genre-tag">Open Format</span>
+                        <span class="genre-tag">DnB / Bass</span>
+                    </div>
+                    <div class="location-info">
+                        <i class="fas fa-map-marker-alt"></i> 台北 | 
+                        <i class="fas fa-record-vinyl"></i> RUFF／BARCODE／Cosma 駐場
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/n5naomi/" class="social-link" title="Instagram" target="_blank" rel="noopener">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@naomibby" class="social-link" title="YouTube" target="_blank" rel="noopener">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://soundcloud.com/naomibby" class="social-link" title="SoundCloud" target="_blank" rel="noopener">
+                            <i class="fab fa-soundcloud"></i>
+                        </a>
+                    </div>
+                    <div style="margin-top: 15px; color: rgba(255,255,255,0.8);">
+                        <i class="fas fa-envelope"></i> sebulurco@gmail.com
+                    </div>
+                    <a href="../index.html#contact" class="btn-primary" style="margin-top: 20px;">預約 NAOMI</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="bg-dark">
+        <div class="container">
+            <p class="section-label" data-reveal>About</p>
+            <h2 data-reveal style="--reveal-delay:.08s">關於 NAOMI</h2>
+            <p class="bio-text" data-reveal="fade">
+                <strong>台灣新生代 DJ</strong>，活躍於台北酒吧、夜店與各大派對活動，具備多間場館的駐店演出經驗。
+            </p>
+            <p class="bio-text" data-reveal="fade">
+                高中時期受到<strong>街舞文化</strong>啟發，具有舞者背景，16 歲開始接觸 DJ。從音樂與舞蹈之間的連結出發，逐漸建立屬於自己的音樂風格。
+            </p>
+            <p class="bio-text" data-reveal="fade">
+                以 <strong>Hip-Hop / Trap</strong> 為主要音樂脈絡，穿梭於主流與地下音樂之間，持續探索不同聲音與音樂的可能性。
+            </p>
+
+            <div class="skills-grid" data-stagger>
+                <div class="skill-card" data-reveal>
+                    <h3>音樂風格</h3>
+                    <div class="skill-list">
+                        <div class="skill-item"><span class="skill-check">✓</span> Hip-Hop / Trap</div>
+                        <div class="skill-item"><span class="skill-check">✓</span> Afro / Amapiano</div>
+                        <div class="skill-item"><span class="skill-check">✓</span> Open Format</div>
+                        <div class="skill-item"><span class="skill-check">✓</span> DnB / Bass</div>
+                    </div>
+                </div>
+                <div class="skill-card" data-reveal>
+                    <h3>擅長場合</h3>
+                    <div class="skill-list">
+                        <div class="skill-item"><span class="skill-check">✓</span> 夜店與酒吧駐場</div>
+                        <div class="skill-item"><span class="skill-check">✓</span> 品牌派對與快閃活動</div>
+                        <div class="skill-item"><span class="skill-check">✓</span> 校園迎新與晚會</div>
+                        <div class="skill-item"><span class="skill-check">✓</span> 音樂節與街舞場合</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Info Section -->
+    <section>
+        <div class="container">
+            <p class="section-label" data-reveal>Profile</p>
+            <h2 data-reveal style="--reveal-delay:.08s">快速資訊</h2>
+            <div class="info-grid" data-stagger>
+                <div class="info-item" data-reveal="fade">
+                    <span class="info-label">駐店經歷</span>
+                    <span class="info-value">2023 年起</span>
+                </div>
+                <div class="info-item" data-reveal="fade">
+                    <span class="info-label">主要曲風</span>
+                    <span class="info-value">Hip-Hop / Trap</span>
+                </div>
+                <div class="info-item" data-reveal="fade">
+                    <span class="info-label">現役駐場</span>
+                    <span class="info-value">RUFF、BARCODE、Cosma、三藩市 Somefun</span>
+                </div>
+                <div class="info-item" data-reveal="fade">
+                    <span class="info-label">背景</span>
+                    <span class="info-value">舞者出身</span>
+                </div>
+                <div class="info-item" data-reveal="fade">
+                    <span class="info-label">服務地區</span>
+                    <span class="info-value">台北</span>
+                </div>
+                <div class="info-item" data-reveal="fade">
+                    <span class="info-label">聯絡</span>
+                    <span class="info-value">sebulurco@gmail.com</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Residency Section -->
+    <section class="bg-dark">
+        <div class="container">
+            <p class="section-label" data-reveal>Residency</p>
+            <h2 data-reveal style="--reveal-delay:.08s">駐店經歷</h2>
+            <div class="experience-grid" data-stagger>
+                <div class="exp-column" data-reveal>
+                    <h3>現役駐場</h3>
+                    <div class="exp-list">
+                        <div class="exp-item"><span class="exp-bullet">▶</span> RUFF Night Club Taipei（2024 - 現在）</div>
+                        <div class="exp-item"><span class="exp-bullet">▶</span> BARCODE Suisha BAR（2024 - 現在）</div>
+                        <div class="exp-item"><span class="exp-bullet">▶</span> Cosma Taipei（2025 - 現在）</div>
+                        <div class="exp-item"><span class="exp-bullet">▶</span> 三藩市 Somefun（2026 - 現在）</div>
+                    </div>
+                </div>
+                <div class="exp-column" data-reveal>
+                    <h3>歷年駐店</h3>
+                    <div class="exp-list">
+                        <div class="exp-item"><span class="exp-bullet">▶</span> IKON Night Club Taipei（2024）</div>
+                        <div class="exp-item"><span class="exp-bullet">▶</span> DD Night Club Taipei（2024）</div>
+                        <div class="exp-item"><span class="exp-bullet">▶</span> BAR24 Taipei（2023）</div>
+                        <div class="exp-item"><span class="exp-bullet">▶</span> ARPIA Taipei（2023）</div>
+                        <div class="exp-item"><span class="exp-bullet">▶</span> W.odyssey Bar（2023）</div>
+                        <div class="exp-item"><span class="exp-bullet">▶</span> XD Bar（2023）</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performances Section -->
+    <section>
+        <div class="container">
+            <p class="section-label" data-reveal>Performances</p>
+            <h2 data-reveal style="--reveal-delay:.08s">演出紀錄</h2>
+            <div class="exp-list" style="max-width:900px;">
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2026</span>
+                    <span>AFROBRUARY PARTY</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">派對 DJ</span>
+                </div>
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2025</span>
+                    <span>Taiwan PASIWALI Festival</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">音樂節 DJ</span>
+                </div>
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2025</span>
+                    <span>LOADING Taipei 白天派對</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">派對 DJ</span>
+                </div>
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2025</span>
+                    <span>LOADING Taipei The 2010s Party</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">派對 DJ</span>
+                </div>
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2025</span>
+                    <span>DASOUNDS Wave room Vol.1</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">派對 DJ</span>
+                </div>
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2025</span>
+                    <span>UNBOUND DANCE PARTY</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">派對 DJ</span>
+                </div>
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2025</span>
+                    <span>STRICTLY TRAP</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">派對 DJ</span>
+                </div>
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2024</span>
+                    <span>IKON 新春紅白對抗賽</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">活動 DJ</span>
+                </div>
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2024</span>
+                    <span>BK 回憶錄專場 DJ</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">專場 DJ</span>
+                </div>
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2024</span>
+                    <span>IKON 紅白大對抗</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">活動 DJ</span>
+                </div>
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2024</span>
+                    <span>醒吾科大迎新活動</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">校園 DJ</span>
+                </div>
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2024</span>
+                    <span>黎明技術學院迎新活動</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">校園 DJ</span>
+                </div>
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2023</span>
+                    <span>黎明技術學院聖誕晚會</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">校園 DJ</span>
+                </div>
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2023</span>
+                    <span>淡江大學聯合萬聖變裝舞會</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">校園 DJ</span>
+                </div>
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2023</span>
+                    <span>國小世界盃國際邀請賽</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">賽事 DJ</span>
+                </div>
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2023</span>
+                    <span>墾丁壹號電音快閃之夜</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">快閃 DJ</span>
+                </div>
+                <div class="exp-item" style="display:grid;grid-template-columns:70px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+                    <span style="color:var(--accent);font-weight:600;">2023</span>
+                    <span>IMAGE INHOUSE 跨年夜</span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:14px;white-space:nowrap;">跨年 DJ</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="bg-dark">
+        <div class="container">
+            <p class="section-label" data-reveal>Projects</p>
+            <h2 data-reveal style="--reveal-delay:.08s">音樂專案</h2>
+            <div class="skills-grid" data-stagger>
+                <div class="skill-card" data-reveal>
+                    <h3>HUF TAIPEI Live DJ Session</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">與 AlphaTheta × HUF TAIPEI 合作的店內 Live Set。</div>
+                    </div>
+                </div>
+                <div class="skill-card" data-reveal>
+                    <h3>In Koh Samui</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">泰國蘇美島實景錄製，Afro House &amp; Amapiano 主題。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <div class="cta-bg"></div>
+            <div class="cta-content">
+                <h2 class="cta-title">想要預約 NAOMI？</h2>
+                <p class="cta-text">夜店、酒吧、品牌派對與校園活動都能配合。</p>
+                <a href="../index.html#contact" class="btn-primary">立即預約</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-brand">Sebulur</div>
+        <p class="footer-copyright">© 2026 Sebulur. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js" defer></script>
+    <script src="../js/anim.js?v=1.0.0" defer></script>
+</body>
+</html>

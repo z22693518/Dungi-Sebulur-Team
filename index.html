@@ -242,7 +242,7 @@
         .genre-cloud.has-focus .g-chip:not(.is-on) { opacity: 0.22; }
 
         .genre-djs {
-            display: grid; grid-template-columns: repeat(5, 1fr);
+            display: grid; grid-template-columns: repeat(3, 1fr);
             gap: 1px; margin-top: 46px;
             background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1);
         }
@@ -350,7 +350,9 @@
         "Disco",
         "Amapiano",
         "Melodic House",
-        "Funk Disco"
+        "Funk Disco",
+        "Trap",
+        "Afro House"
     ],
     "member": [
         {
@@ -377,6 +379,11 @@
             "@type": "Person",
             "name": "AT",
             "url": "https://z22693518.github.io/Dungi-Sebulur-Team/djs/dj5.html"
+        },
+        {
+            "@type": "Person",
+            "name": "NAOMI",
+            "url": "https://z22693518.github.io/Dungi-Sebulur-Team/djs/dj6.html"
         }
     ]
 }
@@ -488,15 +495,15 @@
         <div class="container">
             <p class="section-label" data-reveal>Sound</p>
             <h2 data-reveal style="--reveal-delay:.08s">曲風光譜</h2>
-            <p class="about-text" data-reveal style="--reveal-delay:.16s">五位 DJ 的守備範圍加起來橫跨 18 種曲風，從舞池主流到南非 Amapiano、從 Old School 到 Melodic Techno。滑過任一曲風，看看誰放得動。</p>
+            <p class="about-text" data-reveal style="--reveal-delay:.16s">六位 DJ 的守備範圍加起來橫跨 21 種曲風，從舞池主流到南非 Amapiano、從 Old School 到 Melodic Techno。滑過任一曲風，看看誰放得動。</p>
 
             <div class="genre-cloud" id="genreCloud" data-reveal="fade">
-                <button type="button" class="g-chip g-lg" data-djs="dj1 dj3">Hip-Hop</button>
+                <button type="button" class="g-chip g-lg" data-djs="dj1 dj3 dj6">Hip-Hop</button>
                 <button type="button" class="g-chip g-md" data-djs="dj1">EDM</button>
-                <button type="button" class="g-chip g-sm" data-djs="dj1">Trap</button>
+                <button type="button" class="g-chip g-md" data-djs="dj1 dj6">Trap</button>
                 <button type="button" class="g-chip g-sm" data-djs="dj1">Electronic</button>
                 <button type="button" class="g-chip g-md" data-djs="dj2">Disco</button>
-                <button type="button" class="g-chip g-lg" data-djs="dj2 dj3">Amapiano</button>
+                <button type="button" class="g-chip g-lg" data-djs="dj2 dj3 dj6">Amapiano</button>
                 <button type="button" class="g-chip g-sm" data-djs="dj2">Fusion</button>
                 <button type="button" class="g-chip g-sm" data-djs="dj2">World Music</button>
                 <button type="button" class="g-chip g-lg" data-djs="dj3 dj5">R&amp;B</button>
@@ -509,6 +516,9 @@
                 <button type="button" class="g-chip g-md" data-djs="dj5">Funk Disco</button>
                 <button type="button" class="g-chip g-sm" data-djs="dj5">Old School Hiphop</button>
                 <button type="button" class="g-chip g-sm" data-djs="dj5">Footwork</button>
+                <button type="button" class="g-chip g-sm" data-djs="dj6">Afro House</button>
+                <button type="button" class="g-chip g-sm" data-djs="dj6">Open Format</button>
+                <button type="button" class="g-chip g-sm" data-djs="dj6">DnB / Bass</button>
             </div>
 
             <div class="genre-djs" id="genreDjs" data-stagger>
@@ -532,6 +542,10 @@
                     <span class="gdj-name">AT</span>
                     <span class="gdj-genres">Funk Disco · Old School Hiphop · R&amp;B · Footwork</span>
                 </a>
+                <a class="gdj" data-dj="dj6" href="djs/dj6.html" data-reveal>
+                    <span class="gdj-name">NAOMI</span>
+                    <span class="gdj-genres">Hip-Hop · Trap · Afro / Amapiano · Open Format · DnB</span>
+                </a>
             </div>
         </div>
     </section>
@@ -541,7 +555,7 @@
         <div class="container">
             <p class="section-label" data-reveal>Why Us</p>
             <h2 data-reveal style="--reveal-delay:.08s">為什麼選擇我們</h2>
-            <p class="about-text" data-reveal style="--reveal-delay:.16s;margin-bottom:56px;">五位風格互補的 DJ，從夜店到藝術節都有實際經驗。</p>
+            <p class="about-text" data-reveal style="--reveal-delay:.16s;margin-bottom:56px;">六位風格互補的 DJ，從夜店到藝術節都有實際經驗。</p>
             <div class="feature-grid" data-stagger>
                 <div class="feature-card" data-reveal>
                     <p class="feature-num">01</p>

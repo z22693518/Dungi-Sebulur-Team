@@ -13,6 +13,7 @@
 | **Dinos** | Hip-Hop、R&B | 派對與品牌活動演出 |
 | **DINOjin** | Melodic House、Peak House | 4 軌放歌技術，台中 PinkB 駐店 |
 | **AT** | Funk Disco、Old School Hip-Hop | 「pa在路上」主理人，街舞賽事 Battle DJ |
+| **NAOMI** | Hip-Hop、Trap、Afro/Amapiano | 舞者背景，台北 RUFF／BARCODE／Cosma 駐場 |
 
 ## 網站結構
 
@@ -26,7 +27,8 @@ Dungi-Sebulur-Team/
 │   ├── dj2.html          # Visin
 │   ├── dj3.html          # Dinos
 │   ├── dj4.html          # DINOjin
-│   └── dj5.html          # AT
+│   ├── dj5.html          # AT
+│   └── dj6.html          # NAOMI
 ├── 404.html
 ├── index-personal.html   # 舊網址導向頁（轉往 index.html）
 ├── css/
