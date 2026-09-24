@@ -242,30 +242,104 @@
         .genre-cloud.has-focus .g-chip:not(.is-on) { opacity: 0.22; }
 
         .genre-djs {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 1px; margin-top: 46px;
-            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1);
+            display: grid; grid-template-columns: repeat(6, 1fr);
+            gap: 18px; margin-top: 46px;
         }
+
+        /* 迷你卡牌：與 DJ 陣容頁同一套設計，縮小版 */
         .gdj {
-            display: block; background: #0d0d11; padding: 26px 22px 28px;
-            transition: background .3s ease, opacity .25s ease;
+            display: block; position: relative;
+            padding: 12px 12px 14px;
+            border: 2px solid transparent;
+            border-radius: 14px;
+            background:
+                linear-gradient(160deg, #26262f 0%, #15151c 42%, #0b0b10 100%) padding-box,
+                conic-gradient(from 140deg,
+                    #ffe9a8, #ff2b4d 20%, #ffc043 38%, #ff6b8a 55%,
+                    #ffd479 72%, #ff2b4d 88%, #ffe9a8) border-box;
+            box-shadow: 0 10px 26px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.12);
+            transition: transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s ease, opacity .25s ease;
         }
-        .gdj:hover, .gdj.is-on { background: #15151b; }
-        .genre-djs.has-focus .gdj:not(.is-on) { opacity: 0.3; }
+        .gdj:hover, .gdj.is-on {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 26px 52px rgba(0,0,0,.65), 0 0 26px rgba(255,192,67,.3);
+        }
+
+        /* 漂浮：每張錯開時間，滑過或被選中時暫停 */
+        .gdj {
+            animation: gdjFloat 6s ease-in-out infinite;
+            animation-delay: var(--gfd, 0s);
+        }
+        .gdj:hover, .gdj.is-on { animation-play-state: paused; }
+        @keyframes gdjFloat {
+            0%, 100% { translate: 0 0; }
+            50% { translate: 0 -11px; }
+        }
+        .gdj:nth-child(1) { --gfd: 0s; }
+        .gdj:nth-child(2) { --gfd: -1s; }
+        .gdj:nth-child(3) { --gfd: -2s; }
+        .gdj:nth-child(4) { --gfd: -3s; }
+        .gdj:nth-child(5) { --gfd: -4s; }
+        .gdj:nth-child(6) { --gfd: -5s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .gdj { animation: none; }
+        }
+        .genre-djs.has-focus .gdj:not(.is-on) { opacity: 0.25; }
+
+        .gdj-top {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 6px; margin-bottom: 6px;
+        }
         .gdj-name {
-            display: block; font-family: var(--display-font); font-size: 20px;
-            font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
-            margin-bottom: 10px;
+            font-family: var(--display-font); font-size: 15px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: .03em; line-height: 1;
         }
         .gdj:hover .gdj-name, .gdj.is-on .gdj-name { color: var(--accent); }
-        .gdj-genres { display: block; font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+        .gdj-attr {
+            flex: none; width: 22px; height: 22px; border-radius: 50%;
+            display: grid; place-items: center; font-size: 9px; color: #fff;
+            background: radial-gradient(circle at 32% 28%, #ff6d86, var(--accent) 62%, #9c0d27);
+            box-shadow: 0 2px 6px rgba(255,43,77,.45), inset 0 1px 1px rgba(255,255,255,.5);
+        }
+        .gdj-level {
+            display: flex; justify-content: flex-end; gap: 2px;
+            margin-bottom: 8px; min-height: 10px;
+        }
+        .gdj-level i { font-size: 7.5px; color: #ffc043; text-shadow: 0 0 4px rgba(255,192,67,.5); }
 
+        .gdj-photo {
+            position: relative; aspect-ratio: 1 / 1; overflow: hidden;
+            border-radius: 8px; margin-bottom: 10px;
+            border: 1px solid rgba(255,255,255,.14);
+            background: linear-gradient(150deg, #1a1a20, #0d0d11);
+        }
+        .gdj-photo img {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: transform .6s cubic-bezier(.2,.7,.3,1);
+        }
+        .gdj:hover .gdj-photo img, .gdj.is-on .gdj-photo img { transform: scale(1.07); }
+        .gdj-initial {
+            position: absolute; inset: 0; display: grid; place-items: center;
+            font-family: var(--display-font); font-size: 46px; font-weight: 700;
+            color: rgba(255,43,77,0.16);
+        }
+
+        .gdj-genres {
+            display: block; font-size: 10.5px; line-height: 1.55;
+            color: rgba(255,255,255,0.5);
+            padding-top: 8px; border-top: 1px solid rgba(255,255,255,.12);
+        }
+
+        @media (max-width: 1100px) {
+            .genre-djs { grid-template-columns: repeat(3, 1fr); }
+        }
         @media (max-width: 900px) {
-            .genre-djs { grid-template-columns: repeat(2, 1fr); }
             .genre-cloud { gap: 10px 18px; }
         }
-        @media (max-width: 520px) {
-            .genre-djs { grid-template-columns: 1fr; }
+        @media (max-width: 560px) {
+            .genre-djs { grid-template-columns: repeat(2, 1fr); gap: 12px; }
         }
 
         /* ── 相簿燈箱 ── */
@@ -495,7 +569,7 @@
         <div class="container">
             <p class="section-label" data-reveal>Sound</p>
             <h2 data-reveal style="--reveal-delay:.08s">曲風光譜</h2>
-            <p class="about-text" data-reveal style="--reveal-delay:.16s">六位 DJ 的守備範圍加起來橫跨 21 種曲風，從舞池主流到南非 Amapiano、從 Old School 到 Melodic Techno。滑過任一曲風，看看誰放得動。</p>
+            <p class="about-text" data-reveal style="--reveal-delay:.16s">六位 DJ 的守備範圍加起來橫跨 21 種曲風，從舞池主流到南非 Amapiano、從 Old School 到 Melodic Techno。滑過任一曲風，對應的 DJ 卡片就會亮起來。</p>
 
             <div class="genre-cloud" id="genreCloud" data-reveal="fade">
                 <button type="button" class="g-chip g-lg" data-djs="dj1 dj3 dj6">Hip-Hop</button>
@@ -523,28 +597,118 @@
 
             <div class="genre-djs" id="genreDjs" data-stagger>
                 <a class="gdj" data-dj="dj1" href="djs/dj1.html" data-reveal>
-                    <span class="gdj-name">REDSHOU</span>
+                    <div class="gdj-top">
+                        <span class="gdj-name">REDSHOU</span>
+                        <span class="gdj-attr" aria-hidden="true"><i class="fas fa-bolt"></i></span>
+                    </div>
+                    <div class="gdj-level" aria-label="等級 8">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                    </div>
+                    <div class="gdj-photo">
+                        <span class="gdj-initial">R</span>
+                        <img src="images/djs/redshou.jpg" alt="REDSHOU" loading="lazy" onerror="this.style.display='none'">
+                    </div>
                     <span class="gdj-genres">EDM · Hip-Hop · Trap · Electronic</span>
                 </a>
                 <a class="gdj" data-dj="dj2" href="djs/dj2.html" data-reveal>
-                    <span class="gdj-name">Visin</span>
-                    <span class="gdj-genres">Disco · Amapiano · Fusion · World Music</span>
+                    <div class="gdj-top">
+                        <span class="gdj-name">Visin</span>
+                        <span class="gdj-attr" aria-hidden="true"><i class="fas fa-globe"></i></span>
+                    </div>
+                    <div class="gdj-level" aria-label="等級 6">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                    </div>
+                    <div class="gdj-photo">
+                        <span class="gdj-initial">V</span>
+                        <img src="images/djs/visin.jpg" alt="Visin" loading="lazy" onerror="this.style.display='none'">
+                    </div>
+                    <span class="gdj-genres">Disco · Amapiano · Fusion · World</span>
                 </a>
                 <a class="gdj" data-dj="dj3" href="djs/dj3.html" data-reveal>
-                    <span class="gdj-name">Dinos</span>
-                    <span class="gdj-genres">Hip-Hop · R&amp;B · Scratch · Amapiano · Gqom</span>
+                    <div class="gdj-top">
+                        <span class="gdj-name">Dinos</span>
+                        <span class="gdj-attr" aria-hidden="true"><i class="fas fa-record-vinyl"></i></span>
+                    </div>
+                    <div class="gdj-level" aria-label="等級 5">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                    </div>
+                    <div class="gdj-photo">
+                        <span class="gdj-initial">D</span>
+                        <img src="images/djs/dinos.jpg" alt="Dinos" loading="lazy" onerror="this.style.display='none'">
+                    </div>
+                    <span class="gdj-genres">Hip-Hop · R&amp;B · Scratch · Gqom</span>
                 </a>
                 <a class="gdj" data-dj="dj4" href="djs/dj4.html" data-reveal>
-                    <span class="gdj-name">DINOjin</span>
-                    <span class="gdj-genres">Melodic House · Peak House · Minimal House · Melodic Techno</span>
+                    <div class="gdj-top">
+                        <span class="gdj-name">DINOjin</span>
+                        <span class="gdj-attr" aria-hidden="true"><i class="fas fa-wave-square"></i></span>
+                    </div>
+                    <div class="gdj-level" aria-label="等級 8">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                    </div>
+                    <div class="gdj-photo">
+                        <span class="gdj-initial">D</span>
+                        <img src="images/djs/dinojin-profile.jpg" alt="DINOjin" loading="lazy" onerror="this.style.display='none'">
+                    </div>
+                    <span class="gdj-genres">Melodic House · Techno · Minimal</span>
                 </a>
                 <a class="gdj" data-dj="dj5" href="djs/dj5.html" data-reveal>
-                    <span class="gdj-name">AT</span>
-                    <span class="gdj-genres">Funk Disco · Old School Hiphop · R&amp;B · Footwork</span>
+                    <div class="gdj-top">
+                        <span class="gdj-name">AT</span>
+                        <span class="gdj-attr" aria-hidden="true"><i class="fas fa-compact-disc"></i></span>
+                    </div>
+                    <div class="gdj-level" aria-label="等級 6">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                    </div>
+                    <div class="gdj-photo">
+                        <span class="gdj-initial">A</span>
+                        <img src="images/djs/at.jpg" alt="AT" loading="lazy" onerror="this.style.display='none'">
+                    </div>
+                    <span class="gdj-genres">Funk Disco · Old School · Footwork</span>
                 </a>
                 <a class="gdj" data-dj="dj6" href="djs/dj6.html" data-reveal>
-                    <span class="gdj-name">NAOMI</span>
-                    <span class="gdj-genres">Hip-Hop · Trap · Afro / Amapiano · Open Format · DnB</span>
+                    <div class="gdj-top">
+                        <span class="gdj-name">NAOMI</span>
+                        <span class="gdj-attr" aria-hidden="true"><i class="fas fa-fire"></i></span>
+                    </div>
+                    <div class="gdj-level" aria-label="等級 3">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                    </div>
+                    <div class="gdj-photo">
+                        <span class="gdj-initial">N</span>
+                        <img src="images/djs/naomi.jpg" alt="NAOMI" loading="lazy" onerror="this.style.display='none'">
+                    </div>
+                    <span class="gdj-genres">Hip-Hop · Trap · Afro · Open Format</span>
                 </a>
             </div>
         </div>
