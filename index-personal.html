@@ -2,6 +2,9 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+    <!-- 安全性：限制頁面只能向下列來源請求資源 -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://i.ytimg.com; media-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Sebulur</title>
     <link rel="canonical" href="index.html">
     <meta http-equiv="refresh" content="0; url=index.html">
