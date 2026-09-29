@@ -245,16 +245,17 @@
         .genre-cloud.has-focus .g-chip:not(.is-on) { opacity: 0.22; }
 
         .genre-djs {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 24px; margin-top: 46px;
+            display: grid; grid-template-columns: repeat(6, 1fr);
+            gap: 14px; margin: 40px auto 0;
+            max-width: 1080px;   /* 一排六張，滑過曲風時六位 DJ 都在視線內 */
         }
 
         /* 迷你卡牌：與 DJ 陣容頁同一套設計，縮小版 */
         .gdj {
             display: block; position: relative;
-            padding: 16px 16px 18px;
+            padding: 10px 10px 12px;
             border: 2px solid transparent;
-            border-radius: 14px;
+            border-radius: 11px;
             background:
                 linear-gradient(160deg, #26262f 0%, #15151c 42%, #0b0b10 100%) padding-box,
                 conic-gradient(from 140deg,
@@ -264,8 +265,8 @@
             transition: transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s ease, opacity .25s ease;
         }
         .gdj:hover, .gdj.is-on {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 26px 52px rgba(0,0,0,.65), 0 0 26px rgba(255,192,67,.3);
+            transform: translateY(-7px) scale(1.06);
+            box-shadow: 0 22px 44px rgba(0,0,0,.65), 0 0 22px rgba(255,192,67,.35);
         }
 
         /* 漂浮：每張錯開時間，滑過或被選中時暫停 */
@@ -295,25 +296,25 @@
             gap: 6px; margin-bottom: 6px;
         }
         .gdj-name {
-            font-family: var(--display-font); font-size: 20px; font-weight: 600;
-            text-transform: uppercase; letter-spacing: .03em; line-height: 1;
+            font-family: var(--display-font); font-size: 13.5px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: .02em; line-height: 1;
         }
         .gdj:hover .gdj-name, .gdj.is-on .gdj-name { color: var(--accent); }
         .gdj-attr {
-            flex: none; width: 28px; height: 28px; border-radius: 50%;
-            display: grid; place-items: center; font-size: 11px; color: #fff;
+            flex: none; width: 19px; height: 19px; border-radius: 50%;
+            display: grid; place-items: center; font-size: 8px; color: #fff;
             background: radial-gradient(circle at 32% 28%, #ff6d86, var(--accent) 62%, #9c0d27);
             box-shadow: 0 2px 6px rgba(255,43,77,.45), inset 0 1px 1px rgba(255,255,255,.5);
         }
         .gdj-level {
             display: flex; justify-content: flex-end; gap: 2px;
-            margin-bottom: 8px; min-height: 10px;
+            margin-bottom: 6px; min-height: 8px;
         }
-        .gdj-level i { font-size: 9.5px; color: #ffc043; text-shadow: 0 0 4px rgba(255,192,67,.5); }
+        .gdj-level i { font-size: 6.5px; color: #ffc043; text-shadow: 0 0 4px rgba(255,192,67,.5); }
 
         .gdj-photo {
             position: relative; aspect-ratio: 1 / 1; overflow: hidden;
-            border-radius: 8px; margin-bottom: 10px;
+            border-radius: 6px; margin-bottom: 8px;
             border: 1px solid rgba(255,255,255,.14);
             background: linear-gradient(150deg, #1a1a20, #0d0d11);
         }
@@ -325,24 +326,23 @@
         .gdj:hover .gdj-photo img, .gdj.is-on .gdj-photo img { transform: scale(1.07); }
         .gdj-initial {
             position: absolute; inset: 0; display: grid; place-items: center;
-            font-family: var(--display-font); font-size: 64px; font-weight: 700;
+            font-family: var(--display-font); font-size: 40px; font-weight: 700;
             color: rgba(255,43,77,0.16);
         }
 
         .gdj-genres {
-            display: block; font-size: 12.5px; line-height: 1.6;
+            display: block; font-size: 10px; line-height: 1.5;
             color: rgba(255,255,255,0.5);
-            padding-top: 10px; border-top: 1px solid rgba(255,255,255,.12);
+            padding-top: 7px; border-top: 1px solid rgba(255,255,255,.12);
         }
 
-        @media (max-width: 900px) {
-            .genre-djs { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        @media (max-width: 1000px) {
+            .genre-djs { grid-template-columns: repeat(3, 1fr); max-width: 620px; }
             .genre-cloud { gap: 10px 18px; }
         }
         @media (max-width: 560px) {
-            .genre-djs { gap: 12px; }
-            .gdj { padding: 12px 12px 14px; }
-            .gdj-name { font-size: 16px; }
+            .genre-djs { grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 380px; }
+            .gdj-name { font-size: 15px; }
             .gdj-genres { font-size: 11px; }
         }
 
