@@ -757,10 +757,32 @@
         <div class="container">
             <p class="section-label" data-reveal>Tour Dates</p>
             <h2 data-reveal style="--reveal-delay:.08s">近期演出</h2>
-            <div class="empty-state" data-reveal="fade">
-                <p>檔期陸續更新中。想確認某個日期是否有空，歡迎直接來信詢問。</p>
-                <a href="#contact" class="btn-outline">詢問檔期 →</a>
+            <div class="events-list" data-stagger>
+                <div class="event-item" data-reveal>
+                    <div class="event-date">
+                        <div class="event-day">17</div>
+                        <div class="event-month">2026 Oct</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>私人婚禮場</h3>
+                        <p>宜蘭</p>
+                    </div>
+                    <a href="#contact" class="event-btn">詢問檔期</a>
+                </div>
+                <div class="event-item" data-reveal>
+                    <div class="event-date">
+                        <div class="event-day" style="font-size:24px;">每週二、三</div>
+                        <div class="event-month">長期合作</div>
+                    </div>
+                    <div class="event-details">
+                        <h3>Play Back</h3>
+                        <p>台北｜固定駐場<br>駐場 DJ：Dungi Sapor · Redshou · Visin<br>SEBULUR DJ TEAM 駐場統籌｜2026 至今</p>
+                    </div>
+                    <a href="#contact" class="event-btn">詢問檔期</a>
+                </div>
+                <div class="events-divider"></div>
             </div>
+            <p class="contact-note" data-reveal style="margin-top:24px;">其他檔期陸續更新中。想確認某個日期是否有空，歡迎直接來信詢問。</p>
         </div>
     </section>
     
@@ -769,9 +791,43 @@
         <div class="container">
             <p class="section-label" data-reveal>Gallery</p>
             <h2 data-reveal style="--reveal-delay:.08s">活動花絮</h2>
-            <div class="empty-state" data-reveal="fade">
-                <p>內容整理中。各場演出照片目前收錄在 DJ 個人頁。</p>
-                <a href="artists.html" class="btn-outline">看 DJ 陣容 →</a>
+            <div class="gallery-grid" data-stagger>
+                <figure class="gallery-item g-wide" data-type="image" data-src="images/gallery/team-performance-1.jpg" data-caption="SEBULUR DJ TEAM · 活動現場" data-reveal="zoom">
+                    <img src="images/gallery/team-performance-1.jpg" alt="SEBULUR DJ TEAM 活動現場" loading="lazy">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
+                <figure class="gallery-item g-tall" data-type="image" data-src="images/gallery/team-performance-2.jpg" data-caption="SEBULUR DJ TEAM · 舞台演出" data-reveal="zoom">
+                    <img src="images/gallery/team-performance-2.jpg" alt="SEBULUR DJ TEAM 舞台演出" loading="lazy">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
+                <figure class="gallery-item" data-type="image" data-src="images/gallery/team-performance-3.jpg" data-caption="SEBULUR DJ TEAM · 現場氣氛" data-reveal="zoom">
+                    <img src="images/gallery/team-performance-3.jpg" alt="SEBULUR DJ TEAM 現場氣氛" loading="lazy">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
+                <figure class="gallery-item" data-type="image" data-src="images/gallery/team-performance-4.jpg" data-caption="SEBULUR DJ TEAM · DJ 台前" data-reveal="zoom">
+                    <img src="images/gallery/team-performance-4.jpg" alt="SEBULUR DJ TEAM DJ 台前" loading="lazy">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
+                <figure class="gallery-item g-wide" data-type="image" data-src="images/gallery/team-performance-5.jpg" data-caption="SEBULUR DJ TEAM · 滿場舞池" data-reveal="zoom">
+                    <img src="images/gallery/team-performance-5.jpg" alt="SEBULUR DJ TEAM 滿場舞池" loading="lazy">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
+                <figure class="gallery-item" data-type="image" data-src="images/gallery/team-performance-6.jpg" data-caption="SEBULUR DJ TEAM · 演出側拍" data-reveal="zoom">
+                    <img src="images/gallery/team-performance-6.jpg" alt="SEBULUR DJ TEAM 演出側拍" loading="lazy">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
+                <figure class="gallery-item g-tall" data-type="image" data-src="images/gallery/team-performance-7.jpg" data-caption="SEBULUR DJ TEAM · 駐場之夜" data-reveal="zoom">
+                    <img src="images/gallery/team-performance-7.jpg" alt="SEBULUR DJ TEAM 駐場之夜" loading="lazy">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
+                <figure class="gallery-item" data-type="image" data-src="images/gallery/team-performance-8.jpg" data-caption="SEBULUR DJ TEAM · 燈光與音場" data-reveal="zoom">
+                    <img src="images/gallery/team-performance-8.jpg" alt="SEBULUR DJ TEAM 燈光與音場" loading="lazy">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
+                <figure class="gallery-item g-wide" data-type="image" data-src="images/gallery/team-performance-9.jpg" data-caption="SEBULUR DJ TEAM · 活動紀錄" data-reveal="zoom">
+                    <img src="images/gallery/team-performance-9.jpg" alt="SEBULUR DJ TEAM 活動紀錄" loading="lazy">
+                    <span class="gallery-zoom"><i class="fas fa-expand"></i></span>
+                </figure>
             </div>
         </div>
     </section>
@@ -802,6 +858,51 @@
                     <p class="contact-value-sm">服務範圍涵蓋全台，離島與海外活動亦可洽詢。</p>
                 </div>
             </div>
+
+            <form class="booking-form" id="bookingForm" novalidate data-reveal="fade">
+                <h3 class="booking-form-title">演出合作邀約</h3>
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="bfName">姓名 / 公司名稱<span class="req">*</span></label>
+                        <input type="text" id="bfName" name="name" placeholder="請輸入姓名或公司名稱" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="bfEmail">聯絡信箱<span class="req">*</span></label>
+                        <input type="email" id="bfEmail" name="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="bfPhone">聯絡電話<span class="req">*</span></label>
+                        <input type="tel" id="bfPhone" name="phone" placeholder="請輸入聯絡電話" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="bfType">演出類型<span class="req">*</span></label>
+                        <select id="bfType" name="type" required>
+                            <option value="" selected disabled>請選擇演出類型</option>
+                            <option value="婚禮">婚禮</option>
+                            <option value="企業活動">企業活動</option>
+                            <option value="品牌活動">品牌活動</option>
+                            <option value="夜店派對">夜店派對</option>
+                            <option value="音樂節 / 大型舞台">音樂節 / 大型舞台</option>
+                            <option value="私人派對">私人派對</option>
+                            <option value="其他">其他</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="bfVenue">活動地點<span class="req">*</span></label>
+                        <input type="text" id="bfVenue" name="venue" placeholder="請輸入活動地點" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="bfDate">預訂日期<span class="req">*</span></label>
+                        <input type="date" id="bfDate" name="date" required>
+                    </div>
+                    <div class="form-field full">
+                        <label for="bfMessage">活動詳細說明<span class="req">*</span></label>
+                        <textarea id="bfMessage" name="message" placeholder="請說明活動詳情、預算、其他需求等..." required></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="form-submit">送出邀約</button>
+                <p class="form-status" id="bookingStatus" role="status"></p>
+            </form>
         </div>
     </section>
     
@@ -907,6 +1008,53 @@
                 }
             });
         });
+
+        // ── 演出合作邀約表單 ──
+        (function () {
+            const form = document.getElementById('bookingForm');
+            if (!form) return;
+
+            const status = document.getElementById('bookingStatus');
+            const dateInput = document.getElementById('bfDate');
+            dateInput.min = new Date().toISOString().slice(0, 10);
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const required = Array.from(form.querySelectorAll('[required]'));
+                const missing = required.find(el => !el.value.trim());
+                if (missing) {
+                    status.textContent = '請填寫所有必填欄位。';
+                    missing.focus();
+                    return;
+                }
+
+                const email = document.getElementById('bfEmail');
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+                    status.textContent = '請輸入正確的電子郵件格式。';
+                    email.focus();
+                    return;
+                }
+
+                const data = new FormData(form);
+                const body = [
+                    '姓名 / 公司名稱：' + data.get('name'),
+                    '聯絡信箱：' + data.get('email'),
+                    '聯絡電話：' + data.get('phone'),
+                    '演出類型：' + data.get('type'),
+                    '活動地點：' + data.get('venue'),
+                    '預訂日期：' + data.get('date'),
+                    '',
+                    '活動詳細說明：',
+                    data.get('message')
+                ].join('\n');
+
+                const subject = '演出合作邀約｜' + data.get('type') + '｜' + data.get('date');
+                status.textContent = '正在開啟郵件軟體，請確認後寄出。';
+                window.location.href = 'mailto:sebulurco@gmail.com?subject=' +
+                    encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+            });
+        })();
 
         // ── 相簿燈箱 ──
         (function () {

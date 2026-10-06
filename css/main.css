@@ -629,9 +629,132 @@ h2 {
     margin-top: 10px;
 }
 
+/* Booking Form */
+.booking-form {
+    margin-top: 64px;
+}
+
+.booking-form-title {
+    font-family: var(--display-font);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #e8e8ea;
+    text-align: center;
+    margin-bottom: 44px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 40px;
+}
+
+.form-field.full {
+    grid-column: 1 / -1;
+}
+
+.form-field label {
+    display: block;
+    font-size: 14px;
+    color: #b3b3ba;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+}
+
+.form-field label .req {
+    color: var(--accent);
+    margin-left: 4px;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    padding: 16px 18px;
+    background: #0f0f13;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    color: #e8e8ea;
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.form-field textarea {
+    min-height: 180px;
+    resize: vertical;
+}
+
+.form-field input[type="date"] {
+    color-scheme: dark;
+}
+
+.form-field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23ff2b4d' stroke-width='2'%3E%3Cpath d='M3 6l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+    background-size: 16px;
+    padding-right: 48px;
+    cursor: pointer;
+}
+
+.form-field select option {
+    background: #0f0f13;
+    color: #e8e8ea;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+    color: #5f5f6a;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #121217;
+}
+
+.form-submit {
+    width: 100%;
+    margin-top: 36px;
+    padding: 20px;
+    background: var(--accent);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-family: var(--display-font);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.form-submit:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+.form-status {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #8a8a94;
+    text-align: center;
+    min-height: 20px;
+}
+
 @media (max-width: 860px) {
     .contact-cards {
         grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 }
 
