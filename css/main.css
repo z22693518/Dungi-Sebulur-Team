@@ -572,6 +572,35 @@ h2 {
     margin-bottom: 26px;
 }
 
+/* Live Video Section */
+#live {
+    background: #0a0a0d;
+}
+
+.live-video {
+    max-width: 380px;
+    margin: 0 auto;
+}
+
+.live-video video {
+    width: 100%;
+    display: block;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    background: #000;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+}
+
+.live-video-caption {
+    margin-top: 18px;
+    text-align: center;
+    font-family: var(--display-font);
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8a8a94;
+}
+
 /* Contact Section */
 #contact {
     background: #0a0a0d;
