@@ -6,13 +6,13 @@
     <!-- 安全性：限制頁面只能向下列來源請求資源 -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https://i.ytimg.com; media-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <title>Sebulur - 專業 DJ 團隊 | 台北頂尖DJ服務</title>
+    <title>SEBULUR DJ TEAM｜DJ Booking &amp; Music Curation</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta name="theme-color" content="#0a0a0d">
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Sebulur - 台北專業DJ團隊，提供婚禮、企業活動、夜店派對DJ服務。擁有EDM、Hip-Hop、原住民音樂等多元風格。OMNI ALTA駐場DJ團隊。">
-    <meta name="keywords" content="DJ,台北DJ,專業DJ,婚禮DJ,企業活動DJ,夜店DJ,EDM,Hip-Hop,原住民音樂,OMNI ALTA,派對DJ,音樂節DJ">
+    <meta name="description" content="SEBULUR DJ TEAM 由 DJ 汝妮 Dungi Sapor 發起，從台灣原住民族文化出發，集結多元曲風的 DJ 與音樂創作者。為品牌活動、企業活動、派對與音樂節提供 DJ 人選推薦與音樂風格規劃，服務範圍涵蓋全台。">
+    <meta name="keywords" content="DJ Booking,音樂策選,DJ團隊,品牌活動DJ,企業活動DJ,派對DJ,音樂節DJ,原住民文化,House,Afro,Techno,Hip-Hop,汝妮,Dungi Sapor">
     <meta name="author" content="Sebulur">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://z22693518.github.io/Dungi-Sebulur-Team/">
@@ -20,15 +20,15 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://z22693518.github.io/Dungi-Sebulur-Team/">
-    <meta property="og:title" content="Sebulur - 專業 DJ 團隊">
-    <meta property="og:description" content="台北專業DJ團隊，提供婚禮、企業活動、夜店派對DJ服務。擁有EDM、Hip-Hop、原住民音樂等多元風格。">
+    <meta property="og:title" content="SEBULUR DJ TEAM｜DJ Booking &amp; Music Curation">
+    <meta property="og:description" content="從台灣原住民族文化出發，為品牌、企業與各類型活動策選最適合現場的聲音。">
     <meta property="og:image" content="https://z22693518.github.io/Dungi-Sebulur-Team/images/djs/redshou.jpg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://z22693518.github.io/Dungi-Sebulur-Team/">
-    <meta property="twitter:title" content="Sebulur - 專業 DJ 團隊">
-    <meta property="twitter:description" content="台北專業DJ團隊，提供婚禮、企業活動、夜店派對DJ服務。">
+    <meta property="twitter:title" content="SEBULUR DJ TEAM｜DJ Booking &amp; Music Curation">
+    <meta property="twitter:description" content="從台灣原住民族文化出發，為品牌、企業與各類型活動策選最適合現場的聲音。">
     <meta property="twitter:image" content="https://z22693518.github.io/Dungi-Sebulur-Team/images/djs/redshou.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,19 +63,10 @@
             text-align: center;
         }
         
-        .loader-logo {
-            width: 60px;
-            height: 60px;
+        .loader-logo-img {
+            width: 160px;
             margin: 0 auto 20px;
-            border-radius: 12px;
-            background: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--display-font);
-            font-weight: 700;
-            font-size: 28px;
-            color: #fff;
+            display: block;
             animation: pulse 1.5s ease-in-out infinite;
         }
         
@@ -202,12 +193,11 @@
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
         }
-        .hero-card-logo {
+        .hero-card-logo-img {
             position: relative;
-            font-family: var(--display-font);
-            font-size: 84px; font-weight: 700;
-            color: rgba(255, 43, 77, .55);
-            text-shadow: 0 0 28px rgba(255, 43, 77, .6);
+            width: 72%;
+            opacity: .62;
+            filter: drop-shadow(0 0 22px rgba(255, 43, 77, .45));
         }
         .hero-card-tag {
             position: absolute; bottom: 26px; left: 50%;
@@ -402,35 +392,26 @@
 {
     "@context": "https://schema.org",
     "@type": "MusicGroup",
-    "name": "Sebulur",
+    "name": "SEBULUR DJ TEAM",
     "url": "https://z22693518.github.io/Dungi-Sebulur-Team/",
-    "logo": "https://z22693518.github.io/Dungi-Sebulur-Team/favicon.svg",
+    "logo": "https://z22693518.github.io/Dungi-Sebulur-Team/images/logos/sebulur-logo-black.png",
     "image": "https://z22693518.github.io/Dungi-Sebulur-Team/images/djs/redshou.jpg",
-    "description": "台灣專業 DJ 團隊，提供婚禮、企業活動、夜店派對與街舞賽事的 DJ 服務，曲風涵蓋 EDM、Hip-Hop、Disco、Amapiano 與原住民音樂。",
+    "description": "由 DJ 汝妮 Dungi Sapor 發起，從台灣原住民族文化出發，集結活躍於音樂、品牌與文化現場的 DJ 與音樂創作者。為品牌、企業與各類型活動提供 DJ 人選推薦、音樂風格規劃與客製化演出配置。",
     "email": "sebulurco@gmail.com",
-    "areaServed": [
-        {
-            "@type": "Place",
-            "name": "台北"
-        },
-        {
-            "@type": "Place",
-            "name": "宜蘭"
-        },
-        {
-            "@type": "Place",
-            "name": "花蓮"
-        }
-    ],
+    "areaServed": {
+        "@type": "Country",
+        "name": "台灣"
+    },
     "genre": [
-        "EDM",
+        "House",
+        "Afro",
+        "Techno",
         "Hip-Hop",
+        "R&B",
         "Disco",
+        "EDM",
         "Amapiano",
-        "Melodic House",
-        "Funk Disco",
-        "Trap",
-        "Afro House"
+        "Trap"
     ],
     "member": [
         {
@@ -463,7 +444,17 @@
             "name": "NAOMI",
             "url": "https://z22693518.github.io/Dungi-Sebulur-Team/djs/dj6.html"
         }
-    ]
+    ],
+    "alternateName": "Sebulur",
+    "foundingLocation": {
+        "@type": "Place",
+        "name": "台灣"
+    },
+    "founder": {
+        "@type": "Person",
+        "name": "汝妮 Dungi Sapor",
+        "jobTitle": "DJ"
+    }
 }
     </script>
 </head>
@@ -471,7 +462,7 @@
     <!-- Page Loader -->
     <div class="page-loader" id="pageLoader">
         <div class="loader-inner">
-            <div class="loader-logo">S</div>
+            <img class="loader-logo-img" src="images/logos/sebulur-logo-white-sm.png" alt="Sebulur">
             <div class="loader-text">Loading...</div>
         </div>
     </div>
@@ -502,8 +493,7 @@
     <!-- Top Navigation -->
     <header>
         <a href="#home" class="logo-link">
-            <span class="logo-box">S</span>
-            <span class="logo-text">Sebulur</span>
+            <img src="images/logos/sebulur-logo-white-sm.png" alt="Sebulur DJ Team" class="logo-img">
         </a>
         <nav>
             <a href="#home">首頁</a>
@@ -530,10 +520,11 @@
         <div class="hero-bg2"></div>
         <div class="hero-content">
             <p class="hero-intro" data-reveal>
-                <span class="intro-line"></span>Professional DJ Crew
+                <span class="intro-line"></span>DJ Booking &amp; Music Curation
             </p>
-            <h1 data-reveal style="--reveal-delay:.1s"><span style="color: var(--accent)">Sebulur</span></h1>
-            <p class="hero-desc" data-reveal style="--reveal-delay:.2s">專業 DJ 團隊，為您的活動帶來最佳音樂體驗。從 EDM 到嘻哈，從原民音樂到國際流行 — 我們為每個場合打造完美聲音。</p>
+            <h1 data-reveal style="--reveal-delay:.1s"><span style="color: var(--accent)">Sebulur</span><br>DJ Team</h1>
+            <p class="hero-desc" data-reveal style="--reveal-delay:.2s">由 DJ 汝妮 Dungi Sapor 發起，從台灣原住民族文化出發，集結活躍於音樂、品牌與文化現場的 DJ 與音樂創作者。</p>
+            <p class="hero-desc" data-reveal style="--reveal-delay:.26s">融合在地文化視角、多元音樂風格與國際舞台經驗，為品牌、企業與各類型活動，策選最適合現場的聲音。</p>
             <div class="hero-buttons" data-reveal style="--reveal-delay:.3s">
                 <a href="#events" class="btn-primary">近期演出</a>
                 <a href="artists.html" class="btn-outline">認識 DJ →</a>
@@ -542,7 +533,7 @@
         <div class="hero-card-stage" aria-hidden="true">
             <div class="hero-card" id="heroCard">
                 <div class="hero-card-face">
-                    <span class="hero-card-logo">S</span>
+                    <img class="hero-card-logo-img" src="images/logos/sebulur-logo-white-sm.png" alt="">
                     <span class="hero-card-tag">Sebulur Deck</span>
                 </div>
             </div>
@@ -560,7 +551,19 @@
             <p class="section-label" data-reveal>About Us</p>
             <h2 data-reveal style="--reveal-delay:.08s">關於我們</h2>
             <p class="about-text" data-reveal style="--reveal-delay:.16s">
-                Sebulur 是一個充滿活力的專業 DJ 團隊，我們結合了不同的音樂風格和文化背景，為每個活動帶來獨特的音樂體驗。從電子舞曲到嘻哈，從原民音樂到國際流行，我們的 DJ 都是各自領域的專家。
+                SEBULUR DJ TEAM 由 DJ 汝妮 Dungi Sapor 發起，集結來自台灣、擁有不同音樂背景與舞台經驗的 DJ 與音樂創作者。
+            </p>
+            <p class="about-text" data-reveal style="--reveal-delay:.2s">
+                從台灣原住民族文化的根源出發，我們相信，每一種文化、每一位 DJ，都有屬於自己的聲音。SEBULUR 因此不以單一曲風定義團隊，而是匯聚不同世代、風格與音樂視角，呈現台灣當代 DJ 文化的多元樣貌。
+            </p>
+            <p class="about-text" data-reveal style="--reveal-delay:.24s">
+                團隊成員橫跨 House、Afro、Techno、Hip-Hop、R&amp;B、Disco、流行及多元電子音樂風格，並具備品牌活動、企業活動、派對、音樂節與大型舞台等不同形式的演出經驗。
+            </p>
+            <p class="about-text" data-reveal style="--reveal-delay:.28s">
+                除了 DJ 演出，我們也依據活動主題、品牌調性與現場需求，提供 DJ 人選推薦、音樂風格規劃與客製化演出配置。
+            </p>
+            <p class="about-text" data-reveal style="--reveal-delay:.32s">
+                <strong>我們不只是提供 DJ，而是為每一個現場，找到最適合它的聲音。</strong>
             </p>
             <div style="margin-top:36px;" data-reveal>
                 <a href="services.html" class="btn-outline">我們提供的服務 →</a>
@@ -723,27 +726,27 @@
         <div class="container">
             <p class="section-label" data-reveal>Why Us</p>
             <h2 data-reveal style="--reveal-delay:.08s">為什麼選擇我們</h2>
-            <p class="about-text" data-reveal style="--reveal-delay:.16s;margin-bottom:56px;">六位風格互補的 DJ，從夜店到藝術節都有實際經驗。</p>
+            <p class="about-text" data-reveal style="--reveal-delay:.16s;margin-bottom:56px;">不只提供 DJ 名單，而是為每一個現場找到對的聲音。</p>
             <div class="feature-grid" data-stagger>
                 <div class="feature-card" data-reveal>
                     <p class="feature-num">01</p>
-                    <h4>多元風格</h4>
-                    <p>EDM、Hip-Hop、Disco、Amapiano、House 與原民音樂，依場合派對應的人。</p>
+                    <h4>專業策選</h4>
+                    <p>不只是提供 DJ 名單，而是依據品牌調性、活動形式、賓客輪廓與音樂需求，推薦真正適合現場的 DJ 人選。</p>
                 </div>
                 <div class="feature-card" data-reveal>
                     <p class="feature-num">02</p>
-                    <h4>實戰經驗</h4>
-                    <p>夜店駐場、音樂節、街舞賽事、婚宴與企業活動都有長期合作紀錄。</p>
+                    <h4>多元音樂陣容</h4>
+                    <p>集結來自台灣、不同音樂背景與風格的 DJ，從 House、Afro、Techno、Hip-Hop、R&amp;B、Disco 到流行音樂，滿足不同活動的音樂需求。</p>
                 </div>
                 <div class="feature-card" data-reveal>
                     <p class="feature-num">03</p>
-                    <h4>完整企劃</h4>
-                    <p>不只到場放歌，提供流程音樂設計、器材建議與現場控場。</p>
+                    <h4>在地文化視角</h4>
+                    <p>以台灣為根、從原住民族文化出發，我們重視每一種聲音背後的文化與個性，讓 DJ 不只是播放音樂，也能為活動帶來更具辨識度的音樂體驗。</p>
                 </div>
                 <div class="feature-card" data-reveal>
                     <p class="feature-num">04</p>
-                    <h4>在地連結</h4>
-                    <p>紮根花蓮、宜蘭與台北，熟悉在地場館與文化活動生態。</p>
+                    <h4>豐富現場經驗</h4>
+                    <p>團隊成員具備品牌活動、企業活動、音樂節、派對及大型舞台等演出經驗，能依不同場合掌握節奏與現場氛圍。</p>
                 </div>
             </div>
         </div>
@@ -778,7 +781,7 @@
         <div class="container">
             <p class="section-label" data-reveal>Contact</p>
             <h2 data-reveal style="--reveal-delay:.08s">聯絡我們</h2>
-            <p class="about-text" data-reveal style="--reveal-delay:.16s;margin-bottom:52px;">把活動日期、場地與大致需求寄給我們，我們會盡快回覆並提供建議與報價。</p>
+            <p class="about-text" data-reveal style="--reveal-delay:.16s;margin-bottom:52px;">把活動日期、場地與大致需求寄給我們，我們會盡快回覆，並提供 DJ 人選建議與報價。</p>
 
             <div class="contact-cards" data-stagger>
                 <div class="contact-card" data-reveal>
@@ -796,7 +799,7 @@
                 </div>
                 <div class="contact-card" data-reveal>
                     <div class="contact-label">服務範圍</div>
-                    <p class="contact-value-sm">全台皆可接洽，主要活動範圍為台北、宜蘭與花蓮。</p>
+                    <p class="contact-value-sm">服務範圍涵蓋全台，離島與海外活動亦可洽詢。</p>
                 </div>
             </div>
         </div>
@@ -807,8 +810,7 @@
         <div class="footer-content">
             <div class="footer-left">
                 <div class="footer-logo">
-                    <span class="logo-box">S</span>
-                    <span class="logo-text">Sebulur</span>
+                    <img src="images/logos/sebulur-logo-white-sm.png" alt="Sebulur DJ Team" class="logo-img">
                 </div>
             </div>
             <div class="copyright">

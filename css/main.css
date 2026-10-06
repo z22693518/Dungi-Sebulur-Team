@@ -60,6 +60,19 @@ a {
     50% { opacity: 1 }
 }
 
+
+.logo-img {
+    height: 36px;
+    width: auto;
+    display: block;
+}
+
+.footer-logo .logo-img { height: 32px; }
+
+@media (max-width: 768px) {
+    .logo-img { height: 30px; }
+}
+
 /* Top Navigation */
 header {
     position: fixed;
