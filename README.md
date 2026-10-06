@@ -39,7 +39,7 @@ Dungi-Sebulur-Team/
 ├── images/
 │   ├── djs/              # DJ 個人照
 │   └── gallery/          # 演出照片與影片
-├── favicon.svg
+├── favicon.png
 ├── robots.txt
 └── sitemap.xml
 ```
